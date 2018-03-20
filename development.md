@@ -91,3 +91,15 @@ in sync. That can be achieved by tagging a release with
 [`npm version`](https://docs.npmjs.com/cli/version) command.
 
 We are still in the prototyping phase, so we are using the major version of `0.x.x`.
+
+In practice, the release process is as follows:
+
+- Development is going on with PRs that are merged to `develop` branch.
+- Once we are happy with the state of the `develop` branch, we raise the version
+in `package.json` and `package-lock.json`. That can be done with `npm version`.
+- *Do not push the created tag yet!*
+- Create a PR from `develop` to `master` marked as **chore: Release x.y.z**
+- Merge this PR with a merge commit.
+- Push the tag created by `npm version` (experimental) or manually tag the
+resulting merge commit and push it to github.
+- Travis makes a release from a tagged commit.

@@ -111,7 +111,7 @@ Keep track of changes of availability by polling the data files of all hotels fo
 
 The scheme above does not solve booking / payment process. This process seems to fit perfectly to blockchain domain. The base scheme could be something like this:
 
-1) Client selects a pack of services (room with breakfast from 1st to 5th may, with view to a sea and mahagon doors), adds price and any contract details to one document.
+1) Client selects a pack of services (room with breakfast from 1st to 5th may, with view to a sea and mahagony doors), adds price and any contract details to one document.
 2) Client and hotel signs the document confirming, that they want to make this contract, stores the full content for later evidence and makes hash.
 4) Client sends Lífs (Ethers, Bitcoins) to hotel with the hash in data.
 

@@ -1,22 +1,22 @@
 # WT Hotel Architecture
 
-This document describes on a high level the design of the network for hotel inventory distribution that will be developed by Winding Tree. This is not to be consider how the final architecture of the platform will be, this document only presents the first iteration of the solution to a lot of problems that we identified in the hotel travel industry.
+This document describes a high level design of the network for hotel inventory distribution that will be developed by Winding Tree (WT). This is not to be considered how the final architecture of the platform will be, this document only presents the first iteration of the solution to a lot of problems that we've identified in the hotel travel industry.
 
 ### Blockchain
 
-Blockchain is the only technology which is able to keep immutable shared history in IT world. This ability is payed by high cost of any operation and data on a blockchain as each node in the network needs to repeat any operation requested on respective blockchain and keep all data forever.
+Blockchain is the only technology which is able to keep immutable shared history in the IT world. This ability is paid for by high cost of any operation and data storage on a blockchain as each node in the network needs to repeat any operation requested on respective blockchain and keep all data forever.
 
-WT will use the Ethereum network, the main difference with Bitcoin is that Ethereum is touring complete, which means that we can write more complex applications over it and store more information on chain (inside the blockchain).
+WT will use the Ethereum network, the main difference to Bitcoin is that Ethereum is [Turing complete](https://en.wikipedia.org/wiki/Turing_completeness), which means that we can write more complex applications on top of it and store more information on chain (inside the blockchain).
 
-We will use the Ethereum blockchain to store an list of all hotels registered in WT, this information is open to the public.
+We will use the Ethereum blockchain to store a list of all hotels registered in WT, this information is open to the public.
 
 ### Distributed Database (D-DB)
 
-A distributed database is a network system where the data is spread across nodes in a manner that  a requester can contact any node to successfully receive the content associated with a key. The database keeps running even when most of the network nodes disappear. Examples of such database is IPFS or Swarm.
+A distributed database is a network system where the data is spread across nodes in a manner that a requester can contact any node to successfully receive the content associated with a key. The database keeps running even when most of the network nodes disappear. Examples of such database are [IPFS](https://ipfs.io/) or [Swarm](http://swarm-guide.readthedocs.io/en/latest/introduction.html).
 
-Blockchain is distributed database but with added immutable history and the associated costs per operation and data stored, storing data on the blockchain is too expensive (for now), we decided to use a distributed storage at the beginning till the blockchain network is scalable and efficient enough to store data on it.
+Blockchain is a distributed database but with added immutable history and the associated costs per operation and data stored, storing data on the blockchain is too expensive (for now), so we've decided to use a distributed storage in the beginning till the blockchain network is scalable and efficient enough to store data on it.
 
-Each hotel in WT will have a file in a distributed database where all the content, availability and prices will e hosted and open to the public.
+Each hotel in WT will have a file in a distributed database where all the content, availability and prices will be hosted and open to the public. It is possible that we will choose different distributed databases for different kinds of content.
 
 ## The operations on WT
 
@@ -58,8 +58,8 @@ Each hotel in WT will have a file in a distributed database where all the conten
 
 ### Scenario
 
-- Hotel signs it's data in a readable standardized format and exports them to D-DB. 
-- Hotel writes ddb-pointer to blockchain together with his address/ens and basic information
+- Hotel signs its data in a readable standardized format and publishes them to D-DB. 
+- Hotel writes ddb-pointer to blockchain together with his address/es and basic information
 - OTAs and Hotel APIs access all WT inventory through a WT Node and expose it to the final user.
 
 ### Properties of the system
@@ -67,12 +67,14 @@ Each hotel in WT will have a file in a distributed database where all the conten
 - **Open Source**, anyone can run their own WT-Node.
 - **Open API**, WT will provide public nodes for easy access to the network.
 - **Open Data**, all the information about the inventory is public, anyone can access it.
-- **Cryptographically Verified**, all the information will signed by their owners, making easy to verify the authenticity of the data.
-- **Ownership**, the hotels will have complete ownership of their inventory and bookings.
+- **Cryptographically Verified**, all the information is signed by their owners, making it easy to verify the authenticity of the data.
+- **Ownership**, the hotels will have the complete ownership of their inventory and bookings.
 
 ### Availability / Prices
 
-Keep track of changes of availability and price by polling the data files of all hotels for changes is possible but could spent unnecessary high amount of resources on client as well as D-DB. It is desirable to implement event based tracking of changes. The WT-Cache will listen for any change that happens on the Blockchain and the Distributed-DB. The cache will expose a public database where any query can be done.
+Keeping track of changes of availability and price by polling the data files of all hotels for changes is possible but could spend unnecessarily high amount of resources on client as well as D-DB. It is desirable to implement event based tracking of changes where the hotels might actively push changes of their inventory to WT network.
+
+The WT-Cache will listen for any change that happens on the Blockchain and the Distributed-DB. The cache will expose a public database where any search query can be done.
 
 ### Booking / Payment
 
@@ -84,8 +86,7 @@ Keep track of changes of availability and price by polling the data files of all
 ## Authors
 
 - Robin Gottfried
-- Hynek Urban
-- Jiří Chadima
+- [Jiří Chadima](https://github.com/jirkachadima) (<jiri.chadima@fragaria.cz>)
 - Martin Bílek
-- Augusto Lemble <augusto@windingtree.com>
-- Jakub Vysoky <jakub@windingtree.com>
+- [Augusto Lemble](https://github.com/AugustoL) (<augusto@windingtree.com>)
+- [Jakub Vysoky](https://github.com/kvbik) (<jakub@windingtree.com>)

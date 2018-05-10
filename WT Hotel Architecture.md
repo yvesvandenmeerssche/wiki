@@ -31,12 +31,12 @@ Each hotel in WT will have a file in a distributed database where all the conten
 ## Overview
 
 
-     -------------------------   
-    | Blockchain              |    *   *   *   *   *   *   *
-    |                         |    *                       *                  
-    | # hotel A | ddb-pointer |    *   D-DB (Swarm/IPFS)   *               
-    | # hotel B | ddb-pointer |    *                       *
-     -------------------------     *   *   *   *   *   *   *
+     --------------------------  
+    | Blockchain               |    *   *   *   *   *   *   *
+    |                          |    *                       *                  
+    | # hotel A | url-pointers |    *   D-DB (Swarm/IPFS)   *               
+    | # hotel B | url-pointers |    *                       *
+     --------------------------     *   *   *   *   *   *   *
                  ^                      ^
                  |             .--------'
                  V             V
@@ -56,11 +56,11 @@ Each hotel in WT will have a file in a distributed database where all the conten
                  ----------
 
 
-### Scenario
+### Distribution Steps
 
-- Hotel signs its data in a readable standardized format and publishes them to D-DB. 
-- Hotel writes ddb-pointer to blockchain together with his address/es and basic information
-- OTAs and Hotel APIs access all WT inventory through a WT Node and expose it to the final user.
+1. Hotel signs its data in a readable standardized format and publishes them to a D-DB or any other storage solution they want to use.
+2. Hotel writes ddb-pointer to blockchain together with his address/es and basic information
+3. OTAs and Hotel APIs access all WT inventory through a WT Node and expose it to the final user.
 
 ### Properties of the system
 
@@ -70,11 +70,15 @@ Each hotel in WT will have a file in a distributed database where all the conten
 - **Cryptographically Verified**, all the information is signed by their owners, making it easy to verify the authenticity of the data.
 - **Ownership**, the hotels will have the complete ownership of their inventory and bookings.
 
-### Availability / Prices
+### Availability / Prices / Content
+
+The hotel smart contracts will have urls for the avaliability, price and media content. We will support any protocol like bzz, ipfs, https.
 
 Keeping track of changes of availability and price by polling the data files of all hotels for changes is possible but could spend unnecessarily high amount of resources on client as well as D-DB. It is desirable to implement event based tracking of changes where the hotels might actively push changes of their inventory to WT network.
 
 The WT-Cache will listen for any change that happens on the Blockchain and the Distributed-DB. The cache will expose a public database where any search query can be done.
+
+The data provided will have to follow a standard, the standard will be proposed by Winding Tree but it will be governed using a simple multisignature wallet os a simple governance system not related to the Lif token.
 
 ### Booking / Payment
 

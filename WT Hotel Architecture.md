@@ -59,7 +59,7 @@ Each hotel in WT will have a file in a distributed database where all the conten
 ### Distribution Steps
 
 1. Hotel signs its data in a readable standardized format and publishes them to a D-DB or any other storage solution they want to use.
-2. Hotel writes ddb-pointer to blockchain together with his address/es and basic information
+2. Hotel writes url-pointers to blockchain together with his address/es and basic information
 3. OTAs and Hotel APIs access all WT inventory through a WT Node and expose it to the final user.
 
 ### Properties of the system

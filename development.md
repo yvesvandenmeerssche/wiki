@@ -1,4 +1,4 @@
-# Development and deployment process
+# Development and release handbook
 
 The goal of this document is to describe how we develop and release parts of
 the Winding Tree platform.
@@ -43,6 +43,8 @@ well.
 always be a merge commit.
 - `hotfix/*` are the only branches that can be merged directly into master.
 They usually have to be merged into develop as well.
+- `proposal/*` are branches with some long-term and big update that we would
+eventually like to promote to develop.
 
 Other naming conventions for branches are possible, but should at least closely
 follow the general
@@ -67,7 +69,7 @@ should belong to some milestone. In the initial project phase, we will be trying
 to do time-based releases instead of feature-based releases.
 
 
-# Deployment
+# Releases
 
 We are aiming to use both [npm](https://npmjs.com) and
 [EthPM](https://www.ethpm.com/) for our package distribution. The initial idea
@@ -78,7 +80,8 @@ grab packages from [our npm organization](https://www.npmjs.com/org/windingtree)
 The javascript libriaries will be published solely to npm.
 
 The end-user applications (API, demo app) will be released as GitHub releases
-artifacts.
+artifacts. See [application deployment](https://github.com/windingtree/wiki/blob/master/app-deployment.md)
+for more information.
 
 Our releases are done by [Travis CI](https://travis-ci.org/). For now we are
 manually creating a release by tagging a version commit in master. This is

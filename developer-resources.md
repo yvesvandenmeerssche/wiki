@@ -10,7 +10,7 @@ very happy to help you.
 ## Overall architecture
 
 The overall architecture (right now for Hotels only) is described in
-[WT Hotel Architecture](https://github.com/windingtree/wiki/blob/master/WT%20Hotel%20Architecture.md).
+[WT Hotel Architecture](https://github.com/windingtree/wiki/blob/master/architecture-hotel.md).
 
 After reading that, you should have an idea of how we would like to
 build a reasonable version of our platform.

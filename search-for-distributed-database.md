@@ -1,6 +1,6 @@
 # Decentralized storage for Winding Tree
 
-As we have described in our [Architecture](https://github.com/windingtree/wiki/blob/master/WT%20Hotel%20Architecture.md#distributed-database-d-db)
+As we have described in our [Architecture](https://github.com/windingtree/wiki/architecture-hotel.md#distributed-database-d-db)
 document, we need some kind of distributed storage for Winding Tree to work. We would really love to have all data on-chain, but
 with the current state of technology, it's just not feasible (it's slow and expensive).
 

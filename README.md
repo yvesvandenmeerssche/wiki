@@ -1,13 +1,10 @@
 # Winding Tree knowledge base
 
-Welcome to the repository where we aggreagate all our techincal reports and articles,
-that we want to share with our community and vice versa.
+Welcome to the repository where we aggreagate all our techincal reports and articles. In this repo you will find all information about Winding Tree which has been released and is inteded to be shared with our community. We very much look forward to community feedback which can be addressed via GitHub issues and openly discussed within the issues as well as in our social channels.
 
-There are bunch of very important articles, like [technical roadmap](roadmap.md)
-and [overview of the architecture](architecture-hotel.md),
-but we want to put here all our research efforts and collaborate with the community in the written form.
+Some of our key documents within this repo include the [technical roadmap](roadmap.md)
+and [our overview of the architecture](architecture-hotel.md). Nevertheless, other documents including some around our research efforts are also found in this repo with the intention of collaborate with the community together on these efforts.
 
 ### disclaimer
 
-Keep in mind, that the pace this ecosystem is evolving is super fast. Some information can get outdated
-pretty quickly. Always check the last updates (and when did they happen) to a document you are reading.
+Please bear in mind, that the pace this ecosystem is evolving at a rapid pace. Information may become outdated frequently. Please ensure you're always working on the most up-to-date documents to avoid working on issues which might have already been address in our updated documentation.

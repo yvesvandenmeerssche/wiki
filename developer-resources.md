@@ -62,7 +62,7 @@ and get some experience with its behaviour and limitations.
 Then we have `develop` branches where any updates to the `master` branches are happening.
 There's not much going on right now.
 
-Because we are working on implementing the [new architecture](https://github.com/windingtree/wiki/blob/master/WT%20Hotel%20Architecture.md).
+Because we are working on implementing the [new architecture](https://github.com/windingtree/wiki/blob/master/architecture-hotel.md).
 Code related to that can be usually found in `proposal/next` branches and we are planning to release
 it as well once we feel it's presentable. Some of it is already published on NPM under `@next` tag.
 We're currently planning for this to be part of the *WT Hotel Testnet* in Summer of 2018. So if you
@@ -73,8 +73,15 @@ things might change at any time as we move forward.
 
 You could either follow our repositories here on GitHub or for a very quick
 overview, you can check our [roadmap](https://github.com/windingtree/wiki/blob/master/roadmap.md).
-We're trying hard to make everything happen on time and you can check our regular
+We're trying hard to make everything happen on time and you can check our quarterly
 [dev updates](https://github.com/windingtree/wiki/tree/master/dev-updates).
+
+If you'd like to follow the development on a day-to-day basis or would like to give us a hand,
+you can check our public Trello boards - for [backend](https://trello.com/b/ZREEkuOX/winding-tree-work-in-progress)
+and for [frontend](https://trello.com/b/5V9jP2uD/winding-tree-apps). We're still figuring out
+if this is a best way to collaborate with the community, so a few things might be missing there.
+But you should be able to get a feeling of what we're dealing with now and in the near future
+in greater detail than in the Roadmap document.
 
 ## I still have questions
 

@@ -2,12 +2,6 @@
 
 This document describes a high level design of the network for hotel inventory distribution that will be developed by Winding Tree (WT). This is not to be considered how the final architecture of the platform will be, this document only presents the first iteration of the solution to a lot of problems that we've identified in the hotel travel industry.
 
-## Overview
-![Overview](./media/wt-architecture-overview.svg)
-![Wt-node](./media/wt-architecture-node-detail.svg)
-
-## Main technologies
-
 ### Blockchain
 
 Blockchain is the only technology which is able to keep immutable shared history in the IT world. This ability is paid for by high cost of any operation and data storage on a blockchain as each node in the network needs to repeat any operation requested on respective blockchain and keep all data forever.
@@ -36,29 +30,8 @@ Each hotel in WT will have a file in a distributed database where all the conten
 
 ## Overview
 
-     --------------------------  
-    | Blockchain               |    *   *   *   *   *   *   *
-    |                          |    *                       *                  
-    | # hotel A | url-pointers |    *   D-DB (Swarm/IPFS)   *               
-    | # hotel B | url-pointers |    *                       *
-     --------------------------     *   *   *   *   *   *   *
-                 ^                      ^
-                 |             .--------'
-                 V             V
-       ------------------------------
-       |          WT Node           |        --------
-       |  ............   .......... |  <--  | HOTELS |
-       |  : WT Cache :   : WT API : |        --------  
-       |  ''''''''''''   '''''''''' |
-       ------------------------------     
-       | OTA |  | OTA | | HOTEL API |           
-       -------  ------- -------------         
-                      ^
-                      |
-                      v
-                 ----------
-                 |  USERS |
-                 ----------
+![Diagram - overview](media/wt-architecture-overview.svg)
+![Diagram - wt-node](media/wt-architecture-node-detail.svg)
 
 
 ### Distribution Steps

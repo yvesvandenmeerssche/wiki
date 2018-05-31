@@ -30,30 +30,8 @@ Each hotel in WT will have a file in a distributed database where all the conten
 
 ## Overview
 
-
-     --------------------------  
-    | Blockchain               |    *   *   *   *   *   *   *
-    |                          |    *                       *                  
-    | # hotel A | url-pointers |    *   D-DB (Swarm/IPFS)   *               
-    | # hotel B | url-pointers |    *                       *
-     --------------------------     *   *   *   *   *   *   *
-                 ^                      ^
-                 |             .--------'
-                 V             V
-       ------------------------------
-       |          WT Node           |        --------
-       |  ............   .......... |  <--  | HOTELS |
-       |  : WT Cache :   : WT API : |        --------  
-       |  ''''''''''''   '''''''''' |
-       ------------------------------     
-       | OTA |  | OTA | | HOTEL API |           
-       -------  ------- -------------         
-                      ^
-                      |
-                      v
-                 ----------
-                 |  USERS |
-                 ----------
+![Diagram - overview](media/wt-architecture-overview.svg)
+![Diagram - wt-node](media/wt-architecture-node-detail.svg)
 
 
 ### Distribution Steps

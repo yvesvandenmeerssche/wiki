@@ -5,14 +5,14 @@
 ## Q1
 
 ### Token Distribution
-- Initial coin offering distribution.
+- Token Generation Event's (TGE) token distribution.
 - Execute market validation mechanism.
 
 ### Developers Introduction
-- Get started, development and releases workflow.
+- Commence development and release workflow to the community.
 - First release of api, js-libs and demo app.
 
-### WT Hotels Smart Contracs
+### WT Hotels Smart Contracts
 - Alpha version.
 
 ### WT API Architecture Design
@@ -23,10 +23,10 @@
 - Integrate proxy upgradeability model into LifToken.
 - Move from ERC20 to ERC827.
 
-### WT Hotels Smart Contracs
+### WT Hotels Smart Contracts
 - Beta version.
 - Booking using offchain signatures.
-- Inventory information, avaliability and price in decentralized database.
+- Inventory information, availability and price through decentralized database.
 
 ### WT Hotel Testnet (WT Prototype)
 - Integration with PMS and OTA using WT api.
@@ -39,7 +39,7 @@
 ### Open source data exchange standards for hotels
 - API specification and documentation.
 
-### WT Hotels Smart Contracs
+### WT Hotels Smart Contracts
 - Stable version.
 
 ### WT Airlines smart contracts

@@ -4,10 +4,10 @@ After a few weeks of tedious research of [many](https://expediaconnectivity.com/
 [existing](https://connect.booking.com/user_guide/site/en-US/user_guide.html?lang=en)
 [APIs](https://developer.sabre.com/sabre_hospitality/apis/soap_apis/hotel/channel_connect/ari)
 [and](https://www.htng.org/page/technical_specs?)
-[standards](https://schemas.liquid-technologies.com/OpenTravel/2008B/)
+[standards](https://schemas.liquid-technologies.com/OpenTravel/2008B/),
 we are ready to show to the world how the hotel data might look like once
 the [Winding Tree](https://windingtree.com/) platform is ready. This is a first draft
-that we are putting out for comments and validation by our friends, partners and community.
+that we are putting out for comments and validation by our friends, partners, and community.
 
 So if something is not clear to you, or you think something can be
 improved, please, leave us a comment. Your feedback is invaluable and we
@@ -17,7 +17,7 @@ for this area.
 
 If you don't like reading, jump directly to [the docs](https://windingtree.github.io/docs/swagger-ui/)
 where our data format is published in an [OAS 3.0](https://github.com/OAI/OpenAPI-Specification) format.
-If you like reading, please open the [the docs](https://windingtree.github.io/docs/swagger-ui/)
+If you like reading, please open [the docs](https://windingtree.github.io/docs/swagger-ui/)
 anyway, so you can directly see what I am talking about.
 
 We have designed the format in a way that plays well with our
@@ -34,7 +34,7 @@ can be divided into four groups:
 
 The groups differ by how big the data is and how often it changes.
 
-The entry point for all of hotel related data is stored on Ethereum blockchain
+The entry point for all of hotel-related data is stored on Ethereum blockchain
 where each hotel has [its own contract](https://github.com/windingtree/wt-contracts/blob/proposal/next/contracts/hotel/Hotel.sol)
 registered via [Winding Tree index](https://github.com/windingtree/wt-contracts/blob/proposal/next/contracts/WTIndex.sol#L63).
 In that hotel contract, there is a single URI (`dataUri`) pointing to a document stored in any
@@ -49,7 +49,7 @@ to have three links there (naming may change):
 
 ## What is definitely not yet final?
 
-We still have large room for improvements and some areas are not yet fully described.
+We still have a large room for improvements and some areas are not yet fully described.
 Among these are:
 
 - *Internationalization* - We will eventually support it, stay tuned!
@@ -65,7 +65,7 @@ The easiest part is the Hotel and Inventory description. We expect this
 data to generally not change at all since it describes a physical reality.
 We are right now working only with Room types as inventory. More types of
 inventory may come in the future. We are also thinking about all the stuff
-happenning directly on room level.
+happening directly on room level.
 
 - We will eventually add more contacts for a hotel (such as a dedicated person
   for bookings, complaints etc.).
@@ -94,16 +94,16 @@ to support as many pricing models as possible.
 of people up to a certain limit and a different one to all people over that
 limit.
 - For both base and additional pricing we allow different rates based on:
-    - Maximum age of a traveller
-    - Minimal length of stay
+    - The maximum age of a traveler
+    - The minimal length of stay
 - The restrictions are strictly related to applicability of given rate plan.
 So if a length of stay is restricted, the rate plan cannot be applied if the
-desired stay is out of bounds. It has no relation to availability of a room
+desired stay is out of bounds. It has no relation to the availability of a room
 type.
-- We don't support discounts and derived plans as they can be modelled with
+- We don't support discounts and derived plans as they can be modeled with
 the current data shape.
 - We don't yet support Occupancy based pricing - i. e. different prices for
-different number of travellers.
+a different number of travelers.
 - We don't yet support extra pricing for extra services such as breakfast.
 - There are probably more restrictions that we can use. Feel free to suggest
 them to us!
@@ -130,20 +130,20 @@ to tell the world about the changes happening in between snapshots.
     - We allow either absolute or incremental updates of the available quantity.
     - Every update message has to contain a serial number to allow replayability
     of all updates in correct order.
-    - Updates should be reset once new snapshot is created.
+    - Updates should be reset once a new snapshot is created.
 - We will probably have to split the data into multiple documents. Natural candidates
 for separation are:
     - List of updates
     - Availability of every room type
 
-Dow you want details? Have a look at **Availability**.
+Do you want details? Have a look at **Availability**.
 
 ## Concluding remarks
 
-This is a start. We're not saying that in the end the data will look like this,
+This is a start. We're not saying that in the end, the data will look like this,
 but we are pretty confident it will be very similar. We are also not promising
 that we will have all the parts implemented in our closest release, but this is a
-path we are taking. You can follow our progress in
+path we are taking. You can follow our progress on
 [our Trello board](https://trello.com/b/ZREEkuOX/winding-tree-work-in-progress).
 
 As this is a heavy work in progress, there might be some inconsistencies (for example

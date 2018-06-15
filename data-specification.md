@@ -15,9 +15,9 @@ are eager to hear all of your ideas. Some pieces are definitely missing
 and we already have a [decent TODO list](https://github.com/windingtree/wiki/issues/28)
 for this area.
 
-If you don't like reading, jump directly on [SwaggerHub](https://app.swaggerhub.com/apis/windingtree/WTHotelDefinitions/)
+If you don't like reading, jump directly to [the docs](https://windingtree.github.io/docs/swagger-ui/)
 where our data format is published in an [OAS 3.0](https://github.com/OAI/OpenAPI-Specification) format.
-If you like reading, please open the [SwaggerHub](https://app.swaggerhub.com/apis/windingtree/WTHotelDefinitions/)
+If you like reading, please open the [the docs](https://windingtree.github.io/docs/swagger-ui/)
 anyway, so you can directly see what I am talking about.
 
 We have designed the format in a way that plays well with our

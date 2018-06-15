@@ -1,0 +1,526 @@
+openapi: 3.0.0
+servers: []
+info:
+  version: "0.0.3"
+  title: Hotel definitions
+  description: Object definitions for hotel API
+paths: {}
+components:
+  schemas:
+  # WT-Index formats
+    HotelOnChain:
+      title: WT-Index hotel record
+      description: Hotel record in WT-Index smart contract
+      type: object
+      properties:
+        address:
+          description: Ethereum address of the hotel
+          $ref: '#/components/schemas/EthereumAddressType'
+        manager:
+          description: Ethereum address of the manager wallet
+          $ref: '#/components/schemas/EthereumAddressType'
+        dataUri:
+          description: URI of the Hotel data index (pointing off-chain)
+          $ref: '#/components/schemas/UriType'
+          
+  # Off chain data formats  
+    HotelDataIndex:
+      title: Hotel data index
+      description: Landing index for hotel resources. Link to this document is stored in WT-Index smart contract hotel record
+      type: object
+      required:
+      - descriptionUri
+      properties:
+        descriptionUri:
+          type: string
+          format: uri
+          maxLength: 3000
+          description: URI pointing to the HotelDescription resource
+    HotelDescription:
+      title: Hotel description
+      description: Basic properties of hotel
+      type: object
+      required:
+      - name
+      - description
+      - contacts
+      - address
+      - timezone
+      - currency
+      - updatedAt
+      properties:
+        location:
+          description: Geo-location in GPS format
+          $ref: '#/components/schemas/Location'
+        name:
+          description: Name of the hotel to display to users
+          $ref: '#/components/schemas/NameType'
+        description:
+          description: Short text description of the hotel to show to users.
+          $ref: '#/components/schemas/DescriptionType'
+        roomTypes:
+          description: Room types in the hotel
+          $ref: '#/components/schemas/RoomTypes'
+        contacts:
+          type: object
+          description: List of contacts
+          required:
+          - general
+          properties:
+            general:
+              description: Primary contact
+              $ref: '#/components/schemas/Contact'
+        address:
+          $ref: '#/components/schemas/Address'
+        timezone:
+          $ref: '#/components/schemas/TimezoneType'
+        currency:
+          $ref: '#/components/schemas/CurrencyType'
+        images:
+          description: Images (web browser compatible)
+          type: array
+          items:
+            $ref: '#/components/schemas/UriType'
+        amenities:
+          description: Hotel products / services provided for free to guests
+          type: array
+          items:
+            $ref: '#/components/schemas/HotelAmenityItem'
+        updatedAt:
+          type: string
+          description: Date-time when the data was last changed. Used by consumers to handle incremental updates and caching.
+          format: date-time
+  # inventory
+    RoomTypes:
+      type: object
+      description: Object where property names are ID of room type and values are the RoomType 
+      additionalProperties:
+        $ref: '#/components/schemas/RoomType'
+    RoomType:
+      type: object
+      required:
+      - id
+      - name
+      - description
+      - occupancy
+      - totalQuantity
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectIdType'
+          description: Vendor room type ID (should be unique for hotel)
+        name:
+          description: Name of the room type to show to users
+          $ref: '#/components/schemas/NameType'
+        description:
+          description: Room type description in plain text
+          $ref: '#/components/schemas/DescriptionType'
+        totalQuantity:
+          type: integer
+          format: int32
+        occupancy:
+          type: object
+          required:
+          - max
+          properties:
+            min:
+              type: integer
+              format: int32
+              description: Minimal number of occupants to rent the room.
+              default: 1
+              example: 1
+            max:
+              type: integer
+              format: int32
+              description: Maximal number of occupants to rent the room.
+              example: 3
+        amenities:
+          type: array
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/RoomAmenityItem'
+            example: TV
+        images:
+          type: array
+          minItems: 0
+          maxItems: 30
+          uniqueItems: true
+          items:
+            $ref: '#/components/schemas/UriType'
+            description: image uri
+            example: 'https://example.com/my-image.jpg'
+        updatedAt:
+          type: string
+          format: date-time
+          description: Date-time when the data was last changed. Used by consumers to handle incremental updates and caching.
+        properties:
+          type: object
+          description: Other properties used for filtering and/or categorization of the room types
+          properties:
+            nonSmoking:
+              description: Whether there are any non smoking rooms of the type
+              type: string
+              enum:
+              - some
+              - all
+              - none
+              
+  # pricing
+    RatePlans:
+      type: object
+      description: Property names are ID of rate plan and the values is the rate plan description
+      additionalProperties:
+        $ref: '#/components/schemas/RatePlan'
+    RatePlan:
+      description: |
+        Rate plan for specified room types.
+        
+        Algorithm to calculate price
+        - pick the right ratePlan(s) based on availableForTravel field and provided booking dates
+        - check restrictions and drop rate plans that the booking doesn't meet
+        - for every rate plan as rp_i
+          - for every person as p_j
+              j < under baseOccupancyLimit, use base rates, use additional rates otherwise
+              is a rate for given lengthOfStay provided?
+                  yes - use it
+                  no - use the one with lengthOfStay=1 or missing lengthOfStay
+              pick a rate based on guest's age
+              multiply the rate by length of stay
+          - store the final price for rp_i
+        - compare all final prices and pick the cheapest
+        
+      type: object
+      required:
+      - id
+      - name
+      - description
+      - updatedAt
+      properties:
+        id:
+          $ref: '#/components/schemas/ObjectIdType'
+          description: Vendor rate plan ID (unique for hotel)
+        name:
+          description: Name of the rate plan to show to users
+          $ref: '#/components/schemas/NameType'
+        description:
+          description: Rate plan description in plain text
+          $ref: '#/components/schemas/DescriptionType'
+        currency:
+          description: Currency in which are all the prices of this rate plan. If not set, the hotel currency setting will be used.
+          $ref: '#/components/schemas/CurrencyType'
+        roomTypeIds:
+          type: array
+          description: List of all room types that this rate plan applies to
+          minItems: 0
+          maxItems: 30
+          uniqueItems: true
+          items:
+            description: RoomType id
+            $ref: '#/components/schemas/ObjectIdType'
+            example: '123-afg-34'
+        updatedAt:
+          type: string
+          format: date-time
+          description: Date-time when the data was last changed. Used by consumers to handle incremental updates and caching.
+        availableForReservation:
+          type: object
+          description: A time period during which this rate plan can be used to compute prices for a booking, i. e. a hotel can have different rate plans that are used for reservations for the same date that are placed in different months. If this restriction is not set, the rate plan can be used for booking with no time restriction.
+          required:
+          - start
+          - end
+          properties:
+            start:
+              type: string
+              format: date-time
+            end:
+              type: string
+              format: date-time
+        availableForTravel:
+          type: object
+          description: A time period of stay during which this rate plan should be used to compute prices, i. e. prices in this rate plan are applicable in August. If this restriction is not set, the rate plan can be used for booking for any time.
+          required:
+          - start
+          - end
+          properties:
+            start:
+              type: string
+              format: date-time
+            end:
+              type: string
+              format: date-time
+        pricing:
+          type: object
+          properties:
+            base:
+              type: object
+              properties:
+                maxOccupancyLimit:
+                  type: integer
+                rates:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/RatePlanPrice'
+            additional:
+              type: object
+              properties:
+                maxOccupancyLimit:
+                  type: integer
+                rates:
+                  type: object
+                  items:
+                    $ref: '#/components/schemas/RatePlanPrice'
+                  
+        restrictions:
+          type: object
+          description: Restrictions for this rate plan. If any restriction
+          properties:
+            bookingCutOff:
+              description: How many days in advance booking starts / ends. If not specified there is no restriction
+              type: object
+              properties:
+                min:
+                  type: integer
+                max:
+                  type: integer
+            lengthOfStay:
+              type: object
+              properties:
+                min:
+                  type: integer
+                  default: 1
+                max:
+                  type: integer
+
+    RatePlanPrice:
+      type: object
+      description: Single price of rate plan. Amount is the price and the rest of attributes are restrictions.
+      required:
+      - amount
+      properties:
+        amount:
+          description: The price without currency
+          type: number
+          format: float
+        minLengthOfStay:
+          description: Minimal length of stay the price is applicable to.  If there are multiple prices with lengthOfStay restriction matching the minimal length of stay, the price with longest length of stay is used.
+          type: integer
+        maxAge:
+          description: The price is applicable to occupants of this age or younger at the time of arrival to the stay. If multiple prices are specified with different maxAge, the price with the highes limit is applied. If no price with maxAge restriction can be applied and there is a price without this restriction, it is applied.
+          type: integer
+          
+    Availability:
+      type: object
+      properties:
+        LatestSnapshot:
+          $ref: '#/components/schemas/AvailabilitySnapshot'
+        Updates:
+          type: array
+          items:
+            $ref: '#/components/schemas/AvailabilityUpdateRecord'
+    AvailabilitySnapshot:
+      description: Full snapshot of availability in time of `updatedAt`
+      type: object
+      required:
+      - updatedAt
+      - availability
+      properties:
+        updatedAt:
+          type: string
+          format: date-time
+        availability:
+          description: Object where property names are roomTypeId 
+          type: object
+          additionalProperties:
+            type: object
+            required:
+            - day
+            - available
+            properties:
+              day:
+                description: The day the availability is for
+                type: string
+                format: date
+              quantity:
+                description: Number of free resources to book for the day
+                type: integer
+              restrictions:
+                $ref: '#/components/schemas/AvailabilityRestrictions'
+
+    AvailabilityUpdateRecord:
+      type: object
+      description: Update to availability. Either `total` or `change` can be present, not both.
+      required:
+      - id
+      - from
+      - to
+      - updatedAt
+      properties:
+        serialNo:
+          description: Zero based ordinal number of the record from the last full snapshot. The first record should have number 0
+          type: integer
+          example: 5
+        from:
+          description: First day the changed availability is applied to (including)
+          type: string
+          format: date
+          example: "2018-01-30"
+        to:
+          description: Last day the changed availability is applied to (including)
+          type: string
+          format: date
+          example: "2018-02-20"
+        total:
+          description: Absolute quantity during the period `from` ... `to`.
+          type: integer
+          example: 30
+        change:
+          description: Relative change of quantity during the period 
+          type: integer
+          example: -1
+        restrictions:
+          $ref: '#/components/schemas/AvailabilityRestrictions'
+        updatedAt:
+          type: string
+          format: date
+          
+    AvailabilityRestrictions:
+      description: Possible restriction (this is sample how to add restrictions to availability)
+      type: object
+      properties:
+        noArrival:
+          type: boolean
+
+  # basic elements
+    HotelAmenityItem:
+      title: Hotel amenity
+      description: Products and services offered to guests for free. The list is an example, TODO - define real values
+      type: string
+      enum:
+      - WiFi
+      - Swimming pool
+      - Parking
+      - Fitness centre
+    RoomAmenityItem:
+      title: Room amenity
+      description: Room amenity - the possible values are example only. TODO - define real list of important amenity types. 
+      type: string
+      enum:
+      - TV
+      - minibar
+
+    Location:
+      title: GPS location
+      type: object
+      description: GPS location in decimal format (ISO 6709)
+      required:
+      - latitude
+      - longitude
+      properties:
+        latitude:
+          type: number
+          format: float
+          example: 35.89421911
+        longitude:
+          type: number
+          format: float
+          example: 139.94637467
+    Contact:
+      title: Contact
+      type: object
+      properties:
+        email:
+          description: E-mail contact
+          type: string
+          format: email
+          example: joseph.urban@example.com
+          maxLength: 150
+        phone:
+          description: Phone number (with country prefix)
+          type: string
+          maxLength: 18
+          example: +44123456789
+        url:
+          description: Url to the contact web page
+          type: string
+          format: uri
+        ethereum:
+          description: Address of wallet on Ethereum
+          $ref: '#/components/schemas/EthereumAddressType'
+        additionalProperties:
+          type: object
+          required:
+          - title
+          - value
+          properties:
+            title:
+              type: string
+            value:
+              type: string
+
+    Address:
+      title: Postal address
+      type: object
+      required:
+      - line1
+      - city
+      - country
+      properties:
+        line1:
+          type: string
+          maxLength: 150
+        line2:
+          type: string
+          maxLength: 150
+        zip:
+          type: string
+          maxLength: 10
+        city:
+          type: string
+          maxLength: 150
+          example: 
+        state:
+          type: string
+          maxLength: 150
+        country:
+          type: string
+          maxLength: 2
+          minLength: 2
+          description: ISO 3166-1 alpha-2 codes
+          
+  # elementary schemas
+  
+    DescriptionType:
+      title: Markdown description
+      description: Text description in simple Markdown format (bold, italic, titles, line break and paragraph format)
+      type: string
+      maxLength: 3000
+    NameType:
+      title: Entity name
+      description: Human name identifying an entity (shown to users in search results, hotel/room details, etc)
+      type: string
+      maxLength: 150
+    ObjectIdType:
+      title: ID
+      description: Vendor string ID of an object
+      maxLength: 100
+    UriType:
+      title: URI
+      description: URI for linking resources. The maximal length is 1500 to save space.
+      type: string
+      format: uri
+      maxLength: 1500
+    CurrencyType:
+      title: Currency code
+      type: string
+      minLength: 3
+      maxLength: 3
+      description: Three letter ISO 4217 currency code.
+    TimezoneType:
+      title: Timezone code
+      description: Timezone name according to https://www.iana.org/time-zones (refer to zone.tab)
+      type: string
+      maxLength: 40
+    EthereumAddressType:
+      title: Ethereum address
+      type: string
+      description: Ethereum address in hexadecimal format (with leading 0x) or an ENS name.
+      maxLength: 300

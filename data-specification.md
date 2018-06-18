@@ -20,6 +20,8 @@ where our data format is published in an [OAS 3.0](https://github.com/OAI/OpenAP
 If you like reading, please open [the docs](https://windingtree.github.io/docs/swagger-ui/)
 anyway, so you can directly see what I am talking about.
 
+## Overall approach
+
 We have designed the format in a way that plays well with our
 [architecture](https://blog.windingtree.com/hotel-distribution-architecture-49ead97f7cff)
 for data storage where we plan to allow various storages - [IPFS](https://ipfs.io/),
@@ -47,7 +49,7 @@ to have three links there (naming may change):
 - `pricingUri` - Pricing
 - `availabilityUri` - Availability
 
-## What is definitely not yet final?
+### What is definitely not yet final?
 
 We still have a large room for improvements and some areas are not yet fully described.
 Among these are:
@@ -59,7 +61,11 @@ We will revisit it in the future, so far we have a very small subset.
 
 If you'd like to help us with designing these, leave us a comment and we'll get in touch!
 
-## Descriptive data - hotel and inventory
+## Detailed description
+
+A more in-depth look at all the data groups follows.
+
+### Descriptive data - hotel and inventory
 
 The easiest part is the Hotel and Inventory description. We expect this
 data to generally not change at all since it describes a physical reality.
@@ -80,7 +86,7 @@ format in some way.
 
 Do you want details? Have a look at **Hotel description** and **RoomType**.
 
-## Pricing
+### Pricing
 
 The pricing data is closely following the idea of rate plans which should be
 widely known.
@@ -110,7 +116,7 @@ them to us!
 
 Do you want details? Have a look at **RatePlan**.
 
-## Availability
+### Availability
 
 Availability is the tricky one since it changes most often and potentially is
 the largest dataset - because you have to keep a state of each room type for every day.

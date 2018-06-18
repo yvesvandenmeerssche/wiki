@@ -40,6 +40,7 @@ might not be always available.
 - **wt-contracts** - https://github.com/windingtree/wt-contracts/tree/develop/docs
 - **wt-js-libs** - https://github.com/windingtree/wt-js-libs/blob/proposal/next/docs/reference.md
 - **wt-nodejs-api** - http://petstore.swagger.io/?url=https://raw.githubusercontent.com/windingtree/wt-nodejs-api/proposal/next/docs/swagger.json
+- **Data format** - https://github.com/windingtree/wiki/blob/master/hotel-data-swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/)
 
 ## What is the current version?
 

@@ -1,7 +1,7 @@
 openapi: 3.0.0
 servers: []
 info:
-  version: "0.0.3"
+  version: "0.0.4"
   title: Hotel definitions
   description: Object definitions for hotel API
 paths: {}
@@ -12,6 +12,11 @@ components:
       title: WT-Index hotel record
       description: Hotel record in WT-Index smart contract
       type: object
+      required:
+      - address
+      - manager
+      - dataUri
+      - created
       properties:
         address:
           description: Ethereum address of the hotel
@@ -37,24 +42,30 @@ components:
         descriptionUri:
           description: URI pointing to the HotelDescription resource
           $ref: '#/components/schemas/UriType'
-        pricingUri:
+        ratePlansUri:
           description: URI pointing to RatePlans object
           $ref: '#/components/schemas/UriType'
         availabilityUri:
           $ref: '#/components/schemas/UriType'
           description: URI pointing to Availability
+
     HotelDescription:
       title: Hotel description
+      allOf:
+        - $ref: '#/components/schemas/HotelDescriptionBase'
+        - type: object
+          required:
+          - name
+          - description
+          - contacts
+          - address
+          - timezone
+          - currency
+          - updatedAt
+    HotelDescriptionBase:
+      title: Hotel description base definition
       description: Basic properties of hotel
       type: object
-      required:
-      - name
-      - description
-      - contacts
-      - address
-      - timezone
-      - currency
-      - updatedAt
       properties:
         location:
           description: Geo-location in GPS format
@@ -97,6 +108,7 @@ components:
           type: string
           description: Date-time when the data was last changed. Used by consumers to handle incremental updates and caching.
           format: date-time
+
   # inventory
     RoomTypes:
       type: object
@@ -337,20 +349,24 @@ components:
           description: Object where property names are roomTypeId 
           type: object
           additionalProperties:
-            type: object
-            required:
-            - day
-            - available
-            properties:
-              day:
-                description: The day the availability is for
-                type: string
-                format: date
-              quantity:
-                description: Number of free resources to book for the day
-                type: integer
-              restrictions:
-                $ref: '#/components/schemas/AvailabilityRestrictions'
+            type: array
+            items:
+              $ref: '#/components/schemas/AvailabilityForDay'
+    AvailabilityForDay:
+      type: object
+      required:
+      - day
+      - available
+      properties:
+        day:
+          description: The day the availability is for
+          type: string
+          format: date
+        quantity:
+          description: Number of free resources to book for the day
+          type: integer
+        restrictions:
+          $ref: '#/components/schemas/AvailabilityRestrictions'
 
     AvailabilityUpdateRecord:
       type: object

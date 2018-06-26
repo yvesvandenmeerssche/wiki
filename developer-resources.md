@@ -18,7 +18,7 @@ build a reasonable version of our platform.
 ## Technical solution
 
 If you would like to make yourself familiar with our many repositories here on GitHub,
-check out the [Development and release handbook](https://github.com/windingtree/wiki/blob/master/development.md).
+check out the [Development and release handbook](https://github.com/windingtree/wiki/blob/master/development-handbooks/development.md).
 
 After reading that you should have a good understanding of what's happening
 where and how we operate during development.

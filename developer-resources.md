@@ -87,7 +87,7 @@ in greater detail than in the Roadmap document.
 ## I still have questions
 
 If you have really technical questions, probably the best place to go is our
-[Rocket Chat](https://windingtree.rocket.chat/home). You'll usually find someone
+[Google Group](https://groups.google.com/forum/#!forum/windingtree). You'll usually find someone
 with a hands-on experience there. Or of course open up an issue here on GitHub.
 
 We're also active on [Telegram](https://t.me/windingtree) and many other channels

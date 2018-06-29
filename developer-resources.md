@@ -7,6 +7,8 @@ current technical ideas and solutions that will help you in the beginning.
 If there are any questions, don't hesitate to contact us (see below), we are
 very happy to help you.
 
+If you want to see some code, head over to our [Developer guides](developer-guides/README.md).
+
 ## Overall architecture
 
 The overall architecture (right now for Hotels only) is described in

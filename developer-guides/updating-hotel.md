@@ -1,6 +1,7 @@
-# Registering a hotel
+# Updating a hotel
 
 - The address of Winding Tree index used in this example is for demo purposes only. There is only example data.
+- We currently allow only a very limited subset of modifications of on chain data.
 - Dependencies
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
@@ -68,20 +69,13 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
   const wallet = await libs.createWallet(WALLET_FILE);
   wallet.unlock(PASSWORD);
 
-  // Register the hotel itself
-  const result = await index.addHotel(wallet, {
-    dataUri: offChainDataUri,
-    manager: wallet.getAddress(),
-  });
-  // Check out the result. The library tries to return
-  // as quickly as possible.
-  // The hotel address is actually deterministically pre-computed,
-  // and the promise is resolved immediately after a transaction
-  // ID is known.
-  const newHotelAddress = result.address;
-  console.log('hotel address: ', newHotelAddress);
-  console.log('transactions to check: ', result.transactionIds);
-
+  // Get a hotel instance
+  const hotel = await index.getHotel('0xDe3B2246491E985be275D78Fd74f79429249b05E');
+  // Change the hotel dataUri
+  hotel.dataUri = offChainDataUri
+  // And fire up the on-chain modification
+  const result = await index.updateHotel(wallet, hotel);
+  console.log('transactions to check: ', result);
   // Don't forget to lock your wallet after you are done, you
   // don't want to leave your private keys lying around.
   wallet.lock();

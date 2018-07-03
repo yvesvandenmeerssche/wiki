@@ -1,7 +1,8 @@
-# Registering a hotel
+# Updating a hotel
 
 - The address of Winding Tree index used in this example is for demo purposes only. There is only example data.
-- We don't provide an easy way in wt-js-libs how to store your off-chain data.
+- We don't guarantee any hotel to exist, so before running this example you might first
+[register your own hotel](registering-hotel.md).
 - The script will stall for a few seconds after everything seems to be done. That's due to the some implementation
 details in [web3.js](https://github.com/ethereum/web3.js/tree/1.0).
 - Dependencies
@@ -58,11 +59,7 @@ const PASSWORD = 'windingtree';
 // However, this Wallet has some Ether on Ropsten,
 // so this example should work.
 
-// 3. Get your off-chain data ready
-// This is not provided by wt-js-libs out of the box
-const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
-
-// 4. Register your hotel to Winding Tree platform
+// 3. Remove your hotel from Winding Tree platform
 (async () => {
   // Get an instance of WTIndex wrapper
   const index = await libs.getWTIndex('0x407f550023eb6ad8a4797844489e17c5ced17e06');
@@ -71,25 +68,17 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
   const wallet = await libs.createWallet(WALLET_FILE);
   wallet.unlock(PASSWORD);
 
-  // Register the hotel itself
-  const result = await index.addHotel(wallet, {
-    dataUri: offChainDataUri,
-    manager: wallet.getAddress(),
-  });
-  // Check out the result. The library tries to return
-  // as quickly as possible.
-  // The hotel address is actually deterministically pre-computed,
-  // and the promise is resolved immediately after a transaction
-  // ID is known.
-  const newHotelAddress = result.address;
-  console.log('hotel address: ', newHotelAddress);
-  console.log('transactions to check: ', result.transactionIds);
-
+  // Get a hotel instance - for obvious reasons, you have to
+  // set the hotel address to some existing one.
+  const hotel = await index.getHotel('existing-hotel-address');
+  // Change the hotel dataUri
+  // And fire up the on-chain modification
+  const result = await index.removeHotel(wallet, hotel);
+  console.log('transactions to check: ', result);
   // Don't forget to lock your wallet after you are done, you
   // don't want to leave your private keys lying around.
   wallet.lock();
 })();
-
 ```
 
 ## REST API

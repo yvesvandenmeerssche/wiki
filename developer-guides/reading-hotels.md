@@ -5,7 +5,7 @@
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
   "@windingtree/off-chain-adapter-swarm": "3.1.0",
-  "@windingtree/wt-js-libs": "0.2.3"
+  "@windingtree/wt-js-libs": "0.2.4"
 ```
 
 ## Javascript library
@@ -57,6 +57,14 @@ const libs = WTLibs.createInstance({
 
   // Notice how the approach is totally protocol agnostic
   for (let hotel of hotels) {
+    // You can benefit from a recursive shorthand method that downloads all of hotel data for you
+    const serializedHotel = await hotel.toPlainObject();
+    // And you can access all of the data in a simple, synchronous way
+    const hotelLocation = serializedHotel.dataUri.contents.descriptionUri.contents.location;
+    
+    
+    // OR with much finer control and a lot of await calls, you can do this:
+    
     // This actually fetches data from a hotel smart contract
     const hotelDataUri = await hotel.dataUri;
     // But it gets cached, so the second call is way faster

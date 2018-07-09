@@ -1,15 +1,13 @@
 # Updating a hotel
 
 - The address of Winding Tree index used in this example is for demo purposes only. There is only example data.
-- We don't guarantee any hotel to exist, so before running this example you might first
+- We don't guarantee any hotel to exist, so before running this example you might first need to
 [register your own hotel](registering-hotel.md).
-- The script will stall for a few seconds after everything seems to be done. That's due to the some implementation
-details in [web3.js](https://github.com/ethereum/web3.js/tree/1.0).
 - Dependencies
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
   "@windingtree/off-chain-adapter-swarm": "3.1.0",
-  "@windingtree/wt-js-libs": "0.2.3",
+  "@windingtree/wt-js-libs": "0.2.4",
 ```
 
 ## Javascript library
@@ -71,13 +69,22 @@ const PASSWORD = 'windingtree';
   // Get a hotel instance - for obvious reasons, you have to
   // set the hotel address to some existing one.
   const hotel = await index.getHotel('existing-hotel-address');
-  // Change the hotel dataUri
-  // And fire up the on-chain modification
-  const result = await index.removeHotel(wallet, hotel);
-  console.log('transactions to check: ', result);
-  // Don't forget to lock your wallet after you are done, you
-  // don't want to leave your private keys lying around.
-  wallet.lock();
+  try {
+    // Remove the hotel
+    // a. Get ready transaction data
+    const { transactionData, eventCallbacks } = await index.removeHotel(hotel);
+    // b. Sign and the transaction. You probably don't have to use our wallet abstraction.
+    // This signs a transaction and sends it to be mined. You can get finer control
+    // of this by using your own eventCallbacks, not awaiting the Promise etc.
+    const receipt = await wallet.signAndSendTransaction(transactionData, eventCallbacks);
+    // After the transaction is mined, you get
+    // a receipt which contains a transaciontHash, among other useful things.
+    console.log('transaction to check: ', receipt.transactionHash);
+  } finally {
+    // Don't forget to lock your wallet after you are done, you
+    // don't want to leave your private keys lying around.
+    wallet.lock();
+  }
 })();
 ```
 

@@ -123,6 +123,7 @@ components:
       - description
       - occupancy
       - totalQuantity
+      - updatedAt
       properties:
         id:
           $ref: '#/components/schemas/ObjectIdType'
@@ -531,7 +532,7 @@ components:
       maxLength: 150
     ObjectIdType:
       title: ID
-      description: Vendor string ID of an object
+      description: Vendor string ID
       type: string
       maxLength: 100
       example: '1234-abcd'

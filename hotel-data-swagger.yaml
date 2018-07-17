@@ -118,16 +118,12 @@ components:
     RoomType:
       type: object
       required:
-      - id
       - name
       - description
       - occupancy
       - totalQuantity
       - updatedAt
       properties:
-        id:
-          $ref: '#/components/schemas/ObjectIdType'
-          description: Vendor room type ID (should be unique for hotel)
         name:
           description: Name of the room type to show to users
           $ref: '#/components/schemas/NameType'
@@ -208,14 +204,10 @@ components:
         
       type: object
       required:
-      - id
       - name
       - description
       - updatedAt
       properties:
-        id:
-          $ref: '#/components/schemas/ObjectIdType'
-          description: Vendor rate plan ID (unique for hotel)
         name:
           description: Name of the rate plan to show to users
           $ref: '#/components/schemas/NameType'

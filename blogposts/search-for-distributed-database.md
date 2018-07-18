@@ -5,7 +5,7 @@ document, we need some kind of distributed storage for Winding Tree to work. We 
 with the current state of technology, it's just not feasible (it's slow and expensive).
 
 Our initial idea was to store only a link to data on-chain. Everything would then be
-accessible through the [library](https://github.com/windingtree/wt-js-libs) or [API](https://github.com/windingtree/wt-nodejs-api)
+accessible through the [library](https://github.com/windingtree/wt-js-libs) or [API](https://github.com/windingtree/wt-read-api)
 or maybe some caching layer. By storing data off-chain, we would remedy the lack of speed and higher cost of data stored on-chain.
 Obviously, we're [not the first](https://github.com/TiesNetwork/ties-docs/wiki/Where-do-decentralized-applications-store-their-data%3F)
 to do such thinking and [this article](https://decentralized.blog/picking-a-decentralized-storage-system.html)
@@ -106,7 +106,7 @@ or `ipns://QmRZEpRMS62xt1Gm6B7PLoXreuxSwX1kDR384PJ6tbCRLA` or `bzz://446421099bd
 or even `https://raw.githubusercontent.com/windingtree/wt-contracts/proposal/next/contracts/hotel/Hotel.sol`. Then
 it will be a responsibility of a user of such contract to get this data and verify its integrity and ownership.
 
-Our [library](https://github.com/windingtree/wt-js-libs) and [API](https://github.com/windingtree/wt-nodejs-api)
+Our [library](https://github.com/windingtree/wt-js-libs) and [API](https://github.com/windingtree/wt-read-api)
 will do exactly that. We are also considering having multiple data links to different kinds of data. Maybe IPFS
 is a better storage for availability data while Zeronet deals better with hotel images. We are still figuring the details
 and implementing the first version of this right now.

@@ -26,7 +26,8 @@ After reading that you should have a good understanding of what's happening
 where and how we operate during development.
 
 If you would like to start working on your own application using the Winding Tree
-platform, the [wt-nodejs-api](https://github.com/windingtree/wt-nodejs-api)
+platform, the [wt-read-api](https://github.com/windingtree/wt-read-api),
+the [wt-write-api](https://github.com/windingtree/wt-write-api)
 or [wt-js-libs](https://github.com/windingtree/wt-js-libs) is a probably a
 good place to start. But please, read on to find out what branch you should
 be working with.
@@ -41,7 +42,7 @@ might not be always available.
 - **LífToken** - https://github.com/windingtree/LifToken/tree/develop/docs
 - **wt-contracts** - https://github.com/windingtree/wt-contracts/tree/develop/docs
 - **wt-js-libs** - https://github.com/windingtree/wt-js-libs/blob/proposal/next/docs/reference.md
-- **wt-nodejs-api** - http://petstore.swagger.io/?url=https://raw.githubusercontent.com/windingtree/wt-nodejs-api/proposal/next/docs/swagger.json
+- **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/proposal/next/docs/swagger.json or [more readable here](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/windingtree/wt-read-api/proposal/next/docs/swagger.json]
 - **Data format** - https://github.com/windingtree/wiki/blob/master/hotel-data-swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/)
 
 ## What is the current version?

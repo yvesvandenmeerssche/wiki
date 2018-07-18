@@ -8,9 +8,8 @@
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
   "@windingtree/off-chain-adapter-swarm": "3.1.0",
-  "@windingtree/wt-js-libs": "0.2.4"
+  "@windingtree/wt-js-libs": "0.2.7"
 ```
-
 ### Example code
 
 ```js
@@ -60,29 +59,35 @@ const libs = WTLibs.createInstance({
 
   // Notice how the approach is totally protocol agnostic
   for (let hotel of hotels) {
-    // You can benefit from a recursive shorthand method that downloads all of hotel data for you
-    const serializedHotel = await hotel.toPlainObject();
-    // And you can access all of the data in a simple, synchronous way
-    const hotelLocation = serializedHotel.dataUri.contents.descriptionUri.contents.location;
-    
-    
-    // OR with much finer control and a lot of await calls, you can do this:
-    
-    // This actually fetches data from a hotel smart contract
-    const hotelDataUri = await hotel.dataUri;
-    // But it gets cached, so the second call is way faster
-    const hotelDataUri2 = await hotel.dataUri;
+    try {
+      // You can benefit from a recursive shorthand method that downloads all of hotel data for you
+      const serializedHotel = await hotel.toPlainObject();
+      console.log(serializedHotel.address);
+      // And you can access all of the data in a simple, synchronous way
+      const hotelLocation = serializedHotel.dataUri.contents.descriptionUri.contents.location;
+      
+      
+      // OR with much finer control and a lot of await calls, you can do this:
+      
+      // This actually fetches data from a hotel smart contract
+      const hotelDataUri = await hotel.dataUri;
+      // But it gets cached, so the second call is way faster
+      const hotelDataUri2 = await hotel.dataUri;
 
-    // Let's initialize the off-chain data index - but no data is downloaded yet
-    const offChainData = await hotel.dataIndex;
-    // Only the next command actually initiates the download of the data index document
-    const hotelDescriptionUri = await offChainData.contents.descriptionUri;
-    // And only now the actual contents of descriptionUri gets downloaded
-    const hotelName = await hotelDescriptionUri.contents.name;
-    // But this is fast, because the document is already cached in memory.
-    // The properties are of course interchangeable, so the data is downloaded
-    // only when any of the data properties is accessed for the first time.
-    const hotelDescription = await hotelDescriptionUri.contents.description;
+      // Let's initialize the off-chain data index - but no data is downloaded yet
+      const offChainData = await hotel.dataIndex;
+      // Only the next command actually initiates the download of the data index document
+      const hotelDescriptionUri = await offChainData.contents.descriptionUri;
+      // And only now the actual contents of descriptionUri gets downloaded
+      const hotelName = await hotelDescriptionUri.contents.name;
+      // But this is fast, because the document is already cached in memory.
+      // The properties are of course interchangeable, so the data is downloaded
+      // only when any of the data properties is accessed for the first time.
+      const hotelDescription = await hotelDescriptionUri.contents.description;
+    } catch (e) {
+      // A single hotel off-chain data access can fail, so it's a good practice to handle that.
+      console.log(hotel.address, e);
+    }
   }
 })();
 ```

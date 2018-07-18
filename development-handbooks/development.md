@@ -22,10 +22,13 @@ wt-contracts which uses [web3.js](https://github.com/ethereum/web3.js/)
 
 ### End-user applications
 
-- [wt-nodejs-api](https://github.com/windingtree/wt-nodejs-api) - REST-like
-API wrapping wt-js-libs into a standard web-friendly interface
+- [wt-read-api](https://github.com/windingtree/wt-read-api) - REST-like
+API for reading the hotel data. Useful if you're building an OTA.
+- [wt-write-api](https://github.com/windingtree/wt-write-api) - REST-like
+API for writing the hotel data. Useful if you're building a PMS.
 - [wt-demo-app](https://github.com/windingtree/wt-demo-app) - Client-facing
-example browser app for accessing Winding Tree assets
+example browser app for accessing Winding Tree assets. This will become obsolete
+very soon.
 
 ## Development workflow
 

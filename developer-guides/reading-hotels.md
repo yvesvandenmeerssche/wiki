@@ -1,14 +1,17 @@
 # Listing and reading hotel details
 
 - The address of Winding Tree index used in this example is for demo purposes only. There is only example data.
-- Dependencies
+
+## Javascript library
+
+### Dependencies
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
   "@windingtree/off-chain-adapter-swarm": "3.1.0",
   "@windingtree/wt-js-libs": "0.2.4"
 ```
 
-## Javascript library
+### Example code
 
 ```js
 // 1. Load the libs
@@ -86,7 +89,9 @@ const libs = WTLibs.createInstance({
 
 ## REST API
 
-TBA
+- The following code expects [wt-read-api](https://github.com/windingtree/wt-read-api) at least in version 1.0.0
+
+
 
 ---
 Contacts:

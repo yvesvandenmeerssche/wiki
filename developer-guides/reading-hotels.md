@@ -94,10 +94,150 @@ const libs = WTLibs.createInstance({
 
 ## REST API
 
-- The following code expects [wt-read-api](https://github.com/windingtree/wt-read-api) at least in version 1.0.0
+- The results may be different for you. There's no guarantee of data stability.
 
+### Dependencies
 
+Self hosted [wt-read-api](https://github.com/windingtree/wt-read-api) in `proposal/next` branch
+that is in this particular case run with `BASE_URL=http://localhost:3000 WT_CONFIG=ropsten node src/index.js`
+with `wtIndexAddress` set to `0x407f550023eb6ad8a4797844489e17c5ced17e06` in `src/config/ropsten.js`.
 
+### Hotel listing
+```sh
+$ curl 'localhost:3000/hotels'
+
+{
+   "items" : [
+      {
+         "location" : {
+            "longitude" : "14.414170",
+            "latitude" : "50.075388"
+         },
+         "name" : "Random hotel",
+         "id" : "0x36903f12E9BDC70427d0Db2D5A865DB65db92AB8"
+      },
+      {
+         "location" : {
+            "latitude" : "50.075388",
+            "longitude" : "14.414170"
+         },
+         "id" : "0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0",
+         "name" : "Random hotel on Swarm"
+      }
+   ],
+   "errors" : [
+      {
+         "originalError" : "Cannot download data: Error 404.",
+         "data" : {
+            "id" : "0x49c61B16be16B82c6EF4892b17A3D2E284207118"
+         },
+         "error" : "Cannot access off-chain data"
+      }
+   ]
+}
+```
+
+```sh
+$ curl 'localhost:3000/hotels?limit=1&startWith=0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0&fields=name,description,images'
+
+{
+   "next" : "http://localhost:3000/hotels?limit=1&startWith=0x49c61B16be16B82c6EF4892b17A3D2E284207118",
+   "items" : [
+      {
+         "images" : [
+            "https://raw.githubusercontent.com/windingtree/media/master/logo-variants/tree/png/tree--gradient-on-white.png",
+            "https://raw.githubusercontent.com/windingtree/media/master/logo-variants/full-logo/png/logo--black-on-green.png"
+         ],
+         "id" : "0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0",
+         "description" : "**Beautiful** hotel located in the center of _Prague, Czech Republic_.",
+         "name" : "Random hotel on Swarm"
+      }
+   ],
+   "errors" : [
+      {
+         "error" : "Cannot access off-chain data",
+         "originalError" : "Cannot download data: Error 404.",
+         "data" : {
+            "id" : "0x49c61B16be16B82c6EF4892b17A3D2E284207118"
+         }
+      }
+   ]
+}
+```
+
+### Hotel detail
+
+```sh
+$  curl 'localhost:3000/hotels/0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0'
+
+{
+   "id" : "0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0",
+   "contacts" : {
+      "general" : {
+         "url" : "https://jirkachadima.cz",
+         "phone" : "00420224371111",
+         "email" : "chadima.jiri@gmail.com",
+         "additionalContacts" : {
+            "twitter" : "@windingtree",
+            "Telegram" : "https://t.me/windingtree"
+         },
+         "ethereum" : "windingtree.eth"
+      }
+   },
+   "address" : {
+      "city" : "Prague",
+      "country" : "Czech Republic",
+      "line2" : "Nové Město",
+      "line1" : "Rašínovo nábřeží 1981/80",
+      "postalCode" : "12000"
+   },
+   "currency" : "CZK",
+   "name" : "Random hotel on Swarm",
+   "location" : {
+      "latitude" : "50.075388",
+      "longitude" : "14.414170"
+   },
+   "description" : "**Beautiful** hotel located in the center of _Prague, Czech Republic_.",
+   "images" : [
+      "https://raw.githubusercontent.com/windingtree/media/master/logo-variants/tree/png/tree--gradient-on-white.png",
+      "https://raw.githubusercontent.com/windingtree/media/master/logo-variants/full-logo/png/logo--black-on-green.png"
+   ],
+   "amenities" : [
+      "Beer garden",
+      "WiFi",
+      "Parking"
+   ],
+   "updatedAt" : "2018-06-19T15:53:00"
+}
+```
+
+```sh
+$ curl 'localhost:3000/hotels/0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0?fields=address,contacts' 
+
+{
+   "address" : {
+      "city" : "Prague",
+      "line2" : "Nové Město",
+      "postalCode" : "12000",
+      "line1" : "Rašínovo nábřeží 1981/80",
+      "country" : "Czech Republic"
+   },
+   "id" : "0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0",
+   "contacts" : {
+      "general" : {
+         "url" : "https://jirkachadima.cz",
+         "email" : "chadima.jiri@gmail.com",
+         "ethereum" : "windingtree.eth",
+         "phone" : "00420224371111",
+         "additionalContacts" : {
+            "Telegram" : "https://t.me/windingtree",
+            "twitter" : "@windingtree"
+         }
+      }
+   }
+}
+
+```
 ---
 Contacts:
 [Google Group](https://groups.google.com/forum/#!forum/windingtree) |

@@ -101,8 +101,9 @@ We are still in the prototyping phase, so we are using the major version of `0.x
 In practice, the release process is as follows:
 
 - Development is going on with PRs that are merged to `develop` branch.
-- Once we are happy with the state of the `develop` branch, we raise the version
-in `package.json` and `package-lock.json`. That can be done with `npm version`.
+- Once we are happy with the state of the `develop` branch, we generate current
+documentation if necessary and we raise the version in `package.json` and
+`package-lock.json`. That can be done with `npm version`.
 - *Do not push the created tag yet!*
 - Create a PR from `develop` to `master` marked as **chore: Release x.y.z**
 - Merge this PR with a merge commit.

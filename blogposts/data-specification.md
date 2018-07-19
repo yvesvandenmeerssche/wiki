@@ -37,8 +37,8 @@ can be divided into four groups:
 The groups differ by how big the data is and how often it changes.
 
 The entry point for all of hotel-related data is stored on Ethereum blockchain
-where each hotel has [its own contract](https://github.com/windingtree/wt-contracts/blob/proposal/next/contracts/hotel/Hotel.sol)
-registered via [Winding Tree index](https://github.com/windingtree/wt-contracts/blob/proposal/next/contracts/WTIndex.sol#L63).
+where each hotel has [its own contract](https://github.com/windingtree/wt-contracts/blob/develop/contracts/hotel/Hotel.sol)
+registered via [Winding Tree index](https://github.com/windingtree/wt-contracts/blob/develop/contracts/WTIndex.sol#L63).
 In that hotel contract, there is a single URI (`dataUri`) pointing to a document stored in any
 supported off-chain storage. And on that URI, there lies the **Hotel data index**.
 

@@ -42,9 +42,9 @@ a release.
 - `release/*` branches are used when finalizing a release that will go into
 master. All bugfixes related to release branch shall be merged into develop as
 well.
-- `feature/*` branches hold new features, when merged to develop, there should
+- `feature/*` or `feat/*` branches hold new features, when merged to develop, there should
 always be a merge commit.
-- `hotfix/*` are the only branches that can be merged directly into master.
+- `hotfix/*` or `fix/*` are the only branches that can be merged directly into master.
 They usually have to be merged into develop as well.
 - `proposal/*` are branches with some long-term and big update that we would
 eventually like to promote to develop.
@@ -66,10 +66,6 @@ For now we don't enforce any coding style, but that is probably going to change
 at some point. Just keep your formatting sane or at least similar to the
 surrounding code. If there's something unclear, it will probably come up during
 Pull request approval process.
-
-We are tracking releases with GitHub milestones, so all issues and pull requests
-should belong to some milestone. In the initial project phase, we will be trying
-to do time-based releases instead of feature-based releases.
 
 
 # Releases

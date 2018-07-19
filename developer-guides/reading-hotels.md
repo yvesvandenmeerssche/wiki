@@ -95,16 +95,13 @@ const libs = WTLibs.createInstance({
 ## REST API
 
 - The results may be different for you. There's no guarantee of data stability.
-
-### Dependencies
-
-Self hosted [wt-read-api](https://github.com/windingtree/wt-read-api) in `proposal/next` branch
-that is in this particular case run with `BASE_URL=http://localhost:3000 WT_CONFIG=ropsten node src/index.js`
-with `wtIndexAddress` set to `0x407f550023eb6ad8a4797844489e17c5ced17e06` in `src/config/ropsten.js`.
+- You can check from which WTIndex is the data downloaded on https://demo-api.windingtree.com/
+- The API is deployed on an infrastructure, that puts servers to sleep if there's no traffic.
+Your first request might therefore take a lot of time.
 
 ### Hotel listing
 ```sh
-$ curl 'localhost:3000/hotels'
+$ curl 'https://demo-api.windingtree.com/hotels'
 
 {
    "items" : [
@@ -138,10 +135,10 @@ $ curl 'localhost:3000/hotels'
 ```
 
 ```sh
-$ curl 'localhost:3000/hotels?limit=1&startWith=0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0&fields=name,description,images'
+$ curl 'https://demo-api.windingtree.com/hotels?limit=1&startWith=0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0&fields=name,description,images'
 
 {
-   "next" : "http://localhost:3000/hotels?limit=1&startWith=0x49c61B16be16B82c6EF4892b17A3D2E284207118",
+   "next" : "http://https://demo-api.windingtree.com/hotels?limit=1&startWith=0x49c61B16be16B82c6EF4892b17A3D2E284207118",
    "items" : [
       {
          "images" : [
@@ -168,7 +165,7 @@ $ curl 'localhost:3000/hotels?limit=1&startWith=0xE1383bD3d193eC22d692FA1e5A53d8
 ### Hotel detail
 
 ```sh
-$  curl 'localhost:3000/hotels/0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0'
+$  curl 'https://demo-api.windingtree.com/hotels/0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0'
 
 {
    "id" : "0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0",
@@ -212,7 +209,7 @@ $  curl 'localhost:3000/hotels/0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0'
 ```
 
 ```sh
-$ curl 'localhost:3000/hotels/0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0?fields=address,contacts' 
+$ curl 'https://demo-api.windingtree.com/hotels/0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0?fields=address,contacts' 
 
 {
    "address" : {

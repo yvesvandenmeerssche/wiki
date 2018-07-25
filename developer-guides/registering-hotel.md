@@ -2,15 +2,17 @@
 
 - The address of Winding Tree index used in this example is for demo purposes only. There is only example data
 and anyone can delete them, because the originating wallet with password is publicly available.
+
+## Javascript library
+
 - We don't provide an easy way in wt-js-libs how to store your off-chain data.
 - Dependencies
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
   "@windingtree/off-chain-adapter-swarm": "3.1.0",
-  "@windingtree/wt-js-libs": "0.2.4",
+  "@windingtree/wt-js-libs": "0.2.7",
 ```
 
-## Javascript library
 
 ```js
 // 1. Load the libs

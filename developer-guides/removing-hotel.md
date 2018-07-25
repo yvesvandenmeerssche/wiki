@@ -3,14 +3,15 @@
 - The address of Winding Tree index used in this example is for demo purposes only. There is only example data.
 - We don't guarantee any hotel to exist, so before running this example you might first need to
 [register your own hotel](registering-hotel.md).
+
+## Javascript library
+
 - Dependencies
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
   "@windingtree/off-chain-adapter-swarm": "3.1.0",
-  "@windingtree/wt-js-libs": "0.2.4",
+  "@windingtree/wt-js-libs": "0.2.7",
 ```
-
-## Javascript library
 
 ```js
 // 1. Load the libs

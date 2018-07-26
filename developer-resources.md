@@ -41,8 +41,8 @@ might not be always available.
 
 - **LífToken** - https://github.com/windingtree/LifToken/tree/develop/docs
 - **wt-contracts** - https://github.com/windingtree/wt-contracts/tree/develop/docs
-- **wt-js-libs** - https://github.com/windingtree/wt-js-libs/blob/proposal/next/docs/reference.md
-- **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/proposal/next/docs/swagger.json or [more readable here](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/windingtree/wt-read-api/proposal/next/docs/swagger.json]
+- **wt-js-libs** - https://github.com/windingtree/wt-js-libs/blob/develop/docs/reference.md
+- **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/develop/docs/swagger.json or [more readable here](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/windingtree/wt-read-api/develop/docs/swagger.json]
 - **Data format** - https://github.com/windingtree/wiki/blob/master/hotel-data-swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/)
 
 ## What is the current version?
@@ -58,20 +58,21 @@ in its [ERC-827](https://github.com/ethereum/EIPs/issues/827) flavour. We've als
 a [demo app](https://demo.windingtree.com) where you can play around with it on Ropsten testnet.
 We've also released a [REST API](http://demo-api.windingtree.com/) (docs
 [here](https://demo-api.windingtree.com/docs/)) that was very closely following the aforementioned
-smart contracts. All of these can be found under respective tags on
-GitHub and usually are what can be seen in `master` branches. It might be a good starting
-point if you'd like to make yourself familiar with basic blockchain concepts such as transactions
-and get some experience with its behaviour and limitations.
+smart contracts. All of these can be found under respective tags on GitHub.
+If you'd like to make yourself familiar with basic blockchain concepts such as transactions
+and get some experience with its behaviour and limitations, it can be a good learning material.
 
-Then we have `develop` branches where any updates to the `master` branches are happening.
-There's not much going on right now.
+During [Q2 of 2018](https://github.com/windingtree/wiki/blob/master/dev-updates/2018-Q2.md)
+we started to implement a [new architecture](https://github.com/windingtree/wiki/blob/master/architecture-hotel.md).
+That resulted into multiple releases in `0.2.x` series marked as `@next` on NPM. The development
+happened mainly in `proposal/next` branch which was eventually merged back to develop and with
+a next release back to master.
 
-Because we are working on implementing the [new architecture](https://github.com/windingtree/wiki/blob/master/architecture-hotel.md).
-Code related to that can be usually found in `proposal/next` branches and we are planning to release
-it as well once we feel it's presentable. Some of it is already published on NPM under `@next` tag.
-We're currently planning for this to be part of the *WT Hotel Testnet* in Summer of 2018. So if you
-are serious about integrating with Winding Tree platform, that's a place to start for you. But beware,
-things might change at any time as we move forward.
+In Q3 of 2018, we're working hard on making the [Summer release of 2018](https://github.com/orgs/windingtree/projects/1)
+happen. You can usually track a more granular progress in the respective repositories under simliarly
+named milestone. Our goal for that release is to version everything as `1.0.0` tag and move on from there.
+If you are serious about integrating with Winding Tree platform, that's a place to start for you. But beware,
+things might change at any time as we move forward to the end of the Summer.
 
 ## What are you working on?
 

@@ -100,10 +100,10 @@ some solution for now and not for some hopefully not-so-distant future. Or maybe
 That's why we have decided to implement a schema-based data links in our smart contracts and provide multiple
 drivers based on current demand. How will it work?
 
-We store a [url field](https://github.com/windingtree/wt-contracts/blob/proposal/next/contracts/hotel/Hotel.sol#L22)
+We store a [url field](https://github.com/windingtree/wt-contracts/blob/develop/contracts/hotel/Hotel.sol#L22)
 for every hotel Winding Tree manages. This url shall look like `ipfs://QmRZEpRMS62xt1Gm6B7PLoXreuxSwX1kDR384PJ6tbCRLA`
 or `ipns://QmRZEpRMS62xt1Gm6B7PLoXreuxSwX1kDR384PJ6tbCRLA` or `bzz://446421099bd54d1532b00db29027b5e5e37c9b5d6a9f55809a9ef3880ac43ed5`
-or even `https://raw.githubusercontent.com/windingtree/wt-contracts/proposal/next/contracts/hotel/Hotel.sol`. Then
+or even `https://raw.githubusercontent.com/windingtree/wt-contracts/develop/contracts/hotel/Hotel.sol`. Then
 it will be a responsibility of a user of such contract to get this data and verify its integrity and ownership.
 
 Our [library](https://github.com/windingtree/wt-js-libs) and [API](https://github.com/windingtree/wt-read-api)

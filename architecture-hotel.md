@@ -30,8 +30,9 @@ Each hotel in WT will have a file in a distributed database where all the conten
 
 ## Overview
 
-![Diagram - overview](media/wt-architecture-overview.svg)
-![Diagram - wt-node](media/wt-architecture-node-detail.svg)
+![Diagram - overview](media/wt-architecture-overview-v1.2.svg)
+![Diagram - read API](media/wt-architecture-read-api-server-v1.2.svg)
+![Diagram - write API](media/wt-architecture-write-api-server-v1.2.svg)
 
 
 ### Distribution Steps

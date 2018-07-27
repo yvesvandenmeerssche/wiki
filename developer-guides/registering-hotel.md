@@ -97,7 +97,114 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
 
 ## REST API
 
-TBA
+- In order to work with the [wt-write-api](https://github.com/windingtree/wt-write-api),
+you need to have an account registered.
+- The sample deployment on https://demo-write-api.windingtree.com is for demonstration
+purposes only and is re-deployed every 24 hours. Your accounts will be lost after re-deployment.
+- This code works with `0.1.0` version deployed on https://demo-write-api.windingtree.com although
+the data will be different.
+
+### Creating an account
+
+- An account consists of your Ethereum wallet (password-protected) and a configuration of *uploaders*,
+which tell the API where to upload the off-chain data.
+- In this example, we are using our demo wallet with password `windingtree`.
+- In this example, we are using Swarm as our place for data and we are using a public gateway.
+- This `json` should be saved as `create-account.json` in a directory where you will be running the `curl` command.
+
+```json
+{
+  "wallet": {"version":3,"id":"7fe84016-4686-4622-97c9-dc7b47f5f5c6","address":"d037ab9025d43f60a31b32a82e10936f07484246","crypto":{"ciphertext":"ef9dcce915eeb0c4f7aa2bb16b9ae6ce5a4444b4ed8be45d94e6b7fe7f4f9b47","cipherparams":{"iv":"31b12ef1d308ea1edacc4ab00de80d55"},"cipher":"aes-128-ctr","kdf":"scrypt","kdfparams":{"dklen":32,"salt":"d06ccd5d9c5d75e1a66a81d2076628f5716a3161ca204d92d04a42c057562541","n":8192,"r":8,"p":1},"mac":"2c30bc373c19c5b41385b85ffde14b9ea9f0f609c7812a10fdcb0a565034d9db"}},
+  "uploaders": {
+    "root": {
+      "swarm": {
+         "providerUrl": "https://swarm-gateways.net/"
+      }
+    }
+  }
+}
+```
+
+```sh
+$ curl -X POST https://demo-write-api.windingtree.com/account -H 'Content-Type: application/json' --data @create-account.json
+
+# Response values are randomly generated and will be different for you
+{"accountId":"aa43edaf8266e8f8","accessKey":"usgq6tSBW+wDYA/MBF367HnNp4tGKaCTRPy3JHPEqJmFBuxq1sA7UhFOpuV80ngC"}
+```
+
+### Registering a hotel
+
+- This is just an example data that passes the validation inside of the API.
+- This `json` should be saved as `hotel-description.json` in a directory where you will be running the `curl` command.
+- The data format might be slightly different to what we have in our [data structure](http://windingtree.github.io/docs/swagger-ui/).
+
+```json
+{
+  "description": {
+    "name": "Random hotel",
+    "description": "**Beautiful** hotel located in the center of _Prague, Czech Republic_.",
+    "location": {
+      "latitude": 50.075388,
+      "longitude": 14.414170
+    },
+    "contacts": {
+      "general": {
+        "email": "chadima.jiri@gmail.com",
+        "phone": "00420224371111",
+        "url": "https://jirkachadima.cz",
+        "ethereum": "windingtree.eth"
+      }
+    },
+    "address": {
+      "line1": "Rašínovo nábřeží 1981/80",
+      "line2": "Nové Město",
+      "postalCode": "12000",
+      "city": "Prague",
+      "country": "CZ"
+    },
+    "timezone": "Europe/Prague",
+    "currency": "CZK",
+    "amenities": [],
+    "images": [
+      "https://raw.githubusercontent.com/windingtree/media/master/logo-variants/tree/png/tree--gradient-on-white.png",
+      "https://raw.githubusercontent.com/windingtree/media/master/logo-variants/full-logo/png/logo--black-on-green.png"
+    ],
+    "updatedAt": "2018-06-19T15:53:00+0200",
+    "roomTypes": {
+      "1234-abcd": {
+        "name": "string",
+        "description": "string",
+        "totalQuantity": 0,
+        "occupancy": {
+          "min": 1,
+          "max": 3
+        },
+        "amenities": [
+          "TV"
+        ],
+        "images": [
+          "https://raw.githubusercontent.com/windingtree/media/web-assets/logo-variants/full-logo/png/logo--white.png"
+        ],
+        "updatedAt": "2018-06-27T14:59:05.830Z",
+        "properties": {
+          "nonSmoking": "some"
+        }
+      }
+    }
+  }
+}
+```
+
+```sh
+# Replace X-Access-Key with the result of account creation above
+$ curl -X POST https://demo-write-api.windingtree.com/hotels -H 'Content-Type: application/json' \
+  -H 'X-Access-Key: usgq6tSBW+wDYA/MBF367HnNp4tGKaCTRPy3JHPEqJmFBuxq1sA7UhFOpuV80ngC' \
+  -H 'X-Wallet-Password: windingtree' \
+  --data @hotel-description.json
+
+# This value will be different
+{"address":"0xA603FF7EA9A1B81FB45EF6AeC92A323a88211f40"}
+```
 
 ---
 Contacts:

@@ -8,8 +8,8 @@
 - Dependencies
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
-  "@windingtree/off-chain-adapter-swarm": "3.1.0",
-  "@windingtree/wt-js-libs": "0.2.7",
+  "@windingtree/off-chain-adapter-swarm": "3.2.0",
+  "@windingtree/wt-js-libs": "0.2.8"
 ```
 
 ```js

@@ -7,8 +7,8 @@
 ### Dependencies
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
-  "@windingtree/off-chain-adapter-swarm": "3.1.0",
-  "@windingtree/wt-js-libs": "0.2.7"
+  "@windingtree/off-chain-adapter-swarm": "3.2.0",
+  "@windingtree/wt-js-libs": "0.2.8"
 ```
 ### Example code
 
@@ -96,6 +96,7 @@ const libs = WTLibs.createInstance({
 
 - The results may be different for you. There's no guarantee of data stability.
 - You can check from which WTIndex is the data downloaded on https://demo-api.windingtree.com/
+- This data is based on `0.2.4` version of the API, for complete docs, see https://demo-api.windingtree.com/docs
 - The API is deployed on an infrastructure, that puts servers to sleep if there's no traffic.
 Your first request might therefore take a lot of time.
 

@@ -21,7 +21,7 @@ const HttpAdapter = require('@windingtree/off-chain-adapter-http');
 // 2. Configure the wt-js-libs
 const libs = WTLibs.createInstance({
   dataModelOptions: {
-    // We are using Ropsten as testnet, our demo index is on 0x407f550023eb6ad8a4797844489e17c5ced17e06
+    // We are using Ropsten as testnet, our demo index is on 0x933198455e38925bccb4bfe9fb59bac31d00b4d3
     provider: 'https://ropsten.infura.io/',
   },
   offChainDataOptions: {
@@ -49,7 +49,7 @@ const libs = WTLibs.createInstance({
 // This has to be in an async block due to the nature of distributed data
 (async () => {
   // Get an instance of WTIndex wrapper
-  const index = await libs.getWTIndex('0x407f550023eb6ad8a4797844489e17c5ced17e06');
+  const index = await libs.getWTIndex('0x933198455e38925bccb4bfe9fb59bac31d00b4d3');
 
   // We can get all hotels available in the WTIndex
   // - We will get only hotels on valid and accessible addresses

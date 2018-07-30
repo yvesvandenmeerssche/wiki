@@ -23,7 +23,7 @@ const HttpAdapter = require('@windingtree/off-chain-adapter-http');
 // 2. Configure the wt-js-libs
 const libs = WTLibs.createInstance({
   dataModelOptions: {
-    // We are using Ropsten as testnet, our demo index is on 0x407f550023eb6ad8a4797844489e17c5ced17e06
+    // We are using Ropsten as testnet, our demo index is on 0x933198455e38925bccb4bfe9fb59bac31d00b4d3
     provider: 'https://ropsten.infura.io/',
   },
   offChainDataOptions: {
@@ -66,7 +66,7 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
 // 4. Register your hotel to Winding Tree platform
 (async () => {
   // Get an instance of WTIndex wrapper
-  const index = await libs.getWTIndex('0x407f550023eb6ad8a4797844489e17c5ced17e06');
+  const index = await libs.getWTIndex('0x933198455e38925bccb4bfe9fb59bac31d00b4d3');
 
   // Create a Wallet abstraction and unlock it.
   const wallet = await libs.createWallet(WALLET_FILE);

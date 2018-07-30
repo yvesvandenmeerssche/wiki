@@ -7,8 +7,8 @@
 ### Dependencies
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
-  "@windingtree/off-chain-adapter-swarm": "3.1.0",
-  "@windingtree/wt-js-libs": "0.2.7"
+  "@windingtree/off-chain-adapter-swarm": "3.2.0",
+  "@windingtree/wt-js-libs": "0.2.8"
 ```
 ### Example code
 
@@ -21,7 +21,7 @@ const HttpAdapter = require('@windingtree/off-chain-adapter-http');
 // 2. Configure the wt-js-libs
 const libs = WTLibs.createInstance({
   dataModelOptions: {
-    // We are using Ropsten as testnet, our demo index is on 0x407f550023eb6ad8a4797844489e17c5ced17e06
+    // We are using Ropsten as testnet, our demo index is on 0x933198455e38925bccb4bfe9fb59bac31d00b4d3
     provider: 'https://ropsten.infura.io/',
   },
   offChainDataOptions: {
@@ -49,7 +49,7 @@ const libs = WTLibs.createInstance({
 // This has to be in an async block due to the nature of distributed data
 (async () => {
   // Get an instance of WTIndex wrapper
-  const index = await libs.getWTIndex('0x407f550023eb6ad8a4797844489e17c5ced17e06');
+  const index = await libs.getWTIndex('0x933198455e38925bccb4bfe9fb59bac31d00b4d3');
 
   // We can get all hotels available in the WTIndex
   // - We will get only hotels on valid and accessible addresses
@@ -96,6 +96,7 @@ const libs = WTLibs.createInstance({
 
 - The results may be different for you. There's no guarantee of data stability.
 - You can check from which WTIndex is the data downloaded on https://demo-api.windingtree.com/
+- This data is based on `0.2.4` version of the API, for complete docs, see https://demo-api.windingtree.com/docs
 - The API is deployed on an infrastructure, that puts servers to sleep if there's no traffic.
 Your first request might therefore take a lot of time.
 

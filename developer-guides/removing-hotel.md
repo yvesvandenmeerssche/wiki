@@ -1,4 +1,4 @@
-# Updating a hotel
+# Removing a hotel
 
 - The address of Winding Tree index used in this example is for demo purposes only. There is only example data.
 - We don't guarantee any hotel to exist, so before running this example you might first need to
@@ -9,8 +9,8 @@
 - Dependencies
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
-  "@windingtree/off-chain-adapter-swarm": "3.1.0",
-  "@windingtree/wt-js-libs": "0.2.7",
+  "@windingtree/off-chain-adapter-swarm": "3.2.0",
+  "@windingtree/wt-js-libs": "0.2.8"
 ```
 
 ```js
@@ -22,7 +22,7 @@ const HttpAdapter = require('@windingtree/off-chain-adapter-http');
 // 2. Configure the wt-js-libs
 const libs = WTLibs.createInstance({
   dataModelOptions: {
-    // We are using Ropsten as testnet, our demo index is on 0x407f550023eb6ad8a4797844489e17c5ced17e06
+    // We are using Ropsten as testnet, our demo index is on 0x933198455e38925bccb4bfe9fb59bac31d00b4d3
     provider: 'https://ropsten.infura.io/',
   },
   offChainDataOptions: {
@@ -61,7 +61,7 @@ const PASSWORD = 'windingtree';
 // 3. Remove your hotel from Winding Tree platform
 (async () => {
   // Get an instance of WTIndex wrapper
-  const index = await libs.getWTIndex('0x407f550023eb6ad8a4797844489e17c5ced17e06');
+  const index = await libs.getWTIndex('0x933198455e38925bccb4bfe9fb59bac31d00b4d3');
 
   // Create a Wallet abstraction and unlock it.
   const wallet = await libs.createWallet(WALLET_FILE);
@@ -91,7 +91,26 @@ const PASSWORD = 'windingtree';
 
 ## REST API
 
-TBA
+- In order to work with the [wt-write-api](https://github.com/windingtree/wt-write-api),
+you need to have an account registered. (See [registering hotel](registering-hotel.md) to find out how to do that).
+- The sample deployment on https://demo-write-api.windingtree.com is for demonstration
+purposes only and is re-deployed every 24 hours. Your accounts will be lost after re-deployment.
+- This code works with `0.1.0` version deployed on https://demo-write-api.windingtree.com although
+the data will be different.
+
+### Deleting a hotel
+
+- You are only allowed to delete your own hotel.
+
+```sh
+# Replace X-Access-Key with the result of account creation above
+$ curl -X DELETE https://demo-write-api.windingtree.com/hotels -H 'Content-Type: application/json' \
+  -H 'X-Access-Key: usgq6tSBW+wDYA/MBF367HnNp4tGKaCTRPy3JHPEqJmFBuxq1sA7UhFOpuV80ngC' \
+  -H 'X-Wallet-Password: windingtree'
+
+# Response will be 204
+```
+
 
 ---
 Contacts:

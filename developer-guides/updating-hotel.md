@@ -8,8 +8,8 @@
 - Dependencies
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
-  "@windingtree/off-chain-adapter-swarm": "3.1.0",
-  "@windingtree/wt-js-libs": "0.2.7",
+  "@windingtree/off-chain-adapter-swarm": "3.2.0",
+  "@windingtree/wt-js-libs": "0.2.8"
 ```
 
 ```js
@@ -21,7 +21,7 @@ const HttpAdapter = require('@windingtree/off-chain-adapter-http');
 // 2. Configure the wt-js-libs
 const libs = WTLibs.createInstance({
   dataModelOptions: {
-    // We are using Ropsten as testnet, our demo index is on 0x407f550023eb6ad8a4797844489e17c5ced17e06
+    // We are using Ropsten as testnet, our demo index is on 0x933198455e38925bccb4bfe9fb59bac31d00b4d3
     provider: 'https://ropsten.infura.io/',
   },
   offChainDataOptions: {
@@ -64,7 +64,7 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
 // 4. Register your hotel to Winding Tree platform
 (async () => {
   // Get an instance of WTIndex wrapper
-  const index = await libs.getWTIndex('0x407f550023eb6ad8a4797844489e17c5ced17e06');
+  const index = await libs.getWTIndex('0x933198455e38925bccb4bfe9fb59bac31d00b4d3');
 
   // Create a Wallet abstraction and unlock it.
   const wallet = await libs.createWallet(WALLET_FILE);
@@ -103,7 +103,29 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
 
 ## REST API
 
-TBA
+- In order to work with the [wt-write-api](https://github.com/windingtree/wt-write-api),
+you need to have an account registered. (See [registering hotel](registering-hotel.md) to find out how to do that).
+- The sample deployment on https://demo-write-api.windingtree.com is for demonstration
+purposes only and is re-deployed every 24 hours. Your accounts will be lost after re-deployment.
+- This code works with `0.1.0` version deployed on https://demo-write-api.windingtree.com although
+the data will be different.
+
+### Deleting a hotel
+
+- You are only allowed to update your own hotel.
+- The hotel data format is the same as in [registering hotel](registering-hotel.md).
+- Whole data documents are updated (i. e. if you are sending a description, whole description
+will be replaced)
+
+```sh
+# Replace X-Access-Key with the result of account creation above
+$ curl -X PATCH https://demo-write-api.windingtree.com/hotels -H 'Content-Type: application/json' \
+  -H 'X-Access-Key: usgq6tSBW+wDYA/MBF367HnNp4tGKaCTRPy3JHPEqJmFBuxq1sA7UhFOpuV80ngC' \
+  -H 'X-Wallet-Password: windingtree' \
+  --data @hotel-description.json
+
+# Response will be 204
+```
 
 ---
 Contacts:

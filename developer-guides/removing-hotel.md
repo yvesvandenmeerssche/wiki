@@ -108,8 +108,7 @@ $ curl -X DELETE https://demo-write-api.windingtree.com/hotels -H 'Content-Type:
   -H 'X-Access-Key: usgq6tSBW+wDYA/MBF367HnNp4tGKaCTRPy3JHPEqJmFBuxq1sA7UhFOpuV80ngC' \
   -H 'X-Wallet-Password: windingtree'
 
-# This value will be different
-{"address":"0xA603FF7EA9A1B81FB45EF6AeC92A323a88211f40"}
+# Response will be 204
 ```
 
 

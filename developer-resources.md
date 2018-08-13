@@ -42,8 +42,8 @@ might not be always available.
 - **LífToken** - https://github.com/windingtree/LifToken/tree/develop/docs
 - **wt-contracts** - https://github.com/windingtree/wt-contracts/tree/develop/docs
 - **wt-js-libs** - https://github.com/windingtree/wt-js-libs/blob/develop/docs/reference.md
-- **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/develop/docs/swagger.yaml or [more readable here](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/windingtree/wt-read-api/develop/docs/swagger.yaml)
-- **wt-write-api** - https://github.com/windingtree/wt-write-api/
+- **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/master/docs/swagger.yaml or [more readable here](http://demo-api.windingtree.com/docs)
+- **wt-write-api** - https://github.com/windingtree/wt-write-api/blob/master/docs/swagger.yaml or [more readable here](http://demo-api.windingtree.com/docs)
 - **Data format** - https://github.com/windingtree/wiki/blob/master/hotel-data-swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/)
 
 ## What is the current version?

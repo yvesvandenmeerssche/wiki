@@ -243,26 +243,26 @@ components:
           type: object
           description: A time period during which this rate plan can be used to compute prices for a booking, i. e. a hotel can have different rate plans that are used for reservations for the same date that are placed in different months. If this restriction is not set, the rate plan can be used for booking with no time restriction.
           required:
-          - start
-          - end
+          - from
+          - to
           properties:
-            start:
+            from:
               type: string
               format: date-time
-            end:
+            to:
               type: string
               format: date-time
         availableForTravel:
           type: object
           description: A time period of stay during which this rate plan should be used to compute prices, i. e. prices in this rate plan are applicable in August. If this restriction is not set, the rate plan can be used for booking for any time.
           required:
-          - start
-          - end
+          - from
+          - to
           properties:
-            start:
+            from:
               type: string
               format: date-time
-            end:
+            to:
               type: string
               format: date-time
         modifiers:

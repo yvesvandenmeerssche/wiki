@@ -1,7 +1,7 @@
 openapi: 3.0.0
 servers: []
 info:
-  version: "0.0.4"
+  version: "rateplans-2-draft"
   title: Hotel definitions
   description: Object definitions for hotel API
 paths: {}
@@ -108,6 +108,11 @@ components:
           type: string
           description: Date-time when the data was last changed. Used by consumers to handle incremental updates and caching.
           format: date-time
+        cancellationPolicies:
+          description: A list of policies under which it is possible to cancel a reservation.
+          type: array
+          items:
+            $ref: '#/components/schemas/CancellationPolicy'
 
   # inventory
     RoomTypes:
@@ -195,10 +200,8 @@ components:
         - check restrictions and drop rate plans that the booking doesn't meet
         - for every rate plan as rp_i
           - for every person as p_j
-              j < under baseOccupancyLimit, use base rates, use additional rates otherwise
-              pick a most fitting rate based on declared guest's age and declared length of stay
-                it is possible that nothing is matched
-              multiply the rate by length of stay
+              apply any fitting price modifiers
+              multiply the computed rate by length of stay
           - store the final price for rp_i
         - compare all final prices and pick the cheapest
         
@@ -207,6 +210,7 @@ components:
       - name
       - description
       - updatedAt
+      - price
       properties:
         name:
           description: Name of the rate plan to show to users
@@ -217,6 +221,10 @@ components:
         currency:
           description: Currency in which are all the prices of this rate plan. If not set, the hotel currency setting will be used.
           $ref: '#/components/schemas/CurrencyType'
+        price:
+          type: number
+          format: float
+          description: Base price
         roomTypeIds:
           type: array
           description: List of all room types that this rate plan applies to
@@ -257,28 +265,11 @@ components:
             end:
               type: string
               format: date-time
-        pricing:
-          type: object
-          properties:
-            base:
-              type: object
-              properties:
-                maxOccupancyLimit:
-                  type: integer
-                rates:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/RatePlanPrice'
-            additional:
-              type: object
-              properties:
-                maxOccupancyLimit:
-                  type: integer
-                rates:
-                  type: object
-                  items:
-                    $ref: '#/components/schemas/RatePlanPrice'
-                  
+        modifiers:
+          type: array
+          description: List of price modifiers, i. e. discounts based on length of stay
+          items:
+            $ref: '#/components/schemas/RatePlanPriceModifier'
         restrictions:
           type: object
           description: Restrictions for this rate plan. If a booking fits all restrictions, this rate plan can be used. If no restrictions are set, rate plan can be applied at any valid time.
@@ -301,22 +292,37 @@ components:
                 max:
                   type: integer
 
-    RatePlanPrice:
+    RatePlanPriceModifier:
       type: object
-      description: Single price of rate plan. Amount is the price and the rest of attributes are restrictions.
+      description: A set of conditions that can affect the resulting price.
       required:
-      - amount
+      - adjustment
+      - conditions
       properties:
-        amount:
-          description: The price per one day without currency
+        from:
+          description: First day the modifier is applied to (including)
+          type: string
+          format: date
+          example: "2018-01-30"
+        to:
+          description: Last day the modifier is applied to (including)
+          type: string
+          format: date
+          example: "2018-02-20"
+        adjustment:
+          description: How will the resulting price be affected? In percents
           type: number
           format: float
-        minLengthOfStay:
-          description: Minimal length of stay the price is applicable to. If there are multiple prices with lengthOfStay restriction matching the minimal length of stay, the price for the longest length of stay is used. The declared price is always per one day.
-          type: integer
-        maxAge:
-          description: The price is applicable to occupants of this age or younger at the time of arrival to the stay. If multiple prices are specified with different maxAge, the price with the highes limit is applied. If no price with maxAge restriction can be applied and there is a price without this restriction, it is applied. The declared price is always per one day.
-          type: integer
+          example: -3.1
+        conditions:
+          type: object
+          properties:
+            minLengthOfStay:
+              description: Minimal length of stay the price is applicable to. If there are multiple prices with lengthOfStay restriction matching the minimal length of stay, the price for the longest length of stay is used. The declared price is always per one day.
+              type: integer
+            maxAge:
+              description: The price is applicable to occupants of this age or younger at the time of arrival to the stay. If multiple prices are specified with different maxAge, the price with the highes limit is applied.  If no price with maxAge restriction can be applied and there is a price without this restriction, it is applied. The declared price is always per one day.
+              type: integer
           
     Availability:
       description: Availability data. Some of the nested objects might be represented as standalone documents in the future (i. e. we would store only an URI pointer here, in the same manner as descriptionUri in HotelDataIndex).
@@ -407,6 +413,33 @@ components:
       properties:
         noArrival:
           type: boolean
+
+    CancellationPolicy:
+      title: Cancellation policy
+      type: object
+      description: What is the penalty when a guest wants to cancel a reservation.
+      required:
+      - amount
+      properties:
+        from:
+          description: After which date does this cancellation policy apply (including). If not present, this policy applies since the beginning of time.
+          type: string
+          format: date-time
+          example: "2018-01-30"
+        to:
+          description: Before which date does this cancellation policy apply(including). If not present, this policy applies until the end of the universe.
+          type: string
+          format: date-time
+          example: "2018-02-20"
+        deadline:
+          type: integer
+          description: How many days before arrival does this first apply. If not present, this policy applies any time.
+          example: 30
+        amount:
+          type: number
+          format: float
+          description: Cost of cancellation in percents of the final price, 100 means non refundable. This means how much money will the hotel keep.
+          example: 25
 
   # basic elements
     HotelAmenityItem:

@@ -96,7 +96,8 @@ const libs = WTLibs.createInstance({
 
 - The results may be different for you. There's no guarantee of data stability.
 - You can check from which WTIndex is the data downloaded on https://demo-api.windingtree.com/
-- This data is based on `0.2.4` version of the API, for complete docs, see https://demo-api.windingtree.com/docs
+- This data is based on `0.3.0` version of the API, for complete docs, see https://demo-api.windingtree.com/docs,
+there are more features available.
 - The API is deployed on an infrastructure, that puts servers to sleep if there's no traffic.
 Your first request might therefore take a lot of time.
 

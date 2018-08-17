@@ -101,8 +101,8 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
 you need to have an account registered.
 - The sample deployment on https://demo-write-api.windingtree.com is for demonstration
 purposes only and is re-deployed every 24 hours. Your accounts will be lost after re-deployment.
-- This code works with `0.1.0` version deployed on https://demo-write-api.windingtree.com although
-the data will be different.
+- This code works with `0.2.0` version deployed on https://demo-write-api.windingtree.com although
+the data might be different.
 
 ### Creating an account
 
@@ -111,6 +111,7 @@ which tell the API where to upload the off-chain data.
 - In this example, we are using our demo wallet with password `windingtree`.
 - In this example, we are using Swarm as our place for data and we are using a public gateway.
 - This `json` should be saved as `create-account.json` in a directory where you will be running the `curl` command.
+- **Never use this wallet for anything in production. Others would have access to your assets as well.**
 
 ```json
 {
@@ -162,20 +163,22 @@ $ curl -X POST https://demo-write-api.windingtree.com/account -H 'Content-Type: 
     },
     "timezone": "Europe/Prague",
     "currency": "CZK",
-    "amenities": [],
+    "amenities": [
+       "minibar",
+       "coffee machine"
+    ],
     "images": [
       "https://raw.githubusercontent.com/windingtree/media/master/logo-variants/tree/png/tree--gradient-on-white.png",
       "https://raw.githubusercontent.com/windingtree/media/master/logo-variants/full-logo/png/logo--black-on-green.png"
     ],
-    "updatedAt": "2018-06-19T15:53:00+0200",
     "roomTypes": {
-      "1234-abcd": {
-        "name": "string",
-        "description": "string",
-        "totalQuantity": 0,
+      "twin-bed": {
+        "name": "Twin bed",
+        "description": "Room with a **twin bed**",
+        "totalQuantity": 10,
         "occupancy": {
           "min": 1,
-          "max": 3
+          "max": 2
         },
         "amenities": [
           "TV"
@@ -183,14 +186,182 @@ $ curl -X POST https://demo-write-api.windingtree.com/account -H 'Content-Type: 
         "images": [
           "https://raw.githubusercontent.com/windingtree/media/web-assets/logo-variants/full-logo/png/logo--white.png"
         ],
-        "updatedAt": "2018-06-27T14:59:05.830Z",
         "properties": {
           "nonSmoking": "some"
+        }
+      },
+      "king-size-bed": {
+        "name": "King size bed",
+        "description": "Room with a **king size bed**",
+        "totalQuantity": 10,
+        "occupancy": {
+          "min": 1,
+          "max": 2
+        },
+        "amenities": [
+          "TV"
+        ],
+        "images": [
+          "https://raw.githubusercontent.com/windingtree/media/web-assets/logo-variants/full-logo/png/logo--white.png"
+        ],
+        "properties": {
+          "nonSmoking": "some"
+        }
+      }
+    },
+    "cancellationPolicies": [
+      {
+        "from": "2018-01-01",
+        "to": "2018-12-31",
+        "deadline": 30,
+        "amount": 50
+      },
+      {
+        "from": "2018-01-01",
+        "to": "2018-12-31",
+        "deadline": 7,
+        "amount": 100
+      }
+    ]
+  },
+  "ratePlans": {
+    "ratePlans": {
+      "basic-twin": {
+        "name": "Basic twin bed",
+        "description": "Off season price for twin bed",
+        "currency": "EUR",
+        "price": 80,
+        "roomTypeIds": ["twin-bed"],
+        "availableForReservation": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        },
+        "availableForTravel": {
+          "from": "2018-10-31",
+          "to": "2019-04-30"
+        },
+        "modifiers": [
+          {
+            "adjustment": -10,
+            "conditions": {
+              "maxAge": 13
+            }
+          }
+        ],
+        "restrictions": {
+          "bookingCutOff": {
+            "min": 7,
+            "max": 120
+          },
+          "lengthOfStay": {
+            "min": 2,
+            "max": 14
+          }
+        }
+      },
+      "summer-season-twin": {
+        "name": "Summer season twin bed",
+        "description": "Summer price for twin bed",
+        "currency": "EUR",
+        "price": 100,
+        "roomTypeIds": ["twin-bed"],
+        "availableForReservation": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        },
+        "availableForTravel": {
+          "from": "2019-05-01",
+          "to": "2019-10-31"
+        },
+        "modifiers": [
+          {
+            "adjustment": -10,
+            "conditions": {
+              "maxAge": 13
+            }
+          }
+        ],
+        "restrictions": {
+          "bookingCutOff": {
+            "min": 7,
+            "max": 120
+          },
+          "lengthOfStay": {
+            "min": 2,
+            "max": 14
+          }
+        }
+      },
+      "basic-king": {
+        "name": "Basic king bed",
+        "description": "Basic for king bed",
+        "currency": "EUR",
+        "price": 60,
+        "roomTypeIds": ["king-size-bed"],
+        "availableForReservation": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        },
+        "availableForTravel": {
+          "from": "2019-05-01",
+          "to": "2019-10-31"
+        },
+        "modifiers": [
+          {
+            "adjustment": -10,
+            "conditions": {
+              "maxAge": 13
+            }
+          }
+        ],
+        "restrictions": {
+          "bookingCutOff": {
+            "min": 10,
+            "max": 20
+          },
+          "lengthOfStay": {
+            "min": 3,
+            "max": 10
+          }
+        }
+      },
+      "summer-season-king": {
+        "name": "Summer season king bed",
+        "description": "Summer season for king bed",
+        "currency": "EUR",
+        "price": 120,
+        "roomTypeIds": ["king-size-bed"],
+        "availableForReservation": {
+          "from": "2018-01-01",
+          "to": "2018-12-31"
+        },
+        "availableForTravel": {
+          "from": "2019-05-01",
+          "to": "2019-10-31"
+        },
+        "modifiers": [
+          {
+            "adjustment": -10,
+            "conditions": {
+              "maxAge": 13
+            }
+          }
+        ],
+        "restrictions": {
+          "bookingCutOff": {
+            "min": 10,
+            "max": 20
+          },
+          "lengthOfStay": {
+            "min": 3,
+            "max": 10
+          }
         }
       }
     }
   }
 }
+
 ```
 
 ```sh

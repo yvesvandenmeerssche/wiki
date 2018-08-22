@@ -225,137 +225,135 @@ $ curl -X POST https://demo-write-api.windingtree.com/account -H 'Content-Type: 
     ]
   },
   "ratePlans": {
-    "ratePlans": {
-      "basic-twin": {
-        "name": "Basic twin bed",
-        "description": "Off season price for twin bed",
-        "currency": "EUR",
-        "price": 80,
-        "roomTypeIds": ["twin-bed"],
-        "availableForReservation": {
-          "from": "2018-01-01",
-          "to": "2018-12-31"
-        },
-        "availableForTravel": {
-          "from": "2018-10-31",
-          "to": "2019-04-30"
-        },
-        "modifiers": [
-          {
-            "adjustment": -10,
-            "conditions": {
-              "maxAge": 13
-            }
-          }
-        ],
-        "restrictions": {
-          "bookingCutOff": {
-            "min": 7,
-            "max": 120
-          },
-          "lengthOfStay": {
-            "min": 2,
-            "max": 14
+    "basic-twin": {
+      "name": "Basic twin bed",
+      "description": "Off season price for twin bed",
+      "currency": "EUR",
+      "price": 80,
+      "roomTypeIds": ["twin-bed"],
+      "availableForReservation": {
+        "from": "2018-01-01",
+        "to": "2018-12-31"
+      },
+      "availableForTravel": {
+        "from": "2018-10-31",
+        "to": "2019-04-30"
+      },
+      "modifiers": [
+        {
+          "adjustment": -10,
+          "conditions": {
+            "maxAge": 13
           }
         }
+      ],
+      "restrictions": {
+        "bookingCutOff": {
+          "min": 7,
+          "max": 120
+        },
+        "lengthOfStay": {
+          "min": 2,
+          "max": 14
+        }
+      }
+    },
+    "summer-season-twin": {
+      "name": "Summer season twin bed",
+      "description": "Summer price for twin bed",
+      "currency": "EUR",
+      "price": 100,
+      "roomTypeIds": ["twin-bed"],
+      "availableForReservation": {
+        "from": "2018-01-01",
+        "to": "2018-12-31"
       },
-      "summer-season-twin": {
-        "name": "Summer season twin bed",
-        "description": "Summer price for twin bed",
-        "currency": "EUR",
-        "price": 100,
-        "roomTypeIds": ["twin-bed"],
-        "availableForReservation": {
-          "from": "2018-01-01",
-          "to": "2018-12-31"
-        },
-        "availableForTravel": {
-          "from": "2019-05-01",
-          "to": "2019-10-31"
-        },
-        "modifiers": [
-          {
-            "adjustment": -10,
-            "conditions": {
-              "maxAge": 13
-            }
-          }
-        ],
-        "restrictions": {
-          "bookingCutOff": {
-            "min": 7,
-            "max": 120
-          },
-          "lengthOfStay": {
-            "min": 2,
-            "max": 14
+      "availableForTravel": {
+        "from": "2019-05-01",
+        "to": "2019-10-31"
+      },
+      "modifiers": [
+        {
+          "adjustment": -10,
+          "conditions": {
+            "maxAge": 13
           }
         }
+      ],
+      "restrictions": {
+        "bookingCutOff": {
+          "min": 7,
+          "max": 120
+        },
+        "lengthOfStay": {
+          "min": 2,
+          "max": 14
+        }
+      }
+    },
+    "basic-king": {
+      "name": "Basic king bed",
+      "description": "Basic for king bed",
+      "currency": "EUR",
+      "price": 60,
+      "roomTypeIds": ["king-size-bed"],
+      "availableForReservation": {
+        "from": "2018-01-01",
+        "to": "2018-12-31"
       },
-      "basic-king": {
-        "name": "Basic king bed",
-        "description": "Basic for king bed",
-        "currency": "EUR",
-        "price": 60,
-        "roomTypeIds": ["king-size-bed"],
-        "availableForReservation": {
-          "from": "2018-01-01",
-          "to": "2018-12-31"
-        },
-        "availableForTravel": {
-          "from": "2019-05-01",
-          "to": "2019-10-31"
-        },
-        "modifiers": [
-          {
-            "adjustment": -10,
-            "conditions": {
-              "maxAge": 13
-            }
-          }
-        ],
-        "restrictions": {
-          "bookingCutOff": {
-            "min": 10,
-            "max": 20
-          },
-          "lengthOfStay": {
-            "min": 3,
-            "max": 10
+      "availableForTravel": {
+        "from": "2019-05-01",
+        "to": "2019-10-31"
+      },
+      "modifiers": [
+        {
+          "adjustment": -10,
+          "conditions": {
+            "maxAge": 13
           }
         }
+      ],
+      "restrictions": {
+        "bookingCutOff": {
+          "min": 10,
+          "max": 20
+        },
+        "lengthOfStay": {
+          "min": 3,
+          "max": 10
+        }
+      }
+    },
+    "summer-season-king": {
+      "name": "Summer season king bed",
+      "description": "Summer season for king bed",
+      "currency": "EUR",
+      "price": 120,
+      "roomTypeIds": ["king-size-bed"],
+      "availableForReservation": {
+        "from": "2018-01-01",
+        "to": "2018-12-31"
       },
-      "summer-season-king": {
-        "name": "Summer season king bed",
-        "description": "Summer season for king bed",
-        "currency": "EUR",
-        "price": 120,
-        "roomTypeIds": ["king-size-bed"],
-        "availableForReservation": {
-          "from": "2018-01-01",
-          "to": "2018-12-31"
-        },
-        "availableForTravel": {
-          "from": "2019-05-01",
-          "to": "2019-10-31"
-        },
-        "modifiers": [
-          {
-            "adjustment": -10,
-            "conditions": {
-              "maxAge": 13
-            }
+      "availableForTravel": {
+        "from": "2019-05-01",
+        "to": "2019-10-31"
+      },
+      "modifiers": [
+        {
+          "adjustment": -10,
+          "conditions": {
+            "maxAge": 13
           }
-        ],
-        "restrictions": {
-          "bookingCutOff": {
-            "min": 10,
-            "max": 20
-          },
-          "lengthOfStay": {
-            "min": 3,
-            "max": 10
-          }
+        }
+      ],
+      "restrictions": {
+        "bookingCutOff": {
+          "min": 10,
+          "max": 20
+        },
+        "lengthOfStay": {
+          "min": 3,
+          "max": 10
         }
       }
     }

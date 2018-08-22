@@ -188,12 +188,9 @@ components:
   # pricing
     RatePlans:
       type: object
-      properties:
-        ratePlans:
-          type: object
-          description: Property names are ID of rate plan and the values is the rate plan description
-          additionalProperties:
-            $ref: '#/components/schemas/RatePlan'
+      description: Property names are ID of rate plan and the values is the rate plan description
+      additionalProperties:
+        $ref: '#/components/schemas/RatePlan'
     RatePlan:
       description: |
         Rate plan for specified room types.

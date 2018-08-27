@@ -209,6 +209,7 @@ $ curl -X POST https://demo-write-api.windingtree.com/account -H 'Content-Type: 
         }
       }
     },
+    "defaultCancellationAmount": 0,
     "cancellationPolicies": [
       {
         "from": "2018-01-01",

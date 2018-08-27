@@ -61,6 +61,7 @@ components:
           - address
           - timezone
           - currency
+          - defaultCancellationAmount
           - updatedAt
     HotelDescriptionBase:
       title: Hotel description base definition

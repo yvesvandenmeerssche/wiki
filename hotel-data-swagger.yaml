@@ -108,6 +108,11 @@ components:
           type: string
           description: Date-time when the data was last changed. Used by consumers to handle incremental updates and caching.
           format: date-time
+        defaultCancellationAmount:
+          type: number
+          format: float
+          description: Cost of cancellation in percents of the final price, 100 means non refundable. This is a default amount of how much money will the hotel keep if no other cancallation policy is applicable.
+          example: 25
         cancellationPolicies:
           description: A list of policies under which it is possible to cancel a reservation.
           type: array
@@ -193,17 +198,17 @@ components:
         $ref: '#/components/schemas/RatePlan'
     RatePlan:
       description: |
-        Rate plan for specified room types.
+        Rate plan for specified room types. All prices are meant for a single room for a single night for a single person.
         
-        Algorithm to calculate price
+        Algorithm to calculate price - for now, the result should always be the cheapest price for a consumer.
         - pick the right ratePlan(s) based on availableForTravel field and provided booking dates
         - check restrictions and drop rate plans that the booking doesn't meet
         - for every rate plan as rp_i
           - for every person as p_j
-              apply any fitting price modifiers
+              apply the best of any fitting price modifiers (pro-consumer strategy, this will change)
               multiply the computed rate by length of stay
           - store the final price for rp_i
-        - compare all final prices and pick the cheapest
+        - compare all final prices and pick the cheapest (pro-consumer strategy, this might change)
         
       type: object
       required:
@@ -223,7 +228,7 @@ components:
         price:
           type: number
           format: float
-          description: Base price
+          description: Base price for given room type for one night and one person.
         roomTypeIds:
           type: array
           description: List of all room types that this rate plan applies to
@@ -266,7 +271,7 @@ components:
               format: date-time
         modifiers:
           type: array
-          description: List of price modifiers, i. e. discounts based on length of stay
+          description: List of price modifiers, i. e. discounts based on length of stay. For now, the list is very limited.
           items:
             $ref: '#/components/schemas/RatePlanPriceModifier'
         restrictions:
@@ -298,16 +303,6 @@ components:
       - adjustment
       - conditions
       properties:
-        from:
-          description: First day the modifier is applied to (including)
-          type: string
-          format: date
-          example: "2018-01-30"
-        to:
-          description: Last day the modifier is applied to (including)
-          type: string
-          format: date
-          example: "2018-02-20"
         adjustment:
           description: How will the resulting price be affected? In percents
           type: number
@@ -316,11 +311,24 @@ components:
         conditions:
           type: object
           properties:
+            from:
+              description: First day the modifier is applied to (including)
+              type: string
+              format: date
+              example: "2018-01-30"
+            to:
+              description: Last day the modifier is applied to (including)
+              type: string
+              format: date
+              example: "2018-02-20"
             minLengthOfStay:
-              description: Minimal length of stay the price is applicable to. If there are multiple prices with lengthOfStay restriction matching the minimal length of stay, the price for the longest length of stay is used. The declared price is always per one day.
+              description: Minimal length of stay the modifer is applicable to. If there are multiple modifiers with lengthOfStay condition matching the minimal length of stay, the price for the longest length of stay is used.
               type: integer
             maxAge:
-              description: The price is applicable to occupants of this age or younger at the time of arrival to the stay. If multiple prices are specified with different maxAge, the price with the highes limit is applied.  If no price with maxAge restriction can be applied and there is a price without this restriction, it is applied. The declared price is always per one day.
+              description: The modifier is applicable to occupants of this age or younger at the time of arrival to the stay. If multiple modifiers are specified with different maxAge, the modifier with the highest fitting limit is applied.
+              type: integer
+            minOccupants:
+              description: The modifier is applicable if there are at least this number of persons staying in a room. If multiple modifiers are specified with different minOccupants, the modifier with the highest fitting limit is applied.
               type: integer
           
     Availability:

@@ -124,7 +124,7 @@ which tell the API where to upload the off-chain data.
 ```
 
 ```sh
-$ curl -X POST https://demo-write-api.windingtree.com/account -H 'Content-Type: application/json' --data @create-account.json
+$ curl -X POST https://demo-write-api.windingtree.com/accounts -H 'Content-Type: application/json' --data @create-account.json
 
 # Response values are randomly generated and will be different for you
 {"accountId":"aa43edaf8266e8f8","accessKey":"usgq6tSBW+wDYA/MBF367HnNp4tGKaCTRPy3JHPEqJmFBuxq1sA7UhFOpuV80ngC"}

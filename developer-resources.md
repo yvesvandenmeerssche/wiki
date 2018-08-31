@@ -42,8 +42,8 @@ might not be always available.
 - **LífToken** - https://github.com/windingtree/LifToken/tree/develop/docs
 - **wt-contracts** - https://github.com/windingtree/wt-contracts/tree/develop/docs
 - **wt-js-libs** - https://github.com/windingtree/wt-js-libs/blob/develop/docs/reference.md
-- **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/master/docs/swagger.yaml or [more readable here](http://demo-api.windingtree.com/docs)
-- **wt-write-api** - https://github.com/windingtree/wt-write-api/blob/master/docs/swagger.yaml or [more readable here](http://demo-api.windingtree.com/docs)
+- **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/master/docs/swagger.yaml or [more readable here](http://playground-api.windingtree.com/docs)
+- **wt-write-api** - https://github.com/windingtree/wt-write-api/blob/master/docs/swagger.yaml or [more readable here](http://playground-write-api.windingtree.com/docs)
 - **Data format** - https://github.com/windingtree/wiki/blob/master/hotel-data-swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/)
 
 ## What is the current version?
@@ -57,8 +57,8 @@ It was possible to make bookings with
 [LífToken](https://github.com/windingtree/LifToken/tree/0ce08793184795e528cf38560d7a6b07f49bb0f4)
 in its [ERC-827](https://github.com/ethereum/EIPs/issues/827) flavour. We've also released
 a [demo app](https://demo.windingtree.com) where you can play around with it on Ropsten testnet.
-We've also released a [REST API](http://demo-api.windingtree.com/) (docs
-[here](https://demo-api.windingtree.com/docs/)) that was very closely following the aforementioned
+We've also released a [REST API](http://playground-api.windingtree.com/) (docs
+[here](https://playground-api.windingtree.com/docs/)) that was very closely following the aforementioned
 smart contracts. All of these can be found under respective tags on GitHub.
 If you'd like to make yourself familiar with basic blockchain concepts such as transactions
 and get some experience with its behaviour and limitations, it can be a good learning material.

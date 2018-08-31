@@ -95,15 +95,15 @@ const libs = WTLibs.createInstance({
 ## REST API
 
 - The results may be different for you. There's no guarantee of data stability.
-- You can check from which WTIndex is the data downloaded on https://demo-api.windingtree.com/
-- This data is based on `0.3.0` version of the API, for complete docs, see https://demo-api.windingtree.com/docs,
+- You can check from which WTIndex is the data downloaded on https://playground-api.windingtree.com/
+- This data is based on `0.3.0` version of the API, for complete docs, see https://playground-api.windingtree.com/docs,
 there are more features available.
 - The API is deployed on an infrastructure, that puts servers to sleep if there's no traffic.
 Your first request might therefore take a lot of time.
 
 ### Hotel listing
 ```sh
-$ curl 'https://demo-api.windingtree.com/hotels'
+$ curl 'https://playground-api.windingtree.com/hotels'
 
 {
    "items" : [
@@ -137,10 +137,10 @@ $ curl 'https://demo-api.windingtree.com/hotels'
 ```
 
 ```sh
-$ curl 'https://demo-api.windingtree.com/hotels?limit=1&startWith=0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0&fields=name,description,images'
+$ curl 'https://playground-api.windingtree.com/hotels?limit=1&startWith=0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0&fields=name,description,images'
 
 {
-   "next" : "http://https://demo-api.windingtree.com/hotels?limit=1&startWith=0x49c61B16be16B82c6EF4892b17A3D2E284207118",
+   "next" : "http://https://playground-api.windingtree.com/hotels?limit=1&startWith=0x49c61B16be16B82c6EF4892b17A3D2E284207118",
    "items" : [
       {
          "images" : [
@@ -167,7 +167,7 @@ $ curl 'https://demo-api.windingtree.com/hotels?limit=1&startWith=0xE1383bD3d193
 ### Hotel detail
 
 ```sh
-$  curl 'https://demo-api.windingtree.com/hotels/0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0'
+$  curl 'https://playground-api.windingtree.com/hotels/0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0'
 
 {
    "id" : "0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0",
@@ -211,7 +211,7 @@ $  curl 'https://demo-api.windingtree.com/hotels/0xE1383bD3d193eC22d692FA1e5A53d
 ```
 
 ```sh
-$ curl 'https://demo-api.windingtree.com/hotels/0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0?fields=address,contacts' 
+$ curl 'https://playground-api.windingtree.com/hotels/0xE1383bD3d193eC22d692FA1e5A53d868e5bC20A0?fields=address,contacts' 
 
 {
    "address" : {

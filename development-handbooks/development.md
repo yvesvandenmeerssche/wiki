@@ -39,15 +39,14 @@ which in short means that:
 - `master` is always production ready and should be merged to only when making
 a release.
 - `develop` holds all new code.
-- `release/*` branches are used when finalizing a release that will go into
-master. All bugfixes related to release branch shall be merged into develop as
-well.
 - `feature/*` or `feat/*` branches hold new features, when merged to develop, there should
 always be a merge commit.
 - `hotfix/*` or `fix/*` are the only branches that can be merged directly into master.
 They usually have to be merged into develop as well.
 - `proposal/*` are branches with some long-term and big update that we would
 eventually like to promote to develop.
+- `release/*` branches are used for automatic deployment via
+Travis.
 
 Other naming conventions for branches are possible, but should at least closely
 follow the general
@@ -105,4 +104,6 @@ documentation if necessary and we raise the version in `package.json` and
 - Merge this PR with a merge commit.
 - Push the tag created by `npm version` (experimental) or manually tag the
 resulting merge commit and push it to github.
-- Travis makes a release from a tagged commit.
+- In case of libraries, Travis makes a release from a tagged commit.
+- In case of services, you need to merge master to a dedicated
+`release/*` branch to deploy the latest version.

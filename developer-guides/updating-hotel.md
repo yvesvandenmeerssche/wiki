@@ -105,9 +105,9 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
 
 - In order to work with the [wt-write-api](https://github.com/windingtree/wt-write-api),
 you need to have an account registered. (See [registering hotel](registering-hotel.md) to find out how to do that).
-- The sample deployment on https://demo-write-api.windingtree.com is for demonstration
+- The sample deployment on https://playground-write-api.windingtree.com is for demonstration
 purposes only and is re-deployed every 24 hours. Your accounts will be lost after re-deployment.
-- This code works with `0.1.0` version deployed on https://demo-write-api.windingtree.com although
+- This code works with `0.1.0` version deployed on https://playground-write-api.windingtree.com although
 the data will be different.
 
 ### Deleting a hotel
@@ -119,7 +119,7 @@ will be replaced)
 
 ```sh
 # Replace X-Access-Key with the result of account creation above
-$ curl -X PATCH https://demo-write-api.windingtree.com/hotels -H 'Content-Type: application/json' \
+$ curl -X PATCH https://playground-write-api.windingtree.com/hotels -H 'Content-Type: application/json' \
   -H 'X-Access-Key: usgq6tSBW+wDYA/MBF367HnNp4tGKaCTRPy3JHPEqJmFBuxq1sA7UhFOpuV80ngC' \
   -H 'X-Wallet-Password: windingtree' \
   --data @hotel-description.json

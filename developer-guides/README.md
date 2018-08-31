@@ -6,6 +6,11 @@ our [libraries](https://github.com/windingtree/wt-js-libs) and APIs (
 [reading](https://github.com/windingtree/wt-read-api),
 [writing](https://github.com/windingtree/wt-write-api)).
 
+## Environments
+
+- [List of existing WT environments](../developer-resources.md#publicly-available-wt-deployments)
+- [Preparing a WT environment](preparing-environment.md)
+
 ## Hotels
 
 - [Reading hotels](reading-hotels.md)

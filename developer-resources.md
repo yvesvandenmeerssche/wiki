@@ -42,8 +42,8 @@ might not be always available.
 - **LífToken** - https://github.com/windingtree/LifToken/tree/develop/docs
 - **wt-contracts** - https://github.com/windingtree/wt-contracts/tree/develop/docs
 - **wt-js-libs** - https://github.com/windingtree/wt-js-libs/blob/develop/docs/reference.md
-- **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/master/docs/swagger.yaml or [more readable here](http://demo-api.windingtree.com/docs)
-- **wt-write-api** - https://github.com/windingtree/wt-write-api/blob/master/docs/swagger.yaml or [more readable here](http://demo-api.windingtree.com/docs)
+- **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/master/docs/swagger.yaml or [more readable here](http://playground-api.windingtree.com/docs)
+- **wt-write-api** - https://github.com/windingtree/wt-write-api/blob/master/docs/swagger.yaml or [more readable here](http://playground-write-api.windingtree.com/docs)
 - **Data format** - https://github.com/windingtree/wiki/blob/master/hotel-data-swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/)
 
 ## What is the current version?
@@ -57,8 +57,8 @@ It was possible to make bookings with
 [LífToken](https://github.com/windingtree/LifToken/tree/0ce08793184795e528cf38560d7a6b07f49bb0f4)
 in its [ERC-827](https://github.com/ethereum/EIPs/issues/827) flavour. We've also released
 a [demo app](https://demo.windingtree.com) where you can play around with it on Ropsten testnet.
-We've also released a [REST API](http://demo-api.windingtree.com/) (docs
-[here](https://demo-api.windingtree.com/docs/)) that was very closely following the aforementioned
+We've also released a [REST API](http://playground-api.windingtree.com/) (docs
+[here](https://playground-api.windingtree.com/docs/)) that was very closely following the aforementioned
 smart contracts. All of these can be found under respective tags on GitHub.
 If you'd like to make yourself familiar with basic blockchain concepts such as transactions
 and get some experience with its behaviour and limitations, it can be a good learning material.
@@ -74,6 +74,48 @@ happen. You can usually track a more granular progress in the respective reposit
 named milestone. Our goal for that release is to version everything as `1.0.0` tag and move on from there.
 If you are serious about integrating with Winding Tree platform, that's a place to start for you. But beware,
 things might change at any time as we move forward to the end of the Summer.
+
+## Publicly available WT deployments
+
+We currently have two publicly accessible WT environments -
+*playground* and *demo*. Each of them consists of:
+
+- a set of WT smart contracts, deployed to the Ropsten Ethereum network.
+- an instance of wt-write-api
+- an instance of wt-read-api
+
+Just bear in mind that publicly available instances of the
+write API have their database purged once a day for security
+reasons. Hotels uploaded through them still remain on the
+blockchain, though. In practice, this means that you might
+sometimes need to re-create an account in order to continue
+working with previously created hotels.
+
+### Playground
+
+The "playground" environment is supposed to be used by anyone
+who wishes to experiment with the WT platform. It contains some
+fake data. These are the key addresses:
+
+- WT index: 0x3b476ac17ffea8dcf2dbd5ef787a5baeeebe9984
+- WT Read API: https://playground-api.windingtree.com
+- WT Write API: https://playground-write-api.windingtree.com
+
+### Demo
+
+Supposed to serve for more "serious" (although still somewhat
+"beta" in nature) attempts at integration with WT. The available
+data should be real. Currently used by the crypto booking app
+(booking.windingtree.com).
+
+- WT index: 0x933198455e38925bccb4bfe9fb59bac31d00b4d3
+- WT Read API: https://demo-api.windingtree.com
+- WT Write API: https://demo-write-api.windingtree.com
+
+### Building another environment
+
+If you wish to prepare your own standalone WT environment,
+please consult the [Preparing environment](developer-guides/preparing-environment.md) page.
 
 ## What are you working on?
 

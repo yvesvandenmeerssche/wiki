@@ -104,6 +104,6 @@ documentation if necessary and we raise the version in `package.json` and
 - Merge this PR with a merge commit.
 - Push the tag created by `npm version` (experimental) or manually tag the
 resulting merge commit and push it to github.
-- In case of libraries, Travis either makes a release from a tagged commit.
+- In case of libraries, Travis makes a release from a tagged commit.
 - In case of services, you need to merge master to a dedicated
 `release/*` branch to deploy the latest version.

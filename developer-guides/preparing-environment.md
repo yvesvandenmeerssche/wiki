@@ -7,7 +7,7 @@ further.
 
 ## Creating a new environment
 
-To use WT, at least the smart contracts that form its very core
+At the very least, the smart contracts that form WT's very core
 need to be deployed somewhere. In addition to that, you might
 want to setup wt-read-api and / or wt-write-api for convenience
 purposes.
@@ -20,9 +20,9 @@ actions.
    their Ethereum nodes.
 3. Check out the [wt-contracts](https://github.com/windingtree/wt-contracts) repository
    and deploy a new set of WT contracts by following instructions in the repository
-   README. Note the resulting WT index somewhere.
-4. Configure and deploy an [wt-read-api](https://github.com/windingtree/wt-read-api) instance.
-5. Configure and deploy an [wt-write-api](https://github.com/windingtree/wt-write-api) instance. 
+   README. Note the resulting WT index address somewhere.
+4. Configure and deploy a [wt-read-api](https://github.com/windingtree/wt-read-api) instance.
+5. Configure and deploy a [wt-write-api](https://github.com/windingtree/wt-write-api) instance. 
 6. As a final step, you might use [wt-fixtures](https://github.com/windingtree/wt-fixtures) to
    populate your WT instance with some test data (hand-crafted or generated).
 

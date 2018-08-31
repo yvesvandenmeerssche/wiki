@@ -8,7 +8,7 @@ our [libraries](https://github.com/windingtree/wt-js-libs) and APIs (
 
 ## Environments
 
-- [List of existing WT environments](../developer-resources.md#Publicly available WT deployments)
+- [List of existing WT environments](../developer-resources.md#publicly-available-wt-deployments)
 - [Preparing a WT environment](preparing-environment.md)
 
 ## Hotels

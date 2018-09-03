@@ -8,7 +8,7 @@
 ```
   "@windingtree/off-chain-adapter-http": "2.0.0",
   "@windingtree/off-chain-adapter-swarm": "3.2.0",
-  "@windingtree/wt-js-libs": "0.2.8"
+  "@windingtree/wt-js-libs": "0.3.0"
 ```
 ### Example code
 
@@ -66,7 +66,6 @@ const libs = WTLibs.createInstance({
       // And you can access all of the data in a simple, synchronous way
       const hotelLocation = serializedHotel.dataUri.contents.descriptionUri.contents.location;
       
-      
       // OR with much finer control and a lot of await calls, you can do this:
       
       // This actually fetches data from a hotel smart contract
@@ -75,15 +74,15 @@ const libs = WTLibs.createInstance({
       const hotelDataUri2 = await hotel.dataUri;
 
       // Let's initialize the off-chain data index - but no data is downloaded yet
-      const offChainData = await hotel.dataIndex;
+      const hotelDataIndex = await hotel.dataIndex;
       // Only the next command actually initiates the download of the data index document
-      const hotelDescriptionUri = await offChainData.contents.descriptionUri;
+      const offChainData = await hotelDataIndex.contents;
+      const hotelDescriptionUri = offChainData.descriptionUri;
       // And only now the actual contents of descriptionUri gets downloaded
-      const hotelName = await hotelDescriptionUri.contents.name;
-      // But this is fast, because the document is already cached in memory.
-      // The properties are of course interchangeable, so the data is downloaded
-      // only when any of the data properties is accessed for the first time.
-      const hotelDescription = await hotelDescriptionUri.contents.description;
+      const hotelDescriptionContents = await hotelDescriptionUri.contents;
+      // This is fast, because the document is already cached in memory.
+      const hotelName = hotelDescriptionContents.name;
+      const hotelDescription = hotelDescriptionContents.description;
     } catch (e) {
       // A single hotel off-chain data access can fail, so it's a good practice to handle that.
       console.log(hotel.address, e);

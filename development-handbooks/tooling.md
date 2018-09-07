@@ -83,3 +83,17 @@ Container based hosting. Majority of our client facing apps is running from ther
 either as NPM applications or Docker containers.
 
 See [App deployment page](app-deployment.md) for details.
+
+## Infura (https://infura.io//)
+
+For full Ethereum nodes, we are using excellent services of Infura.
+We are currently not running our own Ethereum nodes.
+
+## Swarm gateways
+
+For accessing swarm we are using [our own instance](https://github.com/windingtree/ethereum-swarm-node)
+running on https://swarm.windingtree.com that is connected to the same network
+as https://swarm-gateways.net/ is.
+
+Alternatively, it might be possible to use https://swarm.blockscan.com/
+but we don't have a big history with them.

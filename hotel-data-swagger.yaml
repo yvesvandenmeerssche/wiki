@@ -326,7 +326,7 @@ components:
               description: Minimal length of stay the modifer is applicable to. If there are multiple modifiers with lengthOfStay condition matching the minimal length of stay, the price for the longest length of stay is used.
               type: integer
             maxAge:
-              description: The modifier is applicable to occupants of this age or younger at the time of arrival to the stay. If multiple modifiers are specified with different maxAge, the modifier with the highest fitting limit is applied.
+              description: The modifier is applicable to occupants of this age or younger at the time of arrival to the stay. If multiple modifiers are specified with different maxAge, the modifier with the lowest fitting limit is applied.
               type: integer
             minOccupants:
               description: The modifier is applicable if there are at least this number of persons staying in a room. If multiple modifiers are specified with different minOccupants, the modifier with the highest fitting limit is applied.

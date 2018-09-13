@@ -1,7 +1,7 @@
 openapi: 3.0.0
 servers: []
 info:
-  version: "rateplans-2-draft"
+  version: "0.0.5"
   title: Hotel definitions
   description: Object definitions for hotel API
 paths: {}
@@ -61,8 +61,8 @@ components:
           - address
           - timezone
           - currency
-          - defaultCancellationAmount
           - updatedAt
+          - defaultCancellationAmount
     HotelDescriptionBase:
       title: Hotel description base definition
       description: Basic properties of hotel

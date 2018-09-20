@@ -101,7 +101,7 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
 you need to have an account registered.
 - The sample deployment on https://playground-write-api.windingtree.com is for demonstration
 purposes only and is re-deployed every 24 hours. Your accounts will be lost after re-deployment.
-- This code works with `0.2.0` version deployed on https://playground-write-api.windingtree.com although
+- This code works with `0.3.0` version deployed on https://playground-write-api.windingtree.com although
 the data might be different.
 
 ### Creating an account
@@ -150,7 +150,7 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
       "general": {
         "email": "chadima.jiri@gmail.com",
         "phone": "00420224371111",
-        "url": "https://jirkachadima.cz",
+        "url": "https://windingtree.com",
         "ethereum": "windingtree.eth"
       }
     },
@@ -164,8 +164,8 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
     "timezone": "Europe/Prague",
     "currency": "CZK",
     "amenities": [
-       "minibar",
-       "coffee machine"
+      "minibar",
+      "coffee machine"
     ],
     "images": [
       "https://raw.githubusercontent.com/windingtree/media/master/logo-variants/tree/png/tree--gradient-on-white.png",
@@ -231,7 +231,9 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
       "description": "Off season price for twin bed",
       "currency": "EUR",
       "price": 80,
-      "roomTypeIds": ["twin-bed"],
+      "roomTypeIds": [
+        "twin-bed"
+      ],
       "availableForReservation": {
         "from": "2018-01-01",
         "to": "2018-12-31"
@@ -264,7 +266,9 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
       "description": "Summer price for twin bed",
       "currency": "EUR",
       "price": 100,
-      "roomTypeIds": ["twin-bed"],
+      "roomTypeIds": [
+        "twin-bed"
+      ],
       "availableForReservation": {
         "from": "2018-01-01",
         "to": "2018-12-31"
@@ -297,7 +301,9 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
       "description": "Basic for king bed",
       "currency": "EUR",
       "price": 60,
-      "roomTypeIds": ["king-size-bed"],
+      "roomTypeIds": [
+        "king-size-bed"
+      ],
       "availableForReservation": {
         "from": "2018-01-01",
         "to": "2018-12-31"
@@ -330,7 +336,9 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
       "description": "Summer season for king bed",
       "currency": "EUR",
       "price": 120,
-      "roomTypeIds": ["king-size-bed"],
+      "roomTypeIds": [
+        "king-size-bed"
+      ],
       "availableForReservation": {
         "from": "2018-01-01",
         "to": "2018-12-31"
@@ -358,9 +366,114 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
         }
       }
     }
+  },
+  "availability": {
+    "latestSnapshot": {
+      "availability": {
+        "twin-bed": [
+          {
+            "date": "2018-07-07",
+            "quantity": 2,
+            "restrictions": {
+              "noArrival": true
+            }
+          },
+          {
+            "date": "2018-07-08",
+            "quantity": 2,
+            "restrictions": {
+              "noDeparture": true
+            }
+          },
+          {
+            "date": "2018-07-09",
+            "quantity": 2
+          },
+          {
+            "date": "2018-07-10",
+            "quantity": 1
+          },
+          {
+            "date": "2018-07-11",
+            "quantity": 0
+          },
+          {
+            "date": "2018-07-12",
+            "quantity": 0
+          },
+          {
+            "date": "2018-07-13",
+            "quantity": 0
+          },
+          {
+            "date": "2018-07-14",
+            "quantity": 0,
+            "restrictions": {
+              "noArrival": true
+            }
+          },
+          {
+            "date": "2018-07-15",
+            "quantity": 0,
+            "restrictions": {
+              "noDeparture": true
+            }
+          }
+        ],
+        "king-size-bed": [
+          {
+            "date": "2018-07-07",
+            "quantity": 2,
+            "restrictions": {
+              "noArrival": true
+            }
+          },
+          {
+            "date": "2018-07-08",
+            "quantity": 2,
+            "restrictions": {
+              "noDeparture": true
+            }
+          },
+          {
+            "date": "2018-07-09",
+            "quantity": 2
+          },
+          {
+            "date": "2018-07-10",
+            "quantity": 1
+          },
+          {
+            "date": "2018-07-11",
+            "quantity": 0
+          },
+          {
+            "date": "2018-07-12",
+            "quantity": 0
+          },
+          {
+            "date": "2018-07-13",
+            "quantity": 0
+          },
+          {
+            "date": "2018-07-14",
+            "quantity": 0,
+            "restrictions": {
+              "noArrival": true
+            }
+          },
+          {
+            "date": "2018-07-15",
+            "quantity": 0,
+            "restrictions": {
+              "noDeparture": true
+            }
+          }
+        ]
+      }
+    }
   }
 }
-
 ```
 
 ```sh

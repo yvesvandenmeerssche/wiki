@@ -110,7 +110,7 @@ purposes only and is re-deployed every 24 hours. Your accounts will be lost afte
 - This code works with `0.1.0` version deployed on https://playground-write-api.windingtree.com although
 the data will be different.
 
-### Deleting a hotel
+### Updating a hotel
 
 - You are only allowed to update your own hotel.
 - The hotel data format is the same as in [registering hotel](registering-hotel.md).

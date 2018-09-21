@@ -29,6 +29,8 @@ API for writing the hotel data. Useful if you're building a PMS.
 - [wt-demo-app](https://github.com/windingtree/wt-demo-app) - Client-facing
 example browser app for accessing Winding Tree assets. This will become obsolete
 very soon.
+- [wt-update-api](https://github.com/windingtree/wt-update-api) - REST-like
+API that facilitates the publish / subscribe mechanism within WT.
 
 ## Development workflow
 

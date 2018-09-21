@@ -42,8 +42,9 @@ might not be always available.
 - **LífToken** - https://github.com/windingtree/LifToken/tree/develop/docs
 - **wt-contracts** - https://github.com/windingtree/wt-contracts/tree/develop/docs
 - **wt-js-libs** - https://github.com/windingtree/wt-js-libs/blob/develop/docs/reference.md
-- **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/master/docs/swagger.yaml or [more readable here](http://playground-api.windingtree.com/docs)
-- **wt-write-api** - https://github.com/windingtree/wt-write-api/blob/master/docs/swagger.yaml or [more readable here](http://playground-write-api.windingtree.com/docs)
+- **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-api.windingtree.com/docs)
+- **wt-write-api** - https://github.com/windingtree/wt-write-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-write-api.windingtree.com/docs)
+- **wt-update-api** - https://github.com/windingtree/wt-update-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-update-api.windingtree.com/docs)
 - **Data format** - https://github.com/windingtree/wiki/blob/master/hotel-data-swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/)
 
 ## What is the current version?
@@ -85,12 +86,15 @@ We currently have two publicly accessible WT environments -
 - an instance of wt-read-api
 - an instance of hotel explorer web application
 
-Just bear in mind that publicly available instances of the
-write API have their database purged once a day for security
-reasons. Hotels uploaded through them still remain on the
-blockchain, though. In practice, this means that you might
-sometimes need to re-create an account in order to continue
-working with previously created hotels.
+Just bear in mind that publicly available instances of the write
+API have their database purged once a day for security reasons.
+Hotels uploaded through them still remain on the blockchain,
+though. In practice, this means that you might sometimes need to
+re-create an account in order to continue working with
+previously created hotels.
+
+In addition to this, there is also an instance of wt-update-api in
+Playground whose database will be purged irregularly.
 
 ### Playground
 
@@ -102,6 +106,7 @@ fake data. These are the key addresses:
 - WT Read API: https://playground-api.windingtree.com
 - WT Write API: https://playground-write-api.windingtree.com
 - Hotel explorer: https://hotel-explorer-playground.windingtree.com
+- WT Update API: https://playground-update-api.windingtree.com
 
 ### Demo
 

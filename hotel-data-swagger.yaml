@@ -1,7 +1,7 @@
 openapi: 3.0.0
 servers: []
 info:
-  version: "0.0.7"
+  version: "0.0.8"
   title: Hotel definitions
   description: Object definitions for hotel API
 paths: {}

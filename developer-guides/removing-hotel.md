@@ -81,6 +81,9 @@ const PASSWORD = 'windingtree';
     // After the transaction is mined, you get
     // a receipt which contains a transaciontHash, among other useful things.
     console.log('transaction to check: ', receipt.transactionHash);
+    // Ideally, publish a deletion notification for subscribers
+    // to immediately find out about the change. For more
+    // details, please have a look at https://github.com/windingtree/wt-update-api.
   } finally {
     // Don't forget to lock your wallet after you are done, you
     // don't want to leave your private keys lying around.
@@ -97,6 +100,8 @@ you need to have an account registered. (See [registering hotel](registering-hot
 purposes only and is re-deployed every 24 hours. Your accounts will be lost after re-deployment.
 - This code works with `0.1.0` version deployed on https://playground-write-api.windingtree.com although
 the data will be different.
+- Hotel deletion notification will be published automatically by
+the API server to the given notifications address, if available.
 
 ### Deleting a hotel
 

@@ -87,6 +87,9 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
     // sets the address of the freshly created hotel.
     const newHotelAddress = hotel.address;
     console.log('hotel address: ', newHotelAddress);
+    // Ideally, publish a creation notification for subscribers
+    // to immediately find out about the new hotel. For more
+    // details, please have a look at https://github.com/windingtree/wt-update-api.
   } finally {
     // Don't forget to lock your wallet after you are done, you
     // don't want to leave your private keys lying around.
@@ -136,9 +139,11 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
 - This is just an example data that passes the validation inside of the API.
 - This `json` should be saved as `hotel-description.json` in a directory where you will be running the `curl` command.
 - The data format might be slightly different to what we have in our [data structure](http://windingtree.github.io/docs/swagger-ui/).
+- Hotel creation notification will be published automatically by the API server to the given notifications address, if available.
 
 ```json
 {
+  "notifications": "https://playground-update-api.windingtree.com/",
   "description": {
     "name": "Random hotel",
     "description": "**Beautiful** hotel located in the center of _Prague, Czech Republic_.",

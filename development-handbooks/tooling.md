@@ -71,9 +71,6 @@ so be careful when accepting PRs. You might manually change the target branch of
 or change the setup of the repository if it works for you.
 - You can't use `npm ci` on Travis CI because it really does not work.  Use `install: case $TRAVIS_BRANCH in greenkeeper*) npm i;; *) npm ci;; esac;`
 in `.travis.yml` to use `npm install` in greenkeeper builds and `npm ci` everywhere else.
-- It does not work out of the box with `package-lock.json`. There's [a solution](https://github.com/greenkeeperio/greenkeeper-lockfile/) that requires
-GitHub non-project-specific token to be able to commit back from Travis. That's not great. Make the lockfile up to date by hand until Travis supports
-the improved GitHub per-project integration.
 - Some packages that are used for example for builds might not get properly updated (for example Babel broke). Make sure that you test all
 `npm scripts` and other stuff not executed by `npm test`.
 

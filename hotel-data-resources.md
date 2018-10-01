@@ -7,7 +7,7 @@ This is a list of APIs we know about and have checked during our research of the
 - [Expedia Product API](https://expediaconnectivity.com/apis/product-management/product-api/reference.html)
 - [Expedia Property API](https://expediaconnectivity.com/apis/product-management/property-api-contact-expedia-before-adopting-/api-definition.html)
 - [ColibriPMS API document](http://support.colibripms.com/kb/api-docs)
-- [Roomstorm AP](https://github.com/walksource/roomstorm-api)
+- [Roomstorm API](https://github.com/walksource/roomstorm-api)
 - [Room Ranger](https://github.com/windingtree/rr-json-formats)
 - [Travelgate X](https://docs.travelgatex.com/)
 - [HotWire Quickconnect](https://ewe-quickconnect.s3.amazonaws.com/system/assets/attachments/425/Hotwire_QuickConnect_API_Guide_Version_1_31.pdf?1395867409)

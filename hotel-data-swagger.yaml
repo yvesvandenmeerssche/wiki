@@ -496,7 +496,6 @@ components:
         city:
           type: string
           maxLength: 150
-          example: 
         state:
           type: string
           maxLength: 150

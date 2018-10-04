@@ -1,7 +1,7 @@
 openapi: 3.0.0
 servers: []
 info:
-  version: "0.0.8"
+  version: "0.0.9"
   title: Hotel definitions
   description: Object definitions for hotel API
 paths: {}
@@ -40,17 +40,20 @@ components:
       - descriptionUri
       properties:
         descriptionUri:
-          description: URI pointing to the HotelDescription resource
+          description: URI pointing to the HotelDescription data resource
           $ref: '#/components/schemas/UriType'
         ratePlansUri:
-          description: URI pointing to RatePlans object
+          description: URI pointing to RatePlans data resource
           $ref: '#/components/schemas/UriType'
         availabilityUri:
           $ref: '#/components/schemas/UriType'
-          description: URI pointing to Availability
+          description: URI pointing to Availability data resource
         notificationsUri:
           $ref: '#/components/schemas/UriType'
           description: URI pointing to an instance of the WT Update service.
+        bookingUri:
+          $ref: '#/components/schemas/UriType'
+          description: URI pointing to an instance of the WT Booking service.
 
     HotelDescription:
       title: Hotel description

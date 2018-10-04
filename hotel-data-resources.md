@@ -6,6 +6,7 @@ This is a list of APIs we know about and have checked during our research of the
 - [HTNG standard](https://www.htng.org/page/technical_specs)
 - [Expedia Product API](https://expediaconnectivity.com/apis/product-management/product-api/reference.html)
 - [Expedia Property API](https://expediaconnectivity.com/apis/product-management/property-api-contact-expedia-before-adopting-/api-definition.html)
+- [Expedia Partners Solutions - Booking API](https://developer.expediapartnersolutions.com/documentation/rapid-booking-docs-2-1/)
 - [ColibriPMS API document](http://support.colibripms.com/kb/api-docs)
 - [Roomstorm API](https://github.com/walksource/roomstorm-api)
 - [Room Ranger](https://github.com/windingtree/rr-json-formats)

@@ -16,6 +16,7 @@ This is a list of APIs we know about and have checked during our research of the
 - [siteminder](https://siteminder.atlassian.net/wiki/spaces/PMSXCHANGEV2/overview)
 - [OXI](https://docs.oracle.com/cd/E91116_01/docs/User%20Manual.pdf), [OXI Vendor specs](https://docs.oracle.com/cd/E91116_01/docs/Communication%20Vendor%20Specification.pdf)
 - [Booking.com](https://connect.booking.com/user_guide/site/en-US/user_guide.html?lang=en)
+- [Trivago Booking](https://developer.trivago.com/expressbooking/)
 
 Very crude an incomplete field by field comparison of those APIs can be found in
 [this Google spreadsheet](https://docs.google.com/spreadsheets/d/1dqQVvF7IIkurIMSMENbB04Fe2HOxbvI9DgYxnhPoGv8/edit?usp=sharing).

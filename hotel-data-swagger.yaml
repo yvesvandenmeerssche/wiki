@@ -1,7 +1,7 @@
 openapi: 3.0.0
 servers: []
 info:
-  version: "0.0.9"
+  version: "0.0.10"
   title: Hotel definitions
   description: Object definitions for hotel API
 paths: {}
@@ -222,6 +222,7 @@ components:
       - name
       - updatedAt
       - price
+      - roomTypeIds
       properties:
         name:
           description: Name of the rate plan to show to users
@@ -239,7 +240,7 @@ components:
         roomTypeIds:
           type: array
           description: List of all room types that this rate plan applies to
-          minItems: 0
+          minItems: 1
           maxItems: 30
           uniqueItems: true
           items:

@@ -70,11 +70,10 @@ That resulted into multiple releases in `0.2.x` series marked as `@next` on NPM.
 happened mainly in `proposal/next` branch which was eventually merged back to develop and with
 a next release back to master.
 
-In Q3 of 2018, we're working hard on making the [Summer release of 2018](https://github.com/orgs/windingtree/projects/1)
-happen. You can usually track a more granular progress in the respective repositories under simliarly
-named milestone. Our goal for that release is to version everything as `1.0.0` tag and move on from there.
-If you are serious about integrating with Winding Tree platform, that's a place to start for you. But beware,
-things might change at any time as we move forward to the end of the Summer.
+In Q3 of 2018, we were working hard on making the [Summer release of 2018](https://github.com/orgs/windingtree/projects/1)
+happen. You can read more about it on [our](https://blog.windingtree.com/summer-release-is-here-8d17877d35a) [blog](https://blog.windingtree.com/summer-2018-release-the-technical-description-bc4899f0ea0c).
+
+Q4 of 2018 is kicked off by our [Prague Hackathon](https://windingtree.com/winding-tree-hackathon-prague-2018) and we are building more pieces of the infrastructure such as a simplistic version of Booking or a Search API.
 
 ## Publicly available WT deployments
 

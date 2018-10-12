@@ -17,6 +17,7 @@ our [libraries](https://github.com/windingtree/wt-js-libs) and APIs (
 - [Registering a hotel](registering-hotel.md)
 - [Updating a hotel](updating-hotel.md)
 - [Removing a hotel](removing-hotel.md)
+- [Booking](booking.md)
 
 ---
 Contacts:

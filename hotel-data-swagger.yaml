@@ -208,7 +208,8 @@ components:
         Rate plan for specified room types. All prices are meant for a single room for a single night for a single person.
         
         Algorithm to calculate price - for now, the result should always be the cheapest price for a consumer.
-        - pick the right ratePlan(s) based on availableForTravel field and provided booking dates
+        - choose the currency you want to compute the price in
+        - pick the right ratePlan(s) based on the chosen currency, availableForTravel field and provided booking dates
         - check restrictions and drop rate plans that the booking doesn't meet
         - for every rate plan as rp_i
           - for every person as p_j

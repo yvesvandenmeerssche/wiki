@@ -77,31 +77,33 @@ IAM user for multiple services. One user can have multiple `ACCESS_KEY_ID`s.
 1. Create new Repository in ECS called `wt-demo-app`.
 1. Create new IAM policy so Travis can push to the repository. Don't forget
 to change the Resource ID (it's on a Repository detail in ECS).
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "ecr:CompleteLayerUpload",
-                "ecr:UploadLayerPart",
-                "ecr:InitiateLayerUpload",
-                "ecr:BatchCheckLayerAvailability",
-                "ecr:PutImage"
-            ],
-            "Resource": "arn:aws:ecr:region:xxxxxx:repository/wt-demo-app"
-        },
-        {
-            "Sid": "VisualEditor1",
-            "Effect": "Allow",
-            "Action": "ecr:GetAuthorizationToken",
-            "Resource": "*"
-        }
-    ]
-}
-```
+
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "VisualEditor0",
+                "Effect": "Allow",
+                "Action": [
+                    "ecr:CompleteLayerUpload",
+                    "ecr:UploadLayerPart",
+                    "ecr:InitiateLayerUpload",
+                    "ecr:BatchCheckLayerAvailability",
+                    "ecr:PutImage"
+                ],
+                "Resource": "arn:aws:ecr:region:xxxxxx:repository/wt-demo-app"
+            },
+            {
+                "Sid": "VisualEditor1",
+                "Effect": "Allow",
+                "Action": "ecr:GetAuthorizationToken",
+                "Resource": "*"
+            }
+        ]
+    }
+    ```
+
 1. Assign that policy to `travis` user.
 
 #### Travis setup
@@ -113,22 +115,24 @@ to differentiate between environments during build time, you need to build
 multiple images here and use for example a suffix, such as `-playground`
 in this instance. `$TRAVIS_BRANCH` will get replaced by an actual git tag.
 Be careful about the addresses to your repository and AWS region.
-```yaml
-  - stage: Build docker image and upload to AWS
-    sudo: true
-    services:
-    - docker
-     install: true
-    if: tag IS present
-     script:
-    - pip install --user awscli # install aws tools
-    - export PATH=$PATH:$HOME/.local/bin # expose aws tools
-    - eval $(aws ecr get-login --no-include-email --region region) # pick credentials for travis user
-    - echo "Building for playground"
-    - docker build --build-arg WT_CONFIG=playground -t wt-demo-app:$TRAVIS_BRANCH-playground .
-    - docker tag wt-demo-app:$TRAVIS_BRANCH-playground xxxxxx.dkr.ecr.region.amazonaws.com/wt-demo-app:$TRAVIS_BRANCH-playground
-    - docker push xxxxxx.dkr.ecr.region.amazonaws.com/wt-demo-app:$TRAVIS_BRANCH-playground
-```
+
+    ```yaml
+      - stage: Build docker image and upload to AWS
+        sudo: true
+        services:
+        - docker
+         install: true
+        if: tag IS present
+         script:
+        - pip install --user awscli # install aws tools
+        - export PATH=$PATH:$HOME/.local/bin # expose aws tools
+        - eval $(aws ecr get-login --no-include-email --region region) # pick credentials for travis user
+        - echo "Building for playground"
+        - docker build --build-arg WT_CONFIG=playground -t wt-demo-app:$TRAVIS_BRANCH-playground .
+        - docker tag wt-demo-app:$TRAVIS_BRANCH-playground xxxxxx.dkr.ecr.region.amazonaws.com/wt-demo-app:$TRAVIS_BRANCH-playground
+        - docker push xxxxxx.dkr.ecr.region.amazonaws.com/wt-demo-app:$TRAVIS_BRANCH-playground
+    ```
+
 If you successfully set everything up and push a tag now, you should
 see a new tagged image in your AWS ECR.
 
@@ -150,113 +154,119 @@ IAM user for multiple services. One user can have multiple `ACCESS_KEY_ID`s.
 1. Create new IAM policy so Travis can work with tasks and services.
 This is required only once, not for every service. If you are re-using
 `travis` user for multiple services, you don't need to do this every time.
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "ecs:UpdateService",
-                "ecs:RegisterTaskDefinition"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
+
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "VisualEditor0",
+                "Effect": "Allow",
+                "Action": [
+                    "ecs:UpdateService",
+                    "ecs:RegisterTaskDefinition"
+                ],
+                "Resource": "*"
+            }
+        ]
+    }
+    ```
+
 1. Assign that policy to `travis` user.
 1. Create new Task definition in ECS. It's EC2 type. Pick a name
 (we'll use `playground-wt-demo-app`) and keep the defaults. The important
 part is `Container definitions`. Add a single container. The important bits
 there are:
-  - Image: You point it to your previously uploaded image in ECR. With a tag.
-  - Port mappings: If your docker exposes port 3000, you should put in
-  `Host port: 0` and `Container port: 3000`. 0 means that ports will
-  be assigned dynamically.
-  - Memory limits: This is different for every app, you can start with
-  `Soft limit: 128`.
-  - CPU units: That depends on your usage. You might reserve some CPU time for
-  your app.
-  - Env variables: These are used during `docker run` command.
+    - Image: You point it to your previously uploaded image in ECR. With a tag.
+    - Port mappings: If your docker exposes port 3000, you should put in
+    `Host port: 0` and `Container port: 3000`. 0 means that ports will
+    be assigned dynamically.
+    - Memory limits: This is different for every app, you can start with
+    `Soft limit: 128`.
+    - CPU units: That depends on your usage. You might reserve some CPU time for
+    your app.
+    - Env variables: These are used during `docker run` command.
 1. Create a service. On task detail, pick the latest revision and select `Create
 service` from Actions. There:
-  - Type: EC2
-  - Service name: In our case `playground-wt-demo-app`. In our setup, it might be
-  wise to keep it in line with the task.
-  - Number of tasks: 1 - This means that one instance will always run.
-  - Load balancer: Select Application Load Balancer and choose the prepared one.
-  - Container to load balance: There should be only one option - click `Add to LB`.
-  Use HTTPS as a listener and create new Target group (name it for example
-  `playground-wt-demo-app-tg`). You can leave `Path pattern` as is, we'll change it
-  later. Change health check path to `/`.
-  - Service discovery: We're not using that, untick.
+    - Type: EC2
+    - Service name: In our case `playground-wt-demo-app`. In our setup, it might be
+    wise to keep it in line with the task.
+    - Number of tasks: 1 - This means that one instance will always run.
+    - Load balancer: Select Application Load Balancer and choose the prepared one.
+    - Container to load balance: There should be only one option - click `Add to LB`.
+    Use HTTPS as a listener and create new Target group (name it for example
+    `playground-wt-demo-app-tg`). You can leave `Path pattern` as is, we'll change it
+    later. Change health check path to `/`.
+    - Service discovery: We're not using that, untick.
 1. You should see a running service in your ECS cluster after a few seconds.
 
 #### Travis setup
 
 1. Create a deployment script in `management/deploy-aws.sh` such as:
-```sh
-#!/bin/bash
-ENVIRONMENT=$1
 
-# AWS command opts
-TASK_FAMILY="$ENVIRONMENT-wt-demo-app"
-SERVICE_NAME="$ENVIRONMENT-wt-demo-app"
-AWS_REGION="eu-west-1"
+    ```sh
+    #!/bin/bash
+    ENVIRONMENT=$1
 
-# container setup options
-LATEST_TAG=`git describe --abbrev=0 --tags`
+    # AWS command opts
+    TASK_FAMILY="$ENVIRONMENT-wt-demo-app"
+    SERVICE_NAME="$ENVIRONMENT-wt-demo-app"
+    AWS_REGION="eu-west-1"
 
-# container startup options
-WT_CONFIG=$ENVIRONMENT
-INFURA_API_KEY=$INFURA_API_KEY # This can be passed from encrypted Travis ENV VARs
+    # container setup options
+    LATEST_TAG=`git describe --abbrev=0 --tags`
 
-# Change port, environment variables, memoryReservation and cpu to be in line with your task
-# definition.
-TASK_DEF="[{\"portMappings\": [{\"hostPort\": 0,\"protocol\": \"tcp\",\"containerPort\": 8000}],
-    \"environment\": [
-      {
-        \"name\": \"INFURA_API_KEY\",
-        \"value\": \"$INFURA_API_KEY\"
-      },
-      {
-        \"name\": \"WT_CONFIG\",
-        \"value\": \"$WT_CONFIG\"
-      }
-    ],
-    \"image\": \"xxxxxx.dkr.ecr.region.amazonaws.com/wt-demo-app:$LATEST_TAG-$ENVIRONMENT\",
-    \"name\": \"wt-demo-app\",
-    \"memoryReservation\": 128,
-    \"cpu\": 128
-  }]"
+    # container startup options
+    WT_CONFIG=$ENVIRONMENT
+    INFURA_API_KEY=$INFURA_API_KEY # This can be passed from encrypted Travis ENV VARs
 
-echo "Updating task definition"
-aws ecs register-task-definition --region $AWS_REGION --family $TASK_FAMILY --container-definitions "$TASK_DEF" > /dev/null
-echo "Updating service"
-aws ecs update-service --region $AWS_REGION --cluster shared-docker-cluster-t3 --service "$SERVICE_NAME" --task-definition "$TASK_FAMILY" > /dev/null
+    # Change port, environment variables, memoryReservation and cpu to be in line with your task
+    # definition.
+    TASK_DEF="[{\"portMappings\": [{\"hostPort\": 0,\"protocol\": \"tcp\",\"containerPort\": 8000}],
+        \"environment\": [
+          {
+            \"name\": \"INFURA_API_KEY\",
+            \"value\": \"$INFURA_API_KEY\"
+          },
+          {
+            \"name\": \"WT_CONFIG\",
+            \"value\": \"$WT_CONFIG\"
+          }
+        ],
+        \"image\": \"xxxxxx.dkr.ecr.region.amazonaws.com/wt-demo-app:$LATEST_TAG-$ENVIRONMENT\",
+        \"name\": \"wt-demo-app\",
+        \"memoryReservation\": 128,
+        \"cpu\": 128
+      }]"
 
-```
+    echo "Updating task definition"
+    aws ecs register-task-definition --region $AWS_REGION --family $TASK_FAMILY --container-definitions "$TASK_DEF" > /dev/null
+    echo "Updating service"
+    aws ecs update-service --region $AWS_REGION --cluster shared-docker-cluster-t3 --service "$SERVICE_NAME" --task-definition "$TASK_FAMILY" > /dev/null
+    ```
+
 1. Add alias to package.json:
-```json
-{
-  "scripts": {
-    "deploy-aws-playground": "./management/deploy-aws.sh playground"
-  }
-}
-```
+
+    ```json
+    {
+      "scripts": {
+        "deploy-aws-playground": "./management/deploy-aws.sh playground"
+      }
+    }
+    ```
+
 1. Tell travis to run your deployment script:
-```yaml
-  - stage: Start service from docker with latest merged tag
-    install: true
-    sudo: true
-    if: branch = release/playground
-    script:
-    - pip install --user awscli
-    - export PATH=$PATH:$HOME/.local/bin
-    - npm run deploy-aws-playground
-```
+
+    ```yaml
+      - stage: Start service from docker with latest merged tag
+        install: true
+        sudo: true
+        if: branch = release/playground
+        script:
+        - pip install --user awscli
+        - export PATH=$PATH:$HOME/.local/bin
+        - npm run deploy-aws-playground
+    ```
 
 And that's it. This will on every push to `release/playground` look up the last
 tag in this branch, look for a docker image with such tag and start a service

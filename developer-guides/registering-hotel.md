@@ -111,7 +111,7 @@ the data might be different.
 
 - An account consists of your Ethereum wallet (password-protected) and a configuration of *uploaders*,
 which tell the API where to upload the off-chain data.
-- An account can be created locally with the mycrypto wallet client, it can be downloaded [here](https://download.mycrypto.com/), the account can be created generating a keystore.
+- The JSON-format wallet can easily be created locally with [mycrypto](https://download.mycrypto.com/).
 - In this example, we are using our demo wallet with password `windingtree`.
 - In this example, we are using Swarm as our place for data and we are using a public gateway.
 - This `json` should be saved as `create-account.json` in a directory where you will be running the `curl` command.

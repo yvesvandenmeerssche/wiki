@@ -80,7 +80,7 @@ grab packages from [our npm organization](https://www.npmjs.com/org/windingtree)
 The javascript libriaries will be published solely to npm.
 
 The end-user applications (API, demo app) will be released as GitHub releases
-artifacts. See [application deployment](https://github.com/windingtree/wiki/blob/master/app-deployment.md)
+artifacts. See [application deployment](https://github.com/windingtree/wiki/blob/master/app-deployment/)
 for more information.
 
 Our releases are done by [Travis CI](https://travis-ci.org/). For now we are

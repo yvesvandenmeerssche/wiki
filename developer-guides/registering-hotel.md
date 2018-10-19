@@ -114,6 +114,7 @@ which tell the API where to upload the off-chain data.
 - The JSON-format wallet can easily be created locally with [mycrypto](https://download.mycrypto.com/).
 - In this example, we are using our demo wallet with password `windingtree`.
 - In this example, we are using Swarm as our place for data and we are using a public gateway.
+- For different configuration of data storage, please go see [wt-write-api documentation](https://github.com/windingtree/wt-write-api/tree/develop#uploaders)
 - This `json` should be saved as `create-account.json` in a directory where you will be running the `curl` command.
 - **Never use this wallet for anything in production. Others would have access to your assets as well.**
 

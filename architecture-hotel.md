@@ -20,7 +20,7 @@ Why we decided to use off-chain storage? Blockchain is a distributed storage but
 ## Architecture diagram
 
 ![Diagram - overview](media/wt-architecture-overview-v2.svg)
-![Diagram - read API](media/wt-architecture-read-api-server-v22.svg)
+![Diagram - read API](media/wt-architecture-read-api-server-v2.svg)
 ![Diagram - write API](media/wt-architecture-write-api-server-v2.svg)
 ![Diagram - update API](media/wt-architecture-update-api-server-v2.svg)
 ![Diagram - booking API](media/wt-architecture-booking-api-v2.svg)

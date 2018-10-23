@@ -341,23 +341,17 @@ components:
               type: integer
           
     Availability:
-      description: Availability data. We're keeping them nested to make the future extension easier.
-      type: object
-      properties:
-        latestSnapshot:
-          $ref: '#/components/schemas/AvailabilitySnapshot'
-    AvailabilitySnapshot:
       description: Full snapshot of availability in time of `updatedAt`
       type: object
       required:
       - updatedAt
-      - availability
+      - roomTypes
       properties:
         updatedAt:
           type: string
           format: date-time
-        availability:
-          description: Object where property names are roomTypeId 
+        roomTypes:
+          description: Object where property names are roomTypeId
           type: object
           additionalProperties:
             type: array

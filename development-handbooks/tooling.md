@@ -74,12 +74,19 @@ in `.travis.yml` to use `npm install` in greenkeeper builds and `npm ci` everywh
 - Some packages that are used for example for builds might not get properly updated (for example Babel broke). Make sure that you test all
 `npm scripts` and other stuff not executed by `npm test`.
 
-## now.sh (http://now.sh)
+## now.sh (https://now.sh)
 
-Container based hosting. Majority of our client facing apps is running from there
+Container based hosting. Some of our client facing apps are running from there
 either as NPM applications or Docker containers.
 
-See [App deployment page](app-deployment.md) for details.
+See [now.sh deployment page](app-deployment/now.md) for details.
+
+## AWS (https://aws.amazon.com/)
+
+If we need something special, we use AWS. We try to run as much as possible
+from [ECS](https://aws.amazon.com/ecs/) via Docker containers.
+
+See [AWS deployment page](app-deployment/aws.md) for details.
 
 ## Infura (https://infura.io//)
 
@@ -94,3 +101,7 @@ as https://swarm-gateways.net/ is.
 
 Alternatively, it might be possible to use https://swarm.blockscan.com/
 but we don't have a big history with them.
+
+## Cloudflare (https://www.cloudflare.com/)
+
+Proxy for almost every service we are running. Also, our DNS is there.

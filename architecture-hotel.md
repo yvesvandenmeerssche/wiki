@@ -39,10 +39,10 @@ Why we decided to use off-chain storage? Blockchain is a distributed storage but
 
 ### 0 - Register and manage a hotel and inventory
 
-*We build a wt-write-api to make this process more convenient.*
+*We build a [wt-write-api](https://github.com/windingtree/wt-write-api) to make this process more convenient.*
 
 Hotel registration consists of these steps
-- select an [update-API] server
+- select an [update-API](https://github.com/windingtree/wt-update-api) server
 - publish hotel data (description, location, uri of the registered [update API] server, room types, rate plans, ...) in a [specific format] on a HTTPs or [Swarm](http://swarm-guide.readthedocs.io/en/latest/introduction.html) address.
 - register the hotel in [Winding Tree Index] with the uri of the published hotel data.
 
@@ -50,10 +50,26 @@ Hotel data modification steps
 - update the data on distributed storage
 - notify selected [udpate-API] server about the data change
 
-### 1 - Get list of existing hotels
+### 1-3,5 - List of existing hotels, inventory, availability and price
+
+To list hotels 
+
+- Call [Winding Tree Index](https://github.com/windingtree/wt-contracts/blob/master/contracts/WTIndex.sol) smart contract's list method getHotes() which returns list of addresses of all [smart contracts of hotels](https://github.com/windingtree/wt-contracts/blob/master/contracts/hotel/Hotel.sol) registered on [WTIndex](https://github.com/windingtree/wt-contracts/blob/master/contracts/WTIndex.sol).
+- For each hotel read the [Hotel data index](https://windingtree.github.io/docs/swagger-ui/) stored on `dataUri` property of hotel's smart contract.
+- The [Hotel data index](https://windingtree.github.io/docs/swagger-ui/) contains links to all the informations about hotel, namely
+-- descriptionUri - uri of the description json file holding basic information about hotel like name, basic text description, contacts, geographical location, images urls, ... 
+-- ratePlansUri - uri of ratePlans description file well rate plans (prices)
+-- availabilityUri - uri of availability file
+-- notificationsUri - uri of [Notification server (wt-updata-api)](https://github.com/windingtree/wt-update-api) this hotel uses to notify about changes in data (availability, prices, other)
+-- bookingUri - uri to the hotel's booking API endpoint (see *6 - Book* below)
 
 
+### 6 - Book
+Hotel publishes bookingUri as part of it's [Hotel data index](https://windingtree.github.io/docs/swagger-ui/)  of endpoint on which the hotel accepts online reservations in [standardized protocol](https://windingtree.github.io/docs/swagger-ui/booking-api.html#/default/post_booking). If this uri is empty, the hotel does not have an automated reservation gateway, booking is possible using published contact information.
 
+
+### 7 - Pay
+Supported payment methods are yet to be defined. Most bookings are payed at the time of arrival for non-business custommers and also payment information can be part of hotel's response to booking request (see *6 - Book* chapter above)
 
 
 ### Distribution Steps

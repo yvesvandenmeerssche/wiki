@@ -51,9 +51,6 @@ Hotel data modification steps
 - notify selected [udpate-API] server about the data change
 
 ### 1 - Get list of existing hotels (index)
-### 2 - Get details (description, pictures, ...)
-### 3 - List inventory (rooms, services, ...)
-### 5 - Get current availability/price
 
 To list hotels 
 
@@ -66,13 +63,21 @@ To list hotels
 -- notificationsUri - uri of [Notification server (wt-updata-api)](https://github.com/windingtree/wt-update-api) this hotel uses to notify about changes in data (availability, prices, other)
 -- bookingUri - uri to the hotel's booking API endpoint (see *6 - Book* below)
 
+### 2 - Get details (description, pictures, ...)
+See [Get list of existing hotels (index)](#1---get-list-of-existing-hotels-index) and read the description at descriptionUri.
+### 3 - List inventory (rooms, services, ...)
+See [Get list of existing hotels (index)](#1---get-list-of-existing-hotels-index) and extract roomTypes from file at descriptionUri.
+### 5 - Get current availability/price
+See [Get list of existing hotels (index)](#1---get-list-of-existing-hotels-index) to get [Hotel data index](https://windingtree.github.io/docs/swagger-ui/) then
+- read file on availabilityUri to get [Availability](https://windingtree.github.io/docs/swagger-ui/) information and 
+- read file at ratePlansUri to get [ratePlans](https://windingtree.github.io/docs/swagger-ui/) pricing information.
 
 ### 6 - Book
 Hotel publishes bookingUri as part of it's [Hotel data index](https://windingtree.github.io/docs/swagger-ui/)  of endpoint on which the hotel accepts online reservations in [standardized protocol](https://windingtree.github.io/docs/swagger-ui/booking-api.html#/default/post_booking). If this uri is empty, the hotel does not have an automated reservation gateway, booking is possible using published contact information.
 
 
 ### 7 - Pay
-Supported payment methods are yet to be defined. Most bookings are payed at the time of arrival for non-business custommers and also payment information can be part of hotel's response to booking request (see *6 - Book* chapter above)
+Supported payment methods are yet to be defined. Most bookings are payed at the time of arrival for non-business custommers and also payment information can be part of hotel's response to booking request (see *6 - Book* chapter above).
 
 
 ### Distribution Steps

@@ -27,8 +27,8 @@ Why we decided to use off-chain storage? Blockchain is a distributed storage but
 
 ## The operations on WT
 
-0) Register and manage a hotel and inventory
-1) Get list of existing hotels (index)
+0) [Register and manage a hotel and inventory](#0---register-and-manage-a-hotel-and-inventory)
+1) [Get list of existing hotels (index)](#1---get-list-of-existing-hotels-index)
 2) Get details (description, pictures, ...)
 3) List inventory (rooms, services, ...)
 4) Search data by attributes
@@ -50,7 +50,10 @@ Hotel data modification steps
 - update the data on distributed storage
 - notify selected [udpate-API] server about the data change
 
-### 1-3,5 - List of existing hotels, inventory, availability and price
+### 1 - Get list of existing hotels (index)
+### 2 - Get details (description, pictures, ...)
+### 3 - List inventory (rooms, services, ...)
+### 5 - Get current availability/price
 
 To list hotels 
 

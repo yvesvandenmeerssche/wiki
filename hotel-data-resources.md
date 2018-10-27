@@ -18,6 +18,7 @@ This is a list of APIs we know about and have checked during our research of the
 - [Booking.com](https://connect.booking.com/user_guide/site/en-US/user_guide.html?lang=en)
 - [Trivago Booking](https://developer.trivago.com/expressbooking/)
 - [Mews](https://www.mewssystems.com/developers/)
+- [WuBook channel manager, OTA](https://tdocs.wubook.net/index.html)
 
 Very crude an incomplete field by field comparison of those APIs can be found in
 [this Google spreadsheet](https://docs.google.com/spreadsheets/d/1dqQVvF7IIkurIMSMENbB04Fe2HOxbvI9DgYxnhPoGv8/edit?usp=sharing).

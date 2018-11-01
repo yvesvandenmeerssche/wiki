@@ -6,8 +6,8 @@ on the Winding Tree platform.
 We are using multiple services for running our stuff:
 
 - GitHub pages
-- [now.sh](now.sh)
-- [AWS](aws.sh)
+- [now.sh](now.md)
+- [AWS](aws.md)
 
 You can see details about it in the respective documents. There
 is no golden rule for what goes where, but in general, GitHub pages

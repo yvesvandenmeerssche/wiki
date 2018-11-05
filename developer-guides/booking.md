@@ -5,7 +5,7 @@
 Booking is done by means of sending a POST request to
 the specified URL. Each hotel on the index can optionally specify
 a `bookingUri` that should point to a server implementing the
-[wt-booking-api](https://github.com/windingtree/wt-update-api) interface.
+[wt-booking-api](https://github.com/windingtree/wt-booking-api) interface.
 
 What exactly happens on the backend side is more or less up to
 the system that handles it. Generally, it should take care at

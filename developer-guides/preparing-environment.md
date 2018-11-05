@@ -24,7 +24,8 @@ actions.
 4. Configure and deploy a [wt-read-api](https://github.com/windingtree/wt-read-api) instance.
 5. Configure and deploy a [wt-write-api](https://github.com/windingtree/wt-write-api) instance. 
 6. Configure and deploy a [wt-update-api](https://github.com/windingtree/wt-update-api) instance.
-7. As a final step, you might use [wt-fixtures](https://github.com/windingtree/wt-fixtures) to
+7. Configure and deploy a [wt-search-api](https://github.com/windingtree/wt-search-api) instance.
+8. As a final step, you might use [wt-fixtures](https://github.com/windingtree/wt-fixtures) to
    populate your WT instance with some test data (hand-crafted or generated).
 
 ## Resetting an existing environment

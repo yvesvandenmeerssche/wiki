@@ -31,6 +31,8 @@ example browser app for accessing Winding Tree assets. This will become obsolete
 very soon.
 - [wt-update-api](https://github.com/windingtree/wt-update-api) - REST-like
 API that facilitates the publish / subscribe mechanism within WT.
+- [wt-search-api](https://github.com/windingtree/wt-search-api) - REST-like
+API for hotel filtering / sorting.
 
 ## Development workflow
 

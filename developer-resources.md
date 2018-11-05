@@ -46,6 +46,7 @@ might not be always available.
 - **wt-write-api** - https://github.com/windingtree/wt-write-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-write-api.windingtree.com/docs)
 - **wt-update-api** - https://github.com/windingtree/wt-update-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-update-api.windingtree.com/docs)
 - **wt-booking-api** - https://github.com/windingtree/wt-booking-api/blob/master/docs/swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/booking-api.html)
+- **wt-search-api** - https://github.com/windingtree/wt-search-api/blob/master/docs/swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/search-api.html)
 - **Data format** - https://github.com/windingtree/wiki/blob/master/hotel-data-swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/)
 
 ## What is the current version?
@@ -84,6 +85,7 @@ We currently have two publicly accessible WT environments -
 - a set of WT smart contracts, deployed to the Ropsten Ethereum network.
 - an instance of wt-write-api
 - an instance of wt-read-api
+- an instance of wt-search-api
 - an instance of hotel explorer web application
 
 Just bear in mind that publicly available instances of the write
@@ -105,6 +107,7 @@ fake data. These are the key addresses:
 - WT index: 0x3b476ac17ffea8dcf2dbd5ef787a5baeeebe9984
 - WT Read API: https://playground-api.windingtree.com
 - WT Write API: https://playground-write-api.windingtree.com
+- WT Search API: https://playground-search-api.windingtree.com
 - Hotel explorer: https://hotel-explorer-playground.windingtree.com
 - WT Update API: https://playground-update-api.windingtree.com
 
@@ -118,6 +121,7 @@ data should be real. Currently used by the crypto booking app
 - WT index: 0x933198455e38925bccb4bfe9fb59bac31d00b4d3
 - WT Read API: https://demo-api.windingtree.com
 - WT Write API: https://demo-write-api.windingtree.com
+- WT Search API: https://demo-search-api.windingtree.com
 - Hotel explorer: https://hotel-explorer-demo.windingtree.com
 
 ### Building another environment

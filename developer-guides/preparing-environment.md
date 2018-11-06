@@ -1,7 +1,7 @@
 # Preparing the whole WT environment
 
 To work with WT, you can use one of our [publicly accessible WT
-environments](../developer-resources.md##publicly-available-wt-deployments).
+environments](../developer-resources.md#publicly-available-wt-deployments).
 If you wish to prepare your own environment instead, read
 further.
 

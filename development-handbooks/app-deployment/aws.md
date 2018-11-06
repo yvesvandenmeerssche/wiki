@@ -16,18 +16,19 @@ are using Application Load Balancer.
 - **Fargate** - Runs service on AWS managed cluster. More
 expensive, but you don't have to take care of EC2 instances.
 - **Virtual Private Cloud (VPC)** - Virtual private network segment.
+- **Cloudwatch** - AWS logging service.
 
 ## How to create the environment
 
 Ideally this is not really necessary, because you can deploy
 your app into a shared cluster that's already running.
 
-1. Start new ECS cluster. Do not use Fargate (for now).
-We are using `t3.small` instances. Pick any size you need,
-you can change it later. As for scaling, you should be
-fine with a single instance to start with. Don't forget to
-adjust the scaling rules (Autoscaling group) later. For your VPC,
-use mulitple subnets.
+1. Start new ECS cluster (we are using `shared-docker-cluster-t3`
+name here. Do not use Fargate (for now). We are using `t3.small`
+instances. Pick any size you need, you can change it later.
+As for scaling, you should be fine with a single instance to
+start with. Don't forget to adjust the scaling rules (Autoscaling
+group) later. For your VPC, use mulitple subnets.
 1. Start an Application Load Balancer. This is required when
 you run multiple services from your cluster - i. e. you need
 routing. Set its Security group to accept only HTTP and HTTPS
@@ -35,16 +36,42 @@ inbound connections. **ELB has to be in the same VPC as your cluster.**
 It will create a default target group, we'll change it later.
 If you want HTTPS only (and you should), set up a default routing
 rule for HTTP in a way that it redirects all traffic to port 443.
-1. Set Security group to your cluster in a way that it accepts
+1. Set Security group to your ECS cluster in a way that it accepts
 All traffic, but *only* from a Security group that your ELB is in.
+1. Create Cloudwatch log group for your whole cluster. We use
+`shared-docker-cluster-t3` name here.
+1. Create new Policy in IAM to enable your ECS to write logs:
+
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "VisualEditor0",
+                "Effect": "Allow",
+                "Action": [
+                    "logs:CreateLogStream",
+                    "logs:DescribeLogStreams",
+                    "logs:PutLogEvents"
+                ],
+                "Resource": [
+                    "arn:aws:logs:eu-west-1:*:log-group:shared-docker-cluster-t3:*:*",
+                    "arn:aws:logs:eu-west-1:*:log-group:shared-docker-cluster-t3"
+                ]
+            }
+        ]
+    }
+    ```
+1. And attach this policy to the role that your instances in
+the cluster are getting (`ecsInstanceRole` by default).
 
 ELB gets connected to ECS cluster via Target groups. Target group is
-basically a pipe that has a ELB on one side and containers on the other.
+basically a pipe that has an ELB on one side and containers on the other.
 You will setup a separate target group for every service that runs in
 your cluster.
 
 
-## How to add a new service
+## How to add a new application
 
 A Service is always based on a Task. Task is like a template for a service.
 We will be using a separate task for every container. This means that
@@ -186,6 +213,12 @@ there are:
     - CPU units: That depends on your usage. You might reserve some CPU time for
     your app.
     - Env variables: These are used during `docker run` command.
+    - Log configuration: These are used for relaying logs to Cloudwatch.
+        - awslogs-group - Name of your prepared Cloudwatch log group (ideally
+        the same as cluster name)
+        - awslogs-region - Region, here we use `eu-west-1`
+        - awslogs-stream-prefix - All logs from this task will get this prefix. We
+        can use `playground-wt-demo-app` to identify this service.
 1. Create a service. On task detail, pick the latest revision and select `Create
 service` from Actions. There:
     - Type: EC2
@@ -220,9 +253,17 @@ service` from Actions. There:
     WT_CONFIG=$ENVIRONMENT
     INFURA_API_KEY=$INFURA_API_KEY # This can be passed from encrypted Travis ENV VARs
 
-    # Change port, environment variables, memoryReservation and cpu to be in line with your task
-    # definition.
+    # Change port, environment variables, memoryReservation, cpu and logging options to be in
+    # line with your task definition.
     TASK_DEF="[{\"portMappings\": [{\"hostPort\": 0,\"protocol\": \"tcp\",\"containerPort\": 8000}],
+        \"logConfiguration\": {
+           \"logDriver\": \"awslogs\",
+           \"options\": {
+             \"awslogs-group\": \"shared-docker-cluster-t3\",
+             \"awslogs-region\": \"$AWS_REGION\",
+             \"awslogs-stream-prefix\": \"$ENVIRONMENT-wt-demo-app\"
+           }
+        },
         \"environment\": [
           {
             \"name\": \"INFURA_API_KEY\",

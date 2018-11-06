@@ -1,7 +1,7 @@
 openapi: 3.0.0
 servers: []
 info:
-  version: "0.0.10"
+  version: "0.1.0"
   title: Hotel definitions
   description: Object definitions for hotel API
 paths: {}
@@ -37,8 +37,14 @@ components:
       description: Landing index for hotel resources. Link to this document is stored in WT-Index smart contract hotel record
       type: object
       required:
+      - dataFormatVersion
       - descriptionUri
       properties:
+        dataFormatVersion:
+          description: Version number indicating the data format specification version.
+          type: string
+          format: semver
+          maxLength: 20
         descriptionUri:
           description: URI pointing to the HotelDescription data resource
           $ref: '#/components/schemas/UriType'

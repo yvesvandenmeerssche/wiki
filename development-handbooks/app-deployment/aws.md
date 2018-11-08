@@ -213,7 +213,7 @@ there are:
     - CPU units: That depends on your usage. You might reserve some CPU time for
     your app.
     - Env variables: These are used during `docker run` command.
-    - Log configuration: These are used for relaying logs to Cloudwatch.
+    - Log configuration: These are used for relaying logs to Cloudwatch. Select `awslogs` and set:
         - awslogs-group - Name of your prepared Cloudwatch log group (ideally
         the same as cluster name)
         - awslogs-region - Region, here we use `eu-west-1`

@@ -56,7 +56,7 @@ components:
           description: URI pointing to Availability data resource
         notificationsUri:
           $ref: '#/components/schemas/UriType'
-          description: URI pointing to an instance of the WT Update service.
+          description: URI pointing to an instance of the WT Notification service.
         bookingUri:
           $ref: '#/components/schemas/UriType'
           description: URI pointing to an instance of the WT Booking service.

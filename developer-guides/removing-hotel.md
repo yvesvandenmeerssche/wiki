@@ -83,7 +83,7 @@ const PASSWORD = 'windingtree';
     console.log('transaction to check: ', receipt.transactionHash);
     // Ideally, publish a deletion notification for subscribers
     // to immediately find out about the change. For more
-    // details, please have a look at https://github.com/windingtree/wt-update-api.
+    // details, please have a look at https://github.com/windingtree/wt-notification-api.
   } finally {
     // Don't forget to lock your wallet after you are done, you
     // don't want to leave your private keys lying around.

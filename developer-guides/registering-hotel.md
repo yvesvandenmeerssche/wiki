@@ -89,7 +89,7 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
     console.log('hotel address: ', newHotelAddress);
     // Ideally, publish a creation notification for subscribers
     // to immediately find out about the new hotel. For more
-    // details, please have a look at https://github.com/windingtree/wt-update-api.
+    // details, please have a look at https://github.com/windingtree/wt-notification-api.
   } finally {
     // Don't forget to lock your wallet after you are done, you
     // don't want to leave your private keys lying around.
@@ -145,7 +145,7 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
 
 ```json
 {
-  "notifications": "https://playground-update-api.windingtree.com/",
+  "notifications": "https://playground-notification-api.windingtree.com/",
   "description": {
     "name": "Random hotel",
     "description": "**Beautiful** hotel located in the center of _Prague, Czech Republic_.",

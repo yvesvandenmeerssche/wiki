@@ -44,7 +44,7 @@ might not be always available.
 - **wt-js-libs** - https://github.com/windingtree/wt-js-libs/blob/develop/docs/reference.md
 - **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-api.windingtree.com/docs)
 - **wt-write-api** - https://github.com/windingtree/wt-write-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-write-api.windingtree.com/docs)
-- **wt-update-api** - https://github.com/windingtree/wt-update-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-update-api.windingtree.com/docs)
+- **wt-notification-api** - https://github.com/windingtree/wt-notification-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-notification-api.windingtree.com/docs)
 - **wt-booking-api** - https://github.com/windingtree/wt-booking-api/blob/master/docs/swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/booking-api.html)
 - **wt-search-api** - https://github.com/windingtree/wt-search-api/blob/master/docs/swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/search-api.html)
 - **Data format** - https://github.com/windingtree/wiki/blob/master/hotel-data-swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/)
@@ -95,7 +95,7 @@ though. In practice, this means that you might sometimes need to
 re-create an account in order to continue working with
 previously created hotels.
 
-In addition to this, there is also an instance of wt-update-api in
+In addition to this, there is also an instance of wt-notification-api in
 Playground whose database will be purged irregularly.
 
 ### Playground
@@ -109,7 +109,7 @@ fake data. These are the key addresses:
 - WT Write API: https://playground-write-api.windingtree.com
 - WT Search API: https://playground-search-api.windingtree.com
 - Hotel explorer: https://hotel-explorer-playground.windingtree.com
-- WT Update API: https://playground-update-api.windingtree.com
+- WT Notification API: https://playground-notification-api.windingtree.com
 
 ### Demo
 

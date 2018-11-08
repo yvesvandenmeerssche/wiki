@@ -375,109 +375,107 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
     }
   },
   "availability": {
-    "latestSnapshot": {
-      "availability": {
-        "twin-bed": [
-          {
-            "date": "2018-07-07",
-            "quantity": 2,
-            "restrictions": {
-              "noArrival": true
-            }
-          },
-          {
-            "date": "2018-07-08",
-            "quantity": 2,
-            "restrictions": {
-              "noDeparture": true
-            }
-          },
-          {
-            "date": "2018-07-09",
-            "quantity": 2
-          },
-          {
-            "date": "2018-07-10",
-            "quantity": 1
-          },
-          {
-            "date": "2018-07-11",
-            "quantity": 0
-          },
-          {
-            "date": "2018-07-12",
-            "quantity": 0
-          },
-          {
-            "date": "2018-07-13",
-            "quantity": 0
-          },
-          {
-            "date": "2018-07-14",
-            "quantity": 0,
-            "restrictions": {
-              "noArrival": true
-            }
-          },
-          {
-            "date": "2018-07-15",
-            "quantity": 0,
-            "restrictions": {
-              "noDeparture": true
-            }
+    "roomTypes": {
+      "twin-bed": [
+        {
+          "date": "2018-07-07",
+          "quantity": 2,
+          "restrictions": {
+            "noArrival": true
           }
-        ],
-        "king-size-bed": [
-          {
-            "date": "2018-07-07",
-            "quantity": 2,
-            "restrictions": {
-              "noArrival": true
-            }
-          },
-          {
-            "date": "2018-07-08",
-            "quantity": 2,
-            "restrictions": {
-              "noDeparture": true
-            }
-          },
-          {
-            "date": "2018-07-09",
-            "quantity": 2
-          },
-          {
-            "date": "2018-07-10",
-            "quantity": 1
-          },
-          {
-            "date": "2018-07-11",
-            "quantity": 0
-          },
-          {
-            "date": "2018-07-12",
-            "quantity": 0
-          },
-          {
-            "date": "2018-07-13",
-            "quantity": 0
-          },
-          {
-            "date": "2018-07-14",
-            "quantity": 0,
-            "restrictions": {
-              "noArrival": true
-            }
-          },
-          {
-            "date": "2018-07-15",
-            "quantity": 0,
-            "restrictions": {
-              "noDeparture": true
-            }
+        },
+        {
+          "date": "2018-07-08",
+          "quantity": 2,
+          "restrictions": {
+            "noDeparture": true
           }
-        ]
-      }
+        },
+        {
+          "date": "2018-07-09",
+          "quantity": 2
+        },
+        {
+          "date": "2018-07-10",
+          "quantity": 1
+        },
+        {
+          "date": "2018-07-11",
+          "quantity": 0
+        },
+        {
+          "date": "2018-07-12",
+          "quantity": 0
+        },
+        {
+          "date": "2018-07-13",
+          "quantity": 0
+        },
+        {
+          "date": "2018-07-14",
+          "quantity": 0,
+          "restrictions": {
+            "noArrival": true
+          }
+        },
+        {
+          "date": "2018-07-15",
+          "quantity": 0,
+          "restrictions": {
+            "noDeparture": true
+          }
+        }
+      ],
+      "king-size-bed": [
+        {
+          "date": "2018-07-07",
+          "quantity": 2,
+          "restrictions": {
+            "noArrival": true
+          }
+        },
+        {
+          "date": "2018-07-08",
+          "quantity": 2,
+          "restrictions": {
+            "noDeparture": true
+          }
+        },
+        {
+          "date": "2018-07-09",
+          "quantity": 2
+        },
+        {
+          "date": "2018-07-10",
+          "quantity": 1
+        },
+        {
+          "date": "2018-07-11",
+          "quantity": 0
+        },
+        {
+          "date": "2018-07-12",
+          "quantity": 0
+        },
+        {
+          "date": "2018-07-13",
+          "quantity": 0
+        },
+        {
+          "date": "2018-07-14",
+          "quantity": 0,
+          "restrictions": {
+            "noArrival": true
+          }
+        },
+        {
+          "date": "2018-07-15",
+          "quantity": 0,
+          "restrictions": {
+            "noDeparture": true
+          }
+        }
+      ]
     }
   }
 }

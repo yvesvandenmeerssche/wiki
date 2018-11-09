@@ -30,8 +30,9 @@ information and links to what has changed and how anyone can update
 their integration to adapt (and how can they get help if needed).
 This should go out a few days before the reset.
 - [ ] Create and deploy new iteration of WTIndex.
-- [ ] Document the new WTIndex address. (TODO create a page for this,
-start with work from #60)
+- [ ] Document the new WTIndex address in
+[deployments](https://github.com/windingtree/wiki/blob/master/deployments.md)
+page. We might want to keep the old index addresses there as well.
 - [ ] Deploy updated wt-fixtures to the new WTIndex.
 - [ ] Wait for the announced date.
 - [ ] Deploy all up-to-date tooling in said envirnoment (wt-read-api,

@@ -19,6 +19,13 @@ In addition to this, there is also an instance of wt-notification-api in
 both environments whose database will be purged irregularly. So your
 subscriptions might need to be re-created from time to time.
 
+**Note: None of these environments is really stable. It can change at any time,
+and your data might be rendered inaccessible, obsolete and useless. However, we
+cannot delete your data. It will still be accessible with some effort. If you
+are serious with our platform, please follow our GitHub, social channels and
+[Google Group](https://groups.google.com/forum/#!forum/windingtree) to be
+informed about the upcoming changes.**
+
 ## Playground
 
 The "playground" environment is supposed to be used by anyone

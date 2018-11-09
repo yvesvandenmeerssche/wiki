@@ -89,7 +89,7 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
     console.log('hotel address: ', newHotelAddress);
     // Ideally, publish a creation notification for subscribers
     // to immediately find out about the new hotel. For more
-    // details, please have a look at https://github.com/windingtree/wt-update-api.
+    // details, please have a look at https://github.com/windingtree/wt-notification-api.
   } finally {
     // Don't forget to lock your wallet after you are done, you
     // don't want to leave your private keys lying around.
@@ -111,8 +111,10 @@ the data might be different.
 
 - An account consists of your Ethereum wallet (password-protected) and a configuration of *uploaders*,
 which tell the API where to upload the off-chain data.
+- The JSON-format wallet can easily be created locally with [mycrypto](https://download.mycrypto.com/).
 - In this example, we are using our demo wallet with password `windingtree`.
 - In this example, we are using Swarm as our place for data and we are using a public gateway.
+- For different configuration of data storage, please go see [wt-write-api documentation](https://github.com/windingtree/wt-write-api/tree/develop#uploaders)
 - This `json` should be saved as `create-account.json` in a directory where you will be running the `curl` command.
 - **Never use this wallet for anything in production. Others would have access to your assets as well.**
 
@@ -143,7 +145,7 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
 
 ```json
 {
-  "notifications": "https://playground-update-api.windingtree.com/",
+  "notifications": "https://playground-notification-api.windingtree.com/",
   "description": {
     "name": "Random hotel",
     "description": "**Beautiful** hotel located in the center of _Prague, Czech Republic_.",
@@ -373,109 +375,107 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
     }
   },
   "availability": {
-    "latestSnapshot": {
-      "availability": {
-        "twin-bed": [
-          {
-            "date": "2018-07-07",
-            "quantity": 2,
-            "restrictions": {
-              "noArrival": true
-            }
-          },
-          {
-            "date": "2018-07-08",
-            "quantity": 2,
-            "restrictions": {
-              "noDeparture": true
-            }
-          },
-          {
-            "date": "2018-07-09",
-            "quantity": 2
-          },
-          {
-            "date": "2018-07-10",
-            "quantity": 1
-          },
-          {
-            "date": "2018-07-11",
-            "quantity": 0
-          },
-          {
-            "date": "2018-07-12",
-            "quantity": 0
-          },
-          {
-            "date": "2018-07-13",
-            "quantity": 0
-          },
-          {
-            "date": "2018-07-14",
-            "quantity": 0,
-            "restrictions": {
-              "noArrival": true
-            }
-          },
-          {
-            "date": "2018-07-15",
-            "quantity": 0,
-            "restrictions": {
-              "noDeparture": true
-            }
+    "roomTypes": {
+      "twin-bed": [
+        {
+          "date": "2018-07-07",
+          "quantity": 2,
+          "restrictions": {
+            "noArrival": true
           }
-        ],
-        "king-size-bed": [
-          {
-            "date": "2018-07-07",
-            "quantity": 2,
-            "restrictions": {
-              "noArrival": true
-            }
-          },
-          {
-            "date": "2018-07-08",
-            "quantity": 2,
-            "restrictions": {
-              "noDeparture": true
-            }
-          },
-          {
-            "date": "2018-07-09",
-            "quantity": 2
-          },
-          {
-            "date": "2018-07-10",
-            "quantity": 1
-          },
-          {
-            "date": "2018-07-11",
-            "quantity": 0
-          },
-          {
-            "date": "2018-07-12",
-            "quantity": 0
-          },
-          {
-            "date": "2018-07-13",
-            "quantity": 0
-          },
-          {
-            "date": "2018-07-14",
-            "quantity": 0,
-            "restrictions": {
-              "noArrival": true
-            }
-          },
-          {
-            "date": "2018-07-15",
-            "quantity": 0,
-            "restrictions": {
-              "noDeparture": true
-            }
+        },
+        {
+          "date": "2018-07-08",
+          "quantity": 2,
+          "restrictions": {
+            "noDeparture": true
           }
-        ]
-      }
+        },
+        {
+          "date": "2018-07-09",
+          "quantity": 2
+        },
+        {
+          "date": "2018-07-10",
+          "quantity": 1
+        },
+        {
+          "date": "2018-07-11",
+          "quantity": 0
+        },
+        {
+          "date": "2018-07-12",
+          "quantity": 0
+        },
+        {
+          "date": "2018-07-13",
+          "quantity": 0
+        },
+        {
+          "date": "2018-07-14",
+          "quantity": 0,
+          "restrictions": {
+            "noArrival": true
+          }
+        },
+        {
+          "date": "2018-07-15",
+          "quantity": 0,
+          "restrictions": {
+            "noDeparture": true
+          }
+        }
+      ],
+      "king-size-bed": [
+        {
+          "date": "2018-07-07",
+          "quantity": 2,
+          "restrictions": {
+            "noArrival": true
+          }
+        },
+        {
+          "date": "2018-07-08",
+          "quantity": 2,
+          "restrictions": {
+            "noDeparture": true
+          }
+        },
+        {
+          "date": "2018-07-09",
+          "quantity": 2
+        },
+        {
+          "date": "2018-07-10",
+          "quantity": 1
+        },
+        {
+          "date": "2018-07-11",
+          "quantity": 0
+        },
+        {
+          "date": "2018-07-12",
+          "quantity": 0
+        },
+        {
+          "date": "2018-07-13",
+          "quantity": 0
+        },
+        {
+          "date": "2018-07-14",
+          "quantity": 0,
+          "restrictions": {
+            "noArrival": true
+          }
+        },
+        {
+          "date": "2018-07-15",
+          "quantity": 0,
+          "restrictions": {
+            "noDeparture": true
+          }
+        }
+      ]
     }
   }
 }

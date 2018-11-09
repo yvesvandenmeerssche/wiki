@@ -1,7 +1,7 @@
 openapi: 3.0.0
 servers: []
 info:
-  version: "0.0.8"
+  version: "0.1.0"
   title: Hotel definitions
   description: Object definitions for hotel API
 paths: {}
@@ -37,20 +37,29 @@ components:
       description: Landing index for hotel resources. Link to this document is stored in WT-Index smart contract hotel record
       type: object
       required:
+      - dataFormatVersion
       - descriptionUri
       properties:
+        dataFormatVersion:
+          description: Version number indicating the data format specification version.
+          type: string
+          format: semver
+          maxLength: 20
         descriptionUri:
-          description: URI pointing to the HotelDescription resource
+          description: URI pointing to the HotelDescription data resource
           $ref: '#/components/schemas/UriType'
         ratePlansUri:
-          description: URI pointing to RatePlans object
+          description: URI pointing to RatePlans data resource
           $ref: '#/components/schemas/UriType'
         availabilityUri:
           $ref: '#/components/schemas/UriType'
-          description: URI pointing to Availability
+          description: URI pointing to Availability data resource
         notificationsUri:
           $ref: '#/components/schemas/UriType'
-          description: URI pointing to an instance of the WT Update service.
+          description: URI pointing to an instance of the WT Notification service.
+        bookingUri:
+          $ref: '#/components/schemas/UriType'
+          description: URI pointing to an instance of the WT Booking service.
 
     HotelDescription:
       title: Hotel description
@@ -205,7 +214,8 @@ components:
         Rate plan for specified room types. All prices are meant for a single room for a single night for a single person.
         
         Algorithm to calculate price - for now, the result should always be the cheapest price for a consumer.
-        - pick the right ratePlan(s) based on availableForTravel field and provided booking dates
+        - choose the currency you want to compute the price in
+        - pick the right ratePlan(s) based on the chosen currency, availableForTravel field and provided booking dates
         - check restrictions and drop rate plans that the booking doesn't meet
         - for every rate plan as rp_i
           - for every person as p_j
@@ -219,6 +229,7 @@ components:
       - name
       - updatedAt
       - price
+      - roomTypeIds
       properties:
         name:
           description: Name of the rate plan to show to users
@@ -236,7 +247,7 @@ components:
         roomTypeIds:
           type: array
           description: List of all room types that this rate plan applies to
-          minItems: 0
+          minItems: 1
           maxItems: 30
           uniqueItems: true
           items:
@@ -336,23 +347,17 @@ components:
               type: integer
           
     Availability:
-      description: Availability data. We're keeping them nested to make the future extension easier.
-      type: object
-      properties:
-        latestSnapshot:
-          $ref: '#/components/schemas/AvailabilitySnapshot'
-    AvailabilitySnapshot:
       description: Full snapshot of availability in time of `updatedAt`
       type: object
       required:
       - updatedAt
-      - availability
+      - roomTypes
       properties:
         updatedAt:
           type: string
           format: date-time
-        availability:
-          description: Object where property names are roomTypeId 
+        roomTypes:
+          description: Object where property names are roomTypeId
           type: object
           additionalProperties:
             type: array
@@ -496,7 +501,6 @@ components:
         city:
           type: string
           maxLength: 150
-          example: 
         state:
           type: string
           maxLength: 150

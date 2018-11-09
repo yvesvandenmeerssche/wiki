@@ -94,7 +94,7 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
     }
     // Ideally, publish an update notification for subscribers
     // to immediately find out about the change. For more
-    // details, please have a look at https://github.com/windingtree/wt-update-api.
+    // details, please have a look at https://github.com/windingtree/wt-notification-api.
   } finally {
     // Don't forget to lock your wallet after you are done, you
     // don't want to leave your private keys lying around.
@@ -110,7 +110,7 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
 you need to have an account registered. (See [registering hotel](registering-hotel.md) to find out how to do that).
 - The sample deployment on https://playground-write-api.windingtree.com is for demonstration
 purposes only and is re-deployed every 24 hours. Your accounts will be lost after re-deployment.
-- This code works with `0.1.0` version deployed on https://playground-write-api.windingtree.com although
+- This code works with `0.5.0` version deployed on https://playground-write-api.windingtree.com although
 the data will be different.
 - Hotel update notification will be published automatically by
 the API server to the given notifications address, if available.
@@ -121,6 +121,9 @@ the API server to the given notifications address, if available.
 - The hotel data format is the same as in [registering hotel](registering-hotel.md).
 - Whole data documents are updated (i. e. if you are sending a description, whole description
 will be replaced)
+- If for some reason the `PATCH` method is failing (for example because the original data
+cannot be accessed), oyou can use `PUT` HTTP method that will replace all of the hotel data
+(i. e. it will contain exactly that data that you send with your `PUT` request).
 
 ```sh
 # Replace X-Access-Key with the result of account creation above

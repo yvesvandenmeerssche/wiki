@@ -44,7 +44,9 @@ might not be always available.
 - **wt-js-libs** - https://github.com/windingtree/wt-js-libs/blob/develop/docs/reference.md
 - **wt-read-api** - https://github.com/windingtree/wt-read-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-api.windingtree.com/docs)
 - **wt-write-api** - https://github.com/windingtree/wt-write-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-write-api.windingtree.com/docs)
-- **wt-update-api** - https://github.com/windingtree/wt-update-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-update-api.windingtree.com/docs)
+- **wt-notification-api** - https://github.com/windingtree/wt-notification-api/blob/master/docs/swagger.yaml or [more readable here](https://playground-notification-api.windingtree.com/docs)
+- **wt-booking-api** - https://github.com/windingtree/wt-booking-api/blob/master/docs/swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/booking-api.html)
+- **wt-search-api** - https://github.com/windingtree/wt-search-api/blob/master/docs/swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/search-api.html)
 - **Data format** - https://github.com/windingtree/wiki/blob/master/hotel-data-swagger.yaml or [more readable here](https://windingtree.github.io/docs/swagger-ui/)
 
 ## What is the current version?
@@ -70,11 +72,10 @@ That resulted into multiple releases in `0.2.x` series marked as `@next` on NPM.
 happened mainly in `proposal/next` branch which was eventually merged back to develop and with
 a next release back to master.
 
-In Q3 of 2018, we're working hard on making the [Summer release of 2018](https://github.com/orgs/windingtree/projects/1)
-happen. You can usually track a more granular progress in the respective repositories under simliarly
-named milestone. Our goal for that release is to version everything as `1.0.0` tag and move on from there.
-If you are serious about integrating with Winding Tree platform, that's a place to start for you. But beware,
-things might change at any time as we move forward to the end of the Summer.
+In Q3 of 2018, we were working hard on making the [Summer release of 2018](https://github.com/orgs/windingtree/projects/1)
+happen. You can read more about it on [our](https://blog.windingtree.com/summer-release-is-here-8d17877d35a) [blog](https://blog.windingtree.com/summer-2018-release-the-technical-description-bc4899f0ea0c).
+
+Q4 of 2018 is kicked off by our [Prague Hackathon](https://windingtree.com/winding-tree-hackathon-prague-2018) and we are building more pieces of the infrastructure such as a simplistic version of Booking or a Search API.
 
 ## Publicly available WT deployments
 

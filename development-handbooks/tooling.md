@@ -71,18 +71,22 @@ so be careful when accepting PRs. You might manually change the target branch of
 or change the setup of the repository if it works for you.
 - You can't use `npm ci` on Travis CI because it really does not work.  Use `install: case $TRAVIS_BRANCH in greenkeeper*) npm i;; *) npm ci;; esac;`
 in `.travis.yml` to use `npm install` in greenkeeper builds and `npm ci` everywhere else.
-- It does not work out of the box with `package-lock.json`. There's [a solution](https://github.com/greenkeeperio/greenkeeper-lockfile/) that requires
-GitHub non-project-specific token to be able to commit back from Travis. That's not great. Make the lockfile up to date by hand until Travis supports
-the improved GitHub per-project integration.
 - Some packages that are used for example for builds might not get properly updated (for example Babel broke). Make sure that you test all
 `npm scripts` and other stuff not executed by `npm test`.
 
-## now.sh (http://now.sh)
+## now.sh (https://now.sh)
 
-Container based hosting. Majority of our client facing apps is running from there
+Container based hosting. Some of our client facing apps are running from there
 either as NPM applications or Docker containers.
 
-See [App deployment page](app-deployment.md) for details.
+See [now.sh deployment page](app-deployment/now.md) for details.
+
+## AWS (https://aws.amazon.com/)
+
+If we need something special, we use AWS. We try to run as much as possible
+from [ECS](https://aws.amazon.com/ecs/) via Docker containers.
+
+See [AWS deployment page](app-deployment/aws.md) for details.
 
 ## Infura (https://infura.io//)
 
@@ -97,3 +101,7 @@ as https://swarm-gateways.net/ is.
 
 Alternatively, it might be possible to use https://swarm.blockscan.com/
 but we don't have a big history with them.
+
+## Cloudflare (https://www.cloudflare.com/)
+
+Proxy for almost every service we are running. Also, our DNS is there.

@@ -29,8 +29,10 @@ API for writing the hotel data. Useful if you're building a PMS.
 - [wt-demo-app](https://github.com/windingtree/wt-demo-app) - Client-facing
 example browser app for accessing Winding Tree assets. This will become obsolete
 very soon.
-- [wt-update-api](https://github.com/windingtree/wt-update-api) - REST-like
+- [wt-notification-api](https://github.com/windingtree/wt-notification-api) - REST-like
 API that facilitates the publish / subscribe mechanism within WT.
+- [wt-search-api](https://github.com/windingtree/wt-search-api) - REST-like
+API for hotel filtering / sorting.
 
 ## Development workflow
 
@@ -80,7 +82,7 @@ grab packages from [our npm organization](https://www.npmjs.com/org/windingtree)
 The javascript libriaries will be published solely to npm.
 
 The end-user applications (API, demo app) will be released as GitHub releases
-artifacts. See [application deployment](https://github.com/windingtree/wiki/blob/master/app-deployment.md)
+artifacts. See [application deployment](https://github.com/windingtree/wiki/blob/master/app-deployment/)
 for more information.
 
 Our releases are done by [Travis CI](https://travis-ci.org/). For now we are

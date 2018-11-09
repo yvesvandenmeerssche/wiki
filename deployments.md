@@ -32,7 +32,7 @@ The "playground" environment is supposed to be used by anyone
 who wishes to experiment with the WT platform. It contains some
 fake data. These are the key addresses:
 
-- WT index: [0x3b476ac17ffea8dcf2dbd5ef787a5baeeebe9984](https://etherscan.io/address/0x3b476ac17ffea8dcf2dbd5ef787a5baeeebe9984)
+- WT index: [0x3b476ac17ffea8dcf2dbd5ef787a5baeeebe9984](https://ropsten.etherscan.io/address/0x3b476ac17ffea8dcf2dbd5ef787a5baeeebe9984)
 - WT Read API: https://playground-api.windingtree.com
 - WT Write API: https://playground-write-api.windingtree.com
 - WT Notification API: https://playground-notification-api.windingtree.com
@@ -46,7 +46,7 @@ Supposed to serve for more "serious" (although still somewhat
 data should be real. Currently used by the crypto booking app
 (booking.windingtree.com).
 
-- WT index: [0x933198455e38925bccb4bfe9fb59bac31d00b4d3](https://etherscan.io/address/0x933198455e38925bccb4bfe9fb59bac31d00b4d3)
+- WT index: [0x933198455e38925bccb4bfe9fb59bac31d00b4d3](https://ropsten.etherscan.io/address/0x933198455e38925bccb4bfe9fb59bac31d00b4d3)
 - WT Read API: https://demo-api.windingtree.com
 - WT Write API: https://demo-write-api.windingtree.com
 - WT Search API: https://demo-search-api.windingtree.com

@@ -19,13 +19,13 @@ components:
       properties:
         address:
           description: Ethereum address of the airline
-          $ref: '#/components/schemas/EthereumAddressType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/EthereumAddressType'
         manager:
           description: Ethereum address of the manager wallet
-          $ref: '#/components/schemas/EthereumAddressType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/EthereumAddressType'
         dataUri:
           description: URI of the Airline data index (pointing off-chain)
-          $ref: '#/components/schemas/UriType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
         created:
           description: Number of a block when the hotel was created
           type: integer
@@ -46,15 +46,15 @@ components:
           maxLength: 20
         descriptionUri:
           description: URI pointing to the AirlineDescription data resource
-          $ref: '#/components/schemas/UriType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
         servicesUri:
           description: URI pointing to Services data resource
-          $ref: '#/components/schemas/UriType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
         flightsUri:
-          $ref: '#/components/schemas/UriType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
           description: URI pointing to Flights data resource
         bookingUri:
-          $ref: '#/components/schemas/UriType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
           description: URI pointing to an instance of the WT Booking service.
     AirlineDescription:
       title: Airline description.
@@ -68,18 +68,18 @@ components:
       properties:
         name:
           description: Name of the airline to display to users
-          $ref: '#/components/schemas/NameType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/NameType'
         code:
           $ref: '#/components/schemas/AirlineCodeType'
         contacts:
           type: object
-          description: List of contacts
+          description: A set of contacts.
           required:
           - general
           properties:
             general:
               description: Primary contact
-              $ref: '#/components/schemas/Contact'
+              $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/Contact'
         updatedAt:
           type: string
           description: Date-time when the data was last changed. Used by consumers to handle incremental updates and caching.
@@ -138,7 +138,7 @@ components:
           type: object
           description: Object where property names are flight numbers and values are URIs serving the Flight data resource.
           additionalProperties:
-            $ref: '#/components/schemas/UriType'
+            $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
         updatedAt:
           description: Time of the last update of flight information.
           type: string
@@ -210,51 +210,9 @@ components:
           format: float
         currency:
           description: Fare price currency.
-          $ref: '#/components/schemas/CurrencyType'
-    Contact:
-      title: Contact
-      type: object
-      properties:
-        email:
-          description: E-mail contact
-          type: string
-          format: email
-          example: joseph.urban@example.com
-          maxLength: 150
-        phone:
-          description: Phone number (with country prefix)
-          type: string
-          maxLength: 18
-          example: +44123456789
-        url:
-          description: Url to the contact web page
-          type: string
-          format: uri
-        ethereum:
-          description: Address of wallet on Ethereum
-          $ref: '#/components/schemas/EthereumAddressType'
-        additionalContacts:
-          description: More contact options, such as Whatsapp, WeChat, Telegram, twitter handle, facebook address. Once we see high demand for a particular type of contact, we can promote them to regular contact types. 
-          type: array
-          items:
-            type: object
-            required:
-            - title
-            - value
-            properties:
-              title:
-                description: Name of this contact options
-                type: string
-              value:
-                description: The actual contact
-                type: string
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/CurrencyType'
           
   # elementary schemas
-    NameType:
-      title: Entity name
-      description: Human readable name identifying an entity (shown to users in search results, hotel/room details, etc)
-      type: string
-      maxLength: 150
     AirlineCodeType:
       title: Airline Code.
       description: IATA 2-Letter Airline code.
@@ -267,24 +225,7 @@ components:
       type: string
       minLength: 3
       maxLength: 3
-    UriType:
-      title: URI
-      description: URI for linking resources. The maximal length is 1500 to save space.
-      type: string
-      format: uri
-      maxLength: 1500
-    CurrencyType:
-      title: Currency code
-      type: string
-      minLength: 3
-      maxLength: 3
-      description: Three letter ISO 4217 currency code.
     EquipmentType:
       title: Airline equipment type (aircraft).
       type: string
       maxLength: 255
-    EthereumAddressType:
-      title: Ethereum address
-      type: string
-      description: Ethereum address in hexadecimal format (with leading 0x) or an ENS name.
-      maxLength: 300

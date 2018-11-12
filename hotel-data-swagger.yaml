@@ -20,13 +20,13 @@ components:
       properties:
         address:
           description: Ethereum address of the hotel
-          $ref: '#/components/schemas/EthereumAddressType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/EthereumAddressType'
         manager:
           description: Ethereum address of the manager wallet
-          $ref: '#/components/schemas/EthereumAddressType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/EthereumAddressType'
         dataUri:
           description: URI of the Hotel data index (pointing off-chain)
-          $ref: '#/components/schemas/UriType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
         created:
           description: Number of a block when the hotel was created
           type: integer
@@ -47,18 +47,18 @@ components:
           maxLength: 20
         descriptionUri:
           description: URI pointing to the HotelDescription data resource
-          $ref: '#/components/schemas/UriType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
         ratePlansUri:
           description: URI pointing to RatePlans data resource
-          $ref: '#/components/schemas/UriType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
         availabilityUri:
-          $ref: '#/components/schemas/UriType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
           description: URI pointing to Availability data resource
         notificationsUri:
-          $ref: '#/components/schemas/UriType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
           description: URI pointing to an instance of the WT Notification service.
         bookingUri:
-          $ref: '#/components/schemas/UriType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
           description: URI pointing to an instance of the WT Booking service.
 
     HotelDescription:
@@ -85,10 +85,10 @@ components:
           $ref: '#/components/schemas/Location'
         name:
           description: Name of the hotel to display to users
-          $ref: '#/components/schemas/NameType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/NameType'
         description:
           description: Short text description of the hotel to show to users.
-          $ref: '#/components/schemas/DescriptionType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/DescriptionType'
         roomTypes:
           description: Room types in the hotel
           $ref: '#/components/schemas/RoomTypes'
@@ -104,14 +104,14 @@ components:
         address:
           $ref: '#/components/schemas/Address'
         timezone:
-          $ref: '#/components/schemas/TimezoneType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/TimezoneType'
         currency:
-          $ref: '#/components/schemas/CurrencyType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/CurrencyType'
         images:
           description: Images (web browser compatible)
           type: array
           items:
-            $ref: '#/components/schemas/UriType'
+            $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
         amenities:
           description: Hotel products / services provided for free to guests
           type: array
@@ -149,10 +149,10 @@ components:
       properties:
         name:
           description: Name of the room type to show to users
-          $ref: '#/components/schemas/NameType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/NameType'
         description:
           description: Room type description in plain text
-          $ref: '#/components/schemas/DescriptionType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/DescriptionType'
         totalQuantity:
           type: integer
           format: int32
@@ -184,7 +184,7 @@ components:
           maxItems: 30
           uniqueItems: true
           items:
-            $ref: '#/components/schemas/UriType'
+            $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
             description: image uri
             example: 'https://example.com/my-image.jpg'
         updatedAt:
@@ -233,13 +233,13 @@ components:
       properties:
         name:
           description: Name of the rate plan to show to users
-          $ref: '#/components/schemas/NameType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/NameType'
         description:
           description: Rate plan description in plain text
-          $ref: '#/components/schemas/DescriptionType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/DescriptionType'
         currency:
           description: Currency in which are all the prices of this rate plan. If not set, the hotel currency setting will be used.
-          $ref: '#/components/schemas/CurrencyType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/CurrencyType'
         price:
           type: number
           format: float
@@ -252,7 +252,7 @@ components:
           uniqueItems: true
           items:
             description: RoomType id
-            $ref: '#/components/schemas/ObjectIdType'
+            $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/ObjectIdType'
             example: '123-afg-34'
         updatedAt:
           type: string
@@ -464,7 +464,7 @@ components:
           format: uri
         ethereum:
           description: Address of wallet on Ethereum
-          $ref: '#/components/schemas/EthereumAddressType'
+          $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/EthereumAddressType'
         additionalContacts:
           description: More contact options, such as Whatsapp, WeChat, Telegram, twitter handle, facebook address. Once we see high demand for a particular type of contact, we can promote them to regular contact types. 
           type: array
@@ -509,44 +509,3 @@ components:
           maxLength: 2
           minLength: 2
           description: ISO 3166-1 alpha-2 codes
-          
-  # elementary schemas
-  
-    DescriptionType:
-      title: Markdown description
-      description: Text description in simple Markdown format (bold, italic, titles, line break and paragraph format). Particular flavour of markdown is yet to be decided.
-      type: string
-      maxLength: 3000
-    NameType:
-      title: Entity name
-      description: Human readable name identifying an entity (shown to users in search results, hotel/room details, etc)
-      type: string
-      maxLength: 150
-    ObjectIdType:
-      title: ID
-      description: Vendor string ID
-      type: string
-      maxLength: 100
-      example: '1234-abcd'
-    UriType:
-      title: URI
-      description: URI for linking resources. The maximal length is 1500 to save space.
-      type: string
-      format: uri
-      maxLength: 1500
-    CurrencyType:
-      title: Currency code
-      type: string
-      minLength: 3
-      maxLength: 3
-      description: Three letter ISO 4217 currency code.
-    TimezoneType:
-      title: Timezone code
-      description: Timezone name according to https://www.iana.org/time-zones (refer to zone.tab)
-      type: string
-      maxLength: 40
-    EthereumAddressType:
-      title: Ethereum address
-      type: string
-      description: Ethereum address in hexadecimal format (with leading 0x) or an ENS name.
-      maxLength: 300

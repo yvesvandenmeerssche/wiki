@@ -29,7 +29,8 @@ more dev channels in the future). The announcement should contain
 information and links to what has changed and how anyone can update
 their integration to adapt (and how can they get help if needed).
 This should go out a few days before the reset.
-- [ ] Create and deploy new iteration of WTIndex.
+- [ ] Create and deploy new iteration of WTIndex. Don't forget to set up
+Lif token address (migration in wt-contracts does that for you).
 - [ ] Document the new WTIndex address in
 [deployments](https://github.com/windingtree/wiki/blob/master/deployments.md)
 page. We might want to keep the old index addresses there as well.

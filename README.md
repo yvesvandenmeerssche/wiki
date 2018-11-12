@@ -4,9 +4,11 @@ Welcome to the repository where we aggreagate all our techincal reports and arti
 
 If you are an IT developer, the best starting point is the [developer resources](developer-resources.md) document.
 
+If you'd like to know which smart contracts are we officially using, here's an [overview](contracts.md).
+
 Some of our key documents within this repo include the [technical roadmap](roadmap.md)
 and [our overview of the architecture](architecture-hotel.md). Nevertheless, other documents including some around our research efforts are also found in this repo with the intention of collaborate with the community together on these efforts.
 
 ### disclaimer
 
-Please bear in mind, that the pace this ecosystem is evolving at a rapid pace. Information may become outdated frequently. Please ensure you're always working on the most up-to-date documents to avoid working on issues which might have already been address in our updated documentation.
+Please bear in mind, that this ecosystem is evolving at a rapid pace. Information may become outdated frequently. Please ensure you're always working on the most up-to-date documents to avoid working on issues which might have already been address in our updated documentation.

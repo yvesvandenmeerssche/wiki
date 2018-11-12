@@ -187,6 +187,7 @@ components:
                     - availabilityCount
                   properties:
                     fare:
+                      description: Fare price, potentially expressed in multiple currencies.
                       type: array
                       items:
                         $ref: '#/components/schemas/Fare'

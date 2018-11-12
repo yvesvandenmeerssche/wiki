@@ -46,3 +46,5 @@ wt-write-api, ...).
 - This might not be necessary if we can transparently describe properties
 of our environments
 - This will probably not work for production-like environment
+- If data format has not changed, you can freely reuse your off chain data. Nothing
+is actually deleted.

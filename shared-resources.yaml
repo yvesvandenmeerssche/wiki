@@ -1,0 +1,91 @@
+openapi: 3.0.0
+servers: []
+info:
+  version: "0.0.1"
+  title: Shared WT data definitions
+  description: Object definitions shared across Winding Tree domains.
+paths: {}
+components:
+  schemas:
+    # Composed schemas
+    Contact:
+      title: Contact
+      type: object
+      properties:
+        email:
+          description: E-mail contact
+          type: string
+          format: email
+          example: joseph.urban@example.com
+          maxLength: 150
+        phone:
+          description: Phone number (with country prefix)
+          type: string
+          maxLength: 18
+          example: +44123456789
+        url:
+          description: Url to the contact web page
+          type: string
+          format: uri
+        ethereum:
+          description: Address of wallet on Ethereum
+          $ref: '#/components/schemas/EthereumAddressType'
+        additionalContacts:
+          description: More contact options, such as Whatsapp, WeChat, Telegram, twitter handle, facebook address. Once we see high demand for a particular type of contact, we can promote them to regular contact types. 
+          type: array
+          items:
+            type: object
+            required:
+            - title
+            - value
+            properties:
+              title:
+                description: Name of this contact options
+                type: string
+              value:
+                description: The actual contact
+                type: string
+
+    # Elementary schemas
+    CurrencyType:
+      title: Currency code
+      type: string
+      minLength: 3
+      maxLength: 3
+      description: Three letter ISO 4217 currency code.
+    DescriptionType:
+      title: Markdown description
+      description: Text description in simple Markdown format (bold, italic, titles, line break and paragraph format). Particular flavour of markdown is yet to be decided.
+      type: string
+      maxLength: 3000
+    EquipmentType:
+      title: Airline equipment type (aircraft).
+      type: string
+      maxLength: 255
+    EthereumAddressType:
+      title: Ethereum address
+      type: string
+      description: Ethereum address in hexadecimal format (with leading 0x) or an ENS name.
+      maxLength: 300
+    NameType:
+      title: Entity name
+      description: Human readable name identifying an entity (shown to users in search results, hotel/room details, etc)
+      type: string
+      maxLength: 150
+    ObjectIdType:
+      title: ID
+      description: Vendor string ID
+      type: string
+      maxLength: 100
+      example: '1234-abcd'
+    TimezoneType:
+      title: Timezone code
+      description: Timezone name according to https://www.iana.org/time-zones (refer to zone.tab)
+      type: string
+      maxLength: 40
+    UriType:
+      title: URI
+      description: URI for linking resources. The maximal length is 1500 to save space.
+      type: string
+      format: uri
+      maxLength: 1500

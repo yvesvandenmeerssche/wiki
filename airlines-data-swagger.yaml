@@ -1,0 +1,289 @@
+openapi: 3.0.0
+servers: []
+info:
+  version: "0.0.1"
+  title: Airline data definitions
+  description: Object definitions for the airline part of the WT platform.
+paths: {}
+components:
+  schemas:
+    AirlineOnChain:
+      title: WT-Index airline record
+      description: Airline record in WT-Index smart contract
+      type: object
+      required:
+      - address
+      - manager
+      - dataUri
+      - created
+      properties:
+        address:
+          description: Ethereum address of the airline
+          $ref: '#/components/schemas/EthereumAddressType'
+        manager:
+          description: Ethereum address of the manager wallet
+          $ref: '#/components/schemas/EthereumAddressType'
+        dataUri:
+          description: URI of the Airline data index (pointing off-chain)
+          $ref: '#/components/schemas/UriType'
+        created:
+          description: Number of a block when the hotel was created
+          type: integer
+
+    # Off chain data formats  
+    AirlineDataIndex:
+      title: Airline data index
+      description: Landing index for airline resources. Link to this document is stored in WT-Index smart contract airline record.
+      type: object
+      required:
+      - dataFormatVersion
+      - descriptionUri
+      properties:
+        dataFormatVersion:
+          description: Version number indicating the data format specification version.
+          type: string
+          format: semver
+          maxLength: 20
+        descriptionUri:
+          description: URI pointing to the AirlineDescription data resource
+          $ref: '#/components/schemas/UriType'
+        servicesUri:
+          description: URI pointing to Services data resource
+          $ref: '#/components/schemas/UriType'
+        flightsUri:
+          $ref: '#/components/schemas/UriType'
+          description: URI pointing to Flights data resource
+        bookingUri:
+          $ref: '#/components/schemas/UriType'
+          description: URI pointing to an instance of the WT Booking service.
+    AirlineDescription:
+      title: Airline description.
+      description: Basic properties of an airline.
+      type: object
+      required:
+      - name
+      - code
+      - contacts
+      - updatedAt
+      properties:
+        name:
+          description: Name of the airline to display to users
+          $ref: '#/components/schemas/NameType'
+        code:
+          $ref: '#/components/schemas/AirlineCodeType'
+        contacts:
+          type: object
+          description: List of contacts
+          required:
+          - general
+          properties:
+            general:
+              description: Primary contact
+              $ref: '#/components/schemas/Contact'
+        updatedAt:
+          type: string
+          description: Date-time when the data was last changed. Used by consumers to handle incremental updates and caching.
+          format: date-time
+    Services:
+      type: object
+      description: A set of airline services.
+      properties:
+        flightNumbers:
+          type: object
+          description: Object where property names are flight numbers.
+          additionalProperties:
+            $ref: '#/components/schemas/FlightNumber'
+    FlightNumber:
+      type: object
+      description: A single airline service.
+      required:
+        - origin
+        - destination
+        - segments
+      properties:
+        origin:
+          description: IATA code of the origin airport.
+          $ref: '#/components/schemas/AirportCodeType'
+        destination:
+          description: IATA code of the destination airport.
+          $ref: '#/components/schemas/AirportCodeType'
+        equipmentType:
+          $ref: '#/components/schemas/EquipmentType'
+        operatingAirline:
+          $ref: '#/components/schemas/AirlineCodeType'
+        segments:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required:
+              - id
+              - departureAirport
+              - arrivalAirport
+            properties:
+              id:
+                title: ID of the flight segment (must be unique for the given flight number).
+                type: string
+              departureAirport:
+                description: IATA code of the departure airport.
+                $ref: '#/components/schemas/AirportCodeType'
+              arrivalAirport:
+                description: IATA code of the arrival airport.
+                $ref: '#/components/schemas/AirportCodeType'
+    Flights:
+      type: object
+      description: A mapping of flight numbers to flight detail URIs.
+      properties:
+        uris:
+          type: object
+          description: Object where property names are flight numbers and values are URIs serving the Flight data resource.
+          additionalProperties:
+            $ref: '#/components/schemas/UriType'
+        updatedAt:
+          description: Time of the last update of flight information.
+          type: string
+          format: date-time
+    Flight:
+      type: object
+      description: Data for a specific flight.
+      required:
+        - dateTime
+        - segments
+        - updatedAt
+      properties:
+        dateTime:
+          description: Date and time of departure from the first segment
+          type: string
+          format: date-time
+        segments:
+          description: |
+            An object whose keys are segment IDs (they should match the IDs in the Flight Number data).
+            It specifies information for individual flight segments for the given flight.
+          type: object
+          additionalProperties:
+            type: object
+            required:
+              - departureDateTime
+              - arrivalDateTime
+              - bookingClasses
+            properties:
+              departureDateTime:
+                description: Time of the departure.
+                type: string
+                format: date-time
+              arrivalDateTime:
+                description: Time of the arrival.
+                type: string
+                format: date-time
+              bookingClassess:
+                description: |
+                  Object whose keys are class names/codes and values are price
+                  and availability information for the given booking class.
+                type: object
+                additionalProperties:
+                  type: object
+                  required:
+                    - fare
+                    - availabilityCount
+                  properties:
+                    fare:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Fare'
+                    availabilityCount:
+                      type: integer
+                      format: int32
+        updatedAt:
+          description: Time of the last update of flight information.
+          type: string
+          format: date-time
+    Fare:
+      type: object
+      required:
+        - amount
+        - currency
+      properties:
+        amount:
+          description: Fare price for the flight segment.
+          type: number
+          format: float
+        currency:
+          description: Fare price currency.
+          $ref: '#/components/schemas/CurrencyType'
+    Contact:
+      title: Contact
+      type: object
+      properties:
+        email:
+          description: E-mail contact
+          type: string
+          format: email
+          example: joseph.urban@example.com
+          maxLength: 150
+        phone:
+          description: Phone number (with country prefix)
+          type: string
+          maxLength: 18
+          example: +44123456789
+        url:
+          description: Url to the contact web page
+          type: string
+          format: uri
+        ethereum:
+          description: Address of wallet on Ethereum
+          $ref: '#/components/schemas/EthereumAddressType'
+        additionalContacts:
+          description: More contact options, such as Whatsapp, WeChat, Telegram, twitter handle, facebook address. Once we see high demand for a particular type of contact, we can promote them to regular contact types. 
+          type: array
+          items:
+            type: object
+            required:
+            - title
+            - value
+            properties:
+              title:
+                description: Name of this contact options
+                type: string
+              value:
+                description: The actual contact
+                type: string
+          
+  # elementary schemas
+    NameType:
+      title: Entity name
+      description: Human readable name identifying an entity (shown to users in search results, hotel/room details, etc)
+      type: string
+      maxLength: 150
+    AirlineCodeType:
+      title: Airline Code.
+      description: IATA 2-Letter Airline code.
+      type: string
+      minLength: 2
+      maxLength: 2
+    AirportCodeType:
+      title: Airport Code.
+      description: IATA 3-Letter Airport code.
+      type: string
+      minLength: 3
+      maxLength: 3
+    UriType:
+      title: URI
+      description: URI for linking resources. The maximal length is 1500 to save space.
+      type: string
+      format: uri
+      maxLength: 1500
+    CurrencyType:
+      title: Currency code
+      type: string
+      minLength: 3
+      maxLength: 3
+      description: Three letter ISO 4217 currency code.
+    EquipmentType:
+      title: Airline equipment type (aircraft).
+      type: string
+      maxLength: 255
+    EthereumAddressType:
+      title: Ethereum address
+      type: string
+      description: Ethereum address in hexadecimal format (with leading 0x) or an ENS name.
+      maxLength: 300

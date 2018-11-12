@@ -3,7 +3,7 @@ servers: []
 info:
   version: "0.1.0"
   title: Hotel definitions
-  description: Object definitions for hotel API
+  description: Object definitions for the hotel part of the WT platform.
 paths: {}
 components:
   schemas:
@@ -94,7 +94,7 @@ components:
           $ref: '#/components/schemas/RoomTypes'
         contacts:
           type: object
-          description: List of contacts
+          description: A set of contacts
           required:
           - general
           properties:

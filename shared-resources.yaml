@@ -58,10 +58,6 @@ components:
       description: Text description in simple Markdown format (bold, italic, titles, line break and paragraph format). Particular flavour of markdown is yet to be decided.
       type: string
       maxLength: 3000
-    EquipmentType:
-      title: Airline equipment type (aircraft).
-      type: string
-      maxLength: 255
     EthereumAddressType:
       title: Ethereum address
       type: string

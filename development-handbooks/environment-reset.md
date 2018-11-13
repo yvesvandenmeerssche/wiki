@@ -5,7 +5,7 @@ This is an extension of
 and is relevant only to environments managed by Winding Tree. As
 we don't have a production-like environment yet, this all applies
 to every environment considered as
-[*testing*](https://github.com/windingtree/wiki/blob/master/developer-resources.md#publicly-available-wt-deployments).
+[*testing*](https://github.com/windingtree/wiki/blob/master/deployments.md).
 
 Our platform is evolving at a rapid pace so inevitably, we are
 introducing breaking changes every so often. Unfortunately, these
@@ -24,8 +24,9 @@ and hopefully keep every interested party in the loop.
 ## Checklist
 
 - [ ] Decide a date of the reset (deployment of a breaking change).
-- [ ] Inform community about the planned change (Google Group thread,
-more dev channels in the future). The announcement should contain
+- [ ] Inform community about the planned change (
+[Google Group](https://groups.google.com/forum/#!forum/windingtree) thread,
+[Gitter](https://gitter.im/windingtree/Lobby)). The announcement should contain
 information and links to what has changed and how anyone can update
 their integration to adapt (and how can they get help if needed).
 This should go out a few days before the reset.
@@ -33,7 +34,7 @@ This should go out a few days before the reset.
 Lif token address (migration in wt-contracts does that for you).
 - [ ] Document the new WTIndex address in
 [deployments](https://github.com/windingtree/wiki/blob/master/deployments.md)
-page. We might want to keep the old index addresses there as well.
+page. We want to keep the old index addresses there as well.
 - [ ] Deploy updated wt-fixtures to the new WTIndex.
 - [ ] Wait for the announced date.
 - [ ] Deploy all up-to-date tooling in said envirnoment (wt-read-api,

@@ -27,7 +27,7 @@ components:
           description: URI of the Airline data index (pointing off-chain)
           $ref: 'https://raw.githubusercontent.com/windingtree/wiki/2c6312c06b15a2c12fe764ce10bdb6c4a0f78843/shared-resources.yaml#/components/schemas/UriType'
         created:
-          description: Number of a block when the hotel was created
+          description: Number of a block when the airline was created
           type: integer
 
     # Off chain data formats  
@@ -147,11 +147,11 @@ components:
       type: object
       description: Data for a specific flight.
       required:
-        - dateTime
+        - departureDateTime
         - segments
         - updatedAt
       properties:
-        dateTime:
+        departureDateTime:
           description: Date and time of departure from the first segment
           type: string
           format: date-time

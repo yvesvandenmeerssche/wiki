@@ -169,19 +169,32 @@ components:
           format: date-time
         bookingClassess:
           description: |
-            Object whose keys are class names/codes and values
-            are price and availability information for the given
-            booking class. Currently, price and availability
-            information is provided for the whole flight only.
-            In the future, this information might become more
-            granular (per segment).
+            Array of price and availability information for
+            various booking classes of the flight. In the
+            future, this information might become more granular
+            (per segment instead of per flight).
           type: array
           items:
             type: object
             required:
+              - id
+              - name
               - fare
               - availabilityCount
             properties:
+              id:
+                description: |
+                    ID of the booking class to be referenced in
+                    booking requests. Should be unique among all
+                    booking classes of the flight.
+                type: string
+                maxLength: 255
+                example: 'economy'
+              name:
+                description: A human-readable name of the booking class.
+                type: string
+                maxLength: 255
+                example: 'Economy'
               fare:
                 description: Fare price, potentially expressed in multiple currencies.
                 type: array

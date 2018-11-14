@@ -87,12 +87,19 @@ components:
     Services:
       type: object
       description: A set of airline services.
+      required:
+        - updatedAt
+        - flightNumbers
       properties:
         flightNumbers:
           type: object
           description: Object where property names are flight numbers.
           additionalProperties:
             $ref: '#/components/schemas/FlightNumber'
+        updatedAt:
+          description: Time of the last update of services information.
+          type: string
+          format: date-time
     FlightNumber:
       type: object
       description: A single airline service.

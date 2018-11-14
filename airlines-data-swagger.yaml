@@ -167,6 +167,29 @@ components:
           description: Date and time of departure from the first segment
           type: string
           format: date-time
+        bookingClassess:
+          description: |
+            Object whose keys are class names/codes and values
+            are price and availability information for the given
+            booking class. Currently, price and availability
+            information is provided for the whole flight only.
+            In the future, this information might become more
+            granular (per segment).
+          type: array
+          items:
+            type: object
+            required:
+              - fare
+              - availabilityCount
+            properties:
+              fare:
+                description: Fare price, potentially expressed in multiple currencies.
+                type: array
+                items:
+                  $ref: '#/components/schemas/Fare'
+              availabilityCount:
+                type: integer
+                format: int32
         segments:
           description: |
             An object whose keys are segment IDs (they should match the IDs in the FlightNumber data).
@@ -187,25 +210,6 @@ components:
                 description: Time of the arrival.
                 type: string
                 format: date-time
-              bookingClassess:
-                description: |
-                  Object whose keys are class names/codes and values are price
-                  and availability information for the given booking class.
-                type: object
-                additionalProperties:
-                  type: object
-                  required:
-                    - fare
-                    - availabilityCount
-                  properties:
-                    fare:
-                      description: Fare price, potentially expressed in multiple currencies.
-                      type: array
-                      items:
-                        $ref: '#/components/schemas/Fare'
-                    availabilityCount:
-                      type: integer
-                      format: int32
         updatedAt:
           description: Time of the last update of flight information.
           type: string

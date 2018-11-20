@@ -40,6 +40,11 @@ fake data. These are the key addresses:
 - WT Search API: https://playground-search-api.windingtree.com
 - Hotel explorer: https://hotel-explorer-playground.windingtree.com
 
+We are populating the Playground environment with curated data from
+[wt-fixtures](https://github.com/windingtree/wt-fixtures). Availability data
+gets updated monthly with a [simple AWS Lambda function](https://github.com/windingtree/wt-fixtures-refresh-lambda),
+so it should make sense at all times.
+
 ### WT index History
 
 This table shows which WTIndex instances were used in this environment and when.

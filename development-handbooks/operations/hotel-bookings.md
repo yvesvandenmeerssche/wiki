@@ -26,7 +26,7 @@ it manually (see below).
 The `wt-write-api` instance is not exposeed through Elastic Load Balancer,
 but rather through [Service Discovery](https://aws.amazon.com/blogs/aws/amazon-ecs-service-discovery/)
 which in short assigns a DNS name to ECS service. That is then used in
-`wt-booking-api` configuration which is [deployed as a standard app](../aws.md)
+`wt-booking-api` configuration which is [deployed as a standard app](../app-deployment/aws.md)
 except it's not deployed through Travis CI. Both of these services are
 handled manually to ensure a fitting configuration. Because if this
 `wt-write-api` is turned off, we need to create a new account there and
@@ -68,7 +68,7 @@ for playground) should be enough.
 But you need to create a hotel-specific task for `wt-booking-api` with appropriate
 configuration (including a fresh `wt-write-api` account) and start a fresh service
 of it. All of the networking stuff is done exactly the same as in
-[this handbook](../aws.md).
+[this handbook](../app-deployment/aws.md).
 
 ## Change existing
 

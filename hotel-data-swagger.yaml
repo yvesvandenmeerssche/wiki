@@ -398,12 +398,12 @@ components:
       - amount
       properties:
         from:
-          description: After which date does this cancellation policy apply (including). If not present, this policy applies since the beginning of time.
+          description: After which date does this cancellation policy apply (including). If not present, this policy applies since the beginning of time. This is related to arrival and departure dates, not the date of the booking.
           type: string
           format: date-time
           example: "2018-01-30"
         to:
-          description: Before which date does this cancellation policy apply(including). If not present, this policy applies until the end of the universe.
+          description: Before which date does this cancellation policy apply (including). If not present, this policy applies until the end of the universe. This is related to arrival and departure dates, not the date of the booking.
           type: string
           format: date-time
           example: "2018-02-20"

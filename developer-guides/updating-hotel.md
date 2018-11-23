@@ -3,6 +3,37 @@
 - The address of Winding Tree index used in this example is for demo purposes only. There is only example data.
 - We currently allow only a very limited subset of modifications of on chain data.
 
+## REST API
+
+- In order to work with the [wt-write-api](https://github.com/windingtree/wt-write-api),
+you need to have an account registered. (See [registering hotel](registering-hotel.md) to find out how to do that).
+- The sample deployment on https://playground-write-api.windingtree.com is for demonstration
+purposes only and is re-deployed every 24 hours. Your accounts will be lost after re-deployment.
+- This code works with `0.5.0` version deployed on https://playground-write-api.windingtree.com although
+the data will be different.
+- Hotel update notification will be published automatically by
+the API server to the given notifications address, if available.
+
+### Updating a hotel
+
+- You are only allowed to update your own hotel.
+- The hotel data format is the same as in [registering hotel](registering-hotel.md).
+- Whole data documents are updated (i. e. if you are sending a description, whole description
+will be replaced)
+- If for some reason the `PATCH` method is failing (for example because the original data
+cannot be accessed), oyou can use `PUT` HTTP method that will replace all of the hotel data
+(i. e. it will contain exactly that data that you send with your `PUT` request).
+
+```sh
+# Replace X-Access-Key with the result of account creation above
+$ curl -X PATCH https://playground-write-api.windingtree.com/hotels -H 'Content-Type: application/json' \
+  -H 'X-Access-Key: usgq6tSBW+wDYA/MBF367HnNp4tGKaCTRPy3JHPEqJmFBuxq1sA7UhFOpuV80ngC' \
+  -H 'X-Wallet-Password: windingtree' \
+  --data @hotel-description.json
+
+# Response will be 204
+```
+
 ## Javascript library
 
 - Dependencies
@@ -103,38 +134,6 @@ const offChainDataUri = 'https://jirkachadima.cz/wt/hotel-data-index.json';
 })();
 
 ```
-
-## REST API
-
-- In order to work with the [wt-write-api](https://github.com/windingtree/wt-write-api),
-you need to have an account registered. (See [registering hotel](registering-hotel.md) to find out how to do that).
-- The sample deployment on https://playground-write-api.windingtree.com is for demonstration
-purposes only and is re-deployed every 24 hours. Your accounts will be lost after re-deployment.
-- This code works with `0.5.0` version deployed on https://playground-write-api.windingtree.com although
-the data will be different.
-- Hotel update notification will be published automatically by
-the API server to the given notifications address, if available.
-
-### Updating a hotel
-
-- You are only allowed to update your own hotel.
-- The hotel data format is the same as in [registering hotel](registering-hotel.md).
-- Whole data documents are updated (i. e. if you are sending a description, whole description
-will be replaced)
-- If for some reason the `PATCH` method is failing (for example because the original data
-cannot be accessed), oyou can use `PUT` HTTP method that will replace all of the hotel data
-(i. e. it will contain exactly that data that you send with your `PUT` request).
-
-```sh
-# Replace X-Access-Key with the result of account creation above
-$ curl -X PATCH https://playground-write-api.windingtree.com/hotels -H 'Content-Type: application/json' \
-  -H 'X-Access-Key: usgq6tSBW+wDYA/MBF367HnNp4tGKaCTRPy3JHPEqJmFBuxq1sA7UhFOpuV80ngC' \
-  -H 'X-Wallet-Password: windingtree' \
-  --data @hotel-description.json
-
-# Response will be 204
-```
-
 ---
 Contacts:
 [Google Group](https://groups.google.com/forum/#!forum/windingtree) |

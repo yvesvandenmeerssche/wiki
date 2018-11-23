@@ -2,9 +2,10 @@
 
 In this directory, you shall find a list of guides and examples on how to interact with Winding Tree platform.
 The articles should help you to understand what is going on in every use case and how you can actually use
-our [libraries](https://github.com/windingtree/wt-js-libs) and APIs (
+our APIs (
 [reading](https://github.com/windingtree/wt-read-api),
-[writing](https://github.com/windingtree/wt-write-api)).
+[writing](https://github.com/windingtree/wt-write-api))
+and [libraries](https://github.com/windingtree/wt-js-libs).
 
 ## Environments
 

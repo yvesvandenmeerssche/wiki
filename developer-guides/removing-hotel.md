@@ -116,13 +116,3 @@ const PASSWORD = 'windingtree';
   }
 })();
 ```
-
----
-Contacts:
-[Google Group](https://groups.google.com/forum/#!forum/windingtree) |
-[Twitter](https://twitter.com/windingtree) |
-[Medium](http://blog.windingtree.com/) |
-[YouTube](https://www.youtube.com/channel/UCFuemEOhCfenYMoNdjD0Aew) |
-[Telegram](https://t.me/windingtree) |
-[Reddit](https://reddit.com/r/windingtree) |
-[BitcoinTalk](https://bitcointalk.org/index.php?topic=1946065)

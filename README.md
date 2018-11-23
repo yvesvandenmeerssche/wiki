@@ -12,3 +12,15 @@ and [our overview of the architecture](architecture-hotel.md). Nevertheless, oth
 ### disclaimer
 
 Please bear in mind, that this ecosystem is evolving at a rapid pace. Information may become outdated frequently. Please ensure you're always working on the most up-to-date documents to avoid working on issues which might have already been address in our updated documentation.
+
+
+---
+Contacts:
+[Gitter](https://gitter.im/windingtree) |
+[Google Group](https://groups.google.com/forum/#!forum/windingtree) |
+[Twitter](https://twitter.com/windingtree) |
+[Medium](http://blog.windingtree.com/) |
+[YouTube](https://www.youtube.com/channel/UCFuemEOhCfenYMoNdjD0Aew) |
+[Telegram](https://t.me/windingtree) |
+[Reddit](https://reddit.com/r/windingtree) |
+[BitcoinTalk](https://bitcointalk.org/index.php?topic=1946065)

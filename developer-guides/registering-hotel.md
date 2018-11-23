@@ -106,6 +106,8 @@ you need to have an account registered.
 purposes only and is re-deployed every 24 hours. Your accounts will be lost after re-deployment.
 - This code works with `0.3.0` version deployed on https://playground-write-api.windingtree.com although
 the data might be different.
+- **We strongly recommend to use a single account tied to a single Ethereum wallet with only
+one hotel.**
 
 ### Creating an account
 

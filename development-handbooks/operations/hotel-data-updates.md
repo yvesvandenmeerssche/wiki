@@ -18,7 +18,8 @@ particularly for `availability` that gets partly stale every day.
 
 We can deploy an [AWS Lambda](https://aws.amazon.com/lambda/) for
 every single hotel that can be triggered at any given time with
-[rate or cron event](https://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html).
+[rate or cron event](https://docs.aws.amazon.com/lambda/latest/dg/tutorial-scheduled-events-schedule-expressions.html)
+or a [Step functions](https://aws.amazon.com/step-functions/).
 
 We have a [simple wrapper](https://github.com/windingtree/wt-fixtures-refresh-lambda)
 over `wt-fixtures` that contains a version of `wt-fixtures`'s
@@ -51,6 +52,13 @@ them whenever you need in a **Test** mode, which just tells the Lambda
 to run. We are not using any data from the incoming event, so you can
 probably choose a random event and the Lambda will just run.
 
+Because of limitations of parallel execution of transactions from a single
+Ethereum wallet, the updates for all hotels are done in a sequential way.
+That is achieved with a simple Step function that waits for one lambda
+before the other one starts.
+
+We should eventully switch to "one wallet"-"one hotel" scheme.
+
 ## Culprits
 
 - AWS Lambda supports only Node 8.
@@ -64,7 +72,8 @@ fiddle with that settings.
 
 ## Add similar
 
-To add a new lambda for hotel, you have to follow [this guide](https://github.com/windingtree/wt-fixtures-refresh-lambda#setup).
+To add a new lambda for hotel, you have to follow
+[this guide](https://github.com/windingtree/wt-fixtures-refresh-lambda#setup).
 
 ## Change existing
 

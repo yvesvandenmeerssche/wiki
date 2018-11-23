@@ -69,6 +69,9 @@ want on directly AWS Lambda.
 you upload new archive from `wt-fixtures-refresh-lambda`.
 - Lambdas are mercilessly killed after timeout. You might need to
 fiddle with that settings.
+- It should be possible to parametrize Lambda from a Step function
+input parameters. That would save us some manual work on defining
+the Lambdas.
 
 ## Add similar
 

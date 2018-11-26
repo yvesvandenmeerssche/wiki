@@ -6,7 +6,7 @@ We want to show that bookings of hotels can be done. For that
 we need a running instance of [wt-booking-api](https://github.com/windingtree/wt-booking-api).
 And that in turn needs a running instance of [wt-write-api](https://github.com/windingtree/wt-write-api)
 because it's using a pre-configured static `wt-write-api` account.
-That's whywe cannot use exinst `wt-write-api` deployments that
+That's why we cannot use the existing `wt-write-api` deployments that
 are wiped every 24 hours.
 
 ## Where?
@@ -46,7 +46,7 @@ that EC2 instance. Ask around in WT dev team.
 - From there, run the command to create `wt-write-api` account against the noted
 DNS path and port - something like `http://fe0a6816-1452-4bc7-89b2-5486065cf7de.mazurka-write-api.local:38552`
 - Take the returned secret and along with the `wt-write-api` address, set it as 
-eenvironment variables in the `wt-booking-api` task along with other configuration
+environment variables in the `wt-booking-api` task along with other configuration
 variables.
 
 

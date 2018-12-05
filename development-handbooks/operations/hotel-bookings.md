@@ -19,7 +19,7 @@ running alongside everything else in a single docker cluster on AWS ECS.
 deployment is. If there is a significant version bump, you need to update
 it manually (see below).
 
-- playground - 0x9d226A90C5a4c711c92e23cD246e9eb77d2D21f9 - [booking-api](https://mazurka-booking.windingtree.com)
+- playground - 0x9d226A90C5a4c711c92e23cD246e9eb77d2D21f9 - [booking-api](https://mazurka-booking.windingtree.com) (this hotel's data is hosted on S3 for performance reasons, so be aware of that when you are changing any write-api configurations)
 
 ## How?
 

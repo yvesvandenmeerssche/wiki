@@ -85,8 +85,9 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
       "https://raw.githubusercontent.com/windingtree/media/master/logo-variants/tree/png/tree--gradient-on-white.png",
       "https://raw.githubusercontent.com/windingtree/media/master/logo-variants/full-logo/png/logo--black-on-green.png"
     ],
-    "roomTypes": {
-      "twin-bed": {
+    "roomTypes": [
+      {
+        "id": "twin-bed",
         "name": "Twin bed",
         "description": "Room with a **twin bed**",
         "totalQuantity": 10,
@@ -104,7 +105,8 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
           "nonSmoking": "some"
         }
       },
-      "king-size-bed": {
+      {
+        "id": "king-size-bed",
         "name": "King size bed",
         "description": "Room with a **king size bed**",
         "totalQuantity": 10,
@@ -121,7 +123,7 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
         "properties": {
           "nonSmoking": "some"
         }
-      }
+      ]
     },
     "defaultCancellationAmount": 0,
     "cancellationPolicies": [
@@ -139,8 +141,9 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
       }
     ]
   },
-  "ratePlans": {
-    "basic-twin": {
+  "ratePlans": [
+    {
+      "id": "basic-twin",
       "name": "Basic twin bed",
       "description": "Off season price for twin bed",
       "currency": "EUR",
@@ -175,7 +178,8 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
         }
       }
     },
-    "summer-season-twin": {
+    {
+      "id": "summer-season-twin",
       "name": "Summer season twin bed",
       "description": "Summer price for twin bed",
       "currency": "EUR",
@@ -210,7 +214,8 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
         }
       }
     },
-    "basic-king": {
+    {
+      "id": "basic-king",
       "name": "Basic king bed",
       "description": "Basic for king bed",
       "currency": "EUR",
@@ -245,7 +250,8 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
         }
       }
     },
-    "summer-season-king": {
+    {
+      "id": "summer-season-king",
       "name": "Summer season king bed",
       "description": "Summer season for king bed",
       "currency": "EUR",
@@ -279,111 +285,125 @@ $ curl -X POST https://playground-write-api.windingtree.com/accounts -H 'Content
           "max": 10
         }
       }
-    }
+    ]
   },
   "availability": {
-    "roomTypes": {
-      "twin-bed": [
-        {
-          "date": "2018-07-07",
-          "quantity": 2,
-          "restrictions": {
-            "noArrival": true
-          }
-        },
-        {
-          "date": "2018-07-08",
-          "quantity": 2,
-          "restrictions": {
-            "noDeparture": true
-          }
-        },
-        {
-          "date": "2018-07-09",
-          "quantity": 2
-        },
-        {
-          "date": "2018-07-10",
-          "quantity": 1
-        },
-        {
-          "date": "2018-07-11",
-          "quantity": 0
-        },
-        {
-          "date": "2018-07-12",
-          "quantity": 0
-        },
-        {
-          "date": "2018-07-13",
-          "quantity": 0
-        },
-        {
-          "date": "2018-07-14",
-          "quantity": 0,
-          "restrictions": {
-            "noArrival": true
-          }
-        },
-        {
-          "date": "2018-07-15",
-          "quantity": 0,
-          "restrictions": {
-            "noDeparture": true
-          }
+    "roomTypes": [
+      {
+        "roomTypeId": "twin-bed",
+        "date": "2018-07-07",
+        "quantity": 2,
+        "restrictions": {
+          "noArrival": true
         }
-      ],
-      "king-size-bed": [
-        {
-          "date": "2018-07-07",
-          "quantity": 2,
-          "restrictions": {
-            "noArrival": true
-          }
-        },
-        {
-          "date": "2018-07-08",
-          "quantity": 2,
-          "restrictions": {
-            "noDeparture": true
-          }
-        },
-        {
-          "date": "2018-07-09",
-          "quantity": 2
-        },
-        {
-          "date": "2018-07-10",
-          "quantity": 1
-        },
-        {
-          "date": "2018-07-11",
-          "quantity": 0
-        },
-        {
-          "date": "2018-07-12",
-          "quantity": 0
-        },
-        {
-          "date": "2018-07-13",
-          "quantity": 0
-        },
-        {
-          "date": "2018-07-14",
-          "quantity": 0,
-          "restrictions": {
-            "noArrival": true
-          }
-        },
-        {
-          "date": "2018-07-15",
-          "quantity": 0,
-          "restrictions": {
-            "noDeparture": true
-          }
+      },
+      {
+        "roomTypeId": "twin-bed",
+        "date": "2018-07-08",
+        "quantity": 2,
+        "restrictions": {
+          "noDeparture": true
         }
-      ]
-    }
+      },
+      {
+        "roomTypeId": "twin-bed",
+        "date": "2018-07-09",
+        "quantity": 2
+      },
+      {
+        "roomTypeId": "twin-bed",
+        "date": "2018-07-10",
+        "quantity": 1
+      },
+      {
+        "roomTypeId": "twin-bed",
+        "date": "2018-07-11",
+        "quantity": 0
+      },
+      {
+        "roomTypeId": "twin-bed",
+        "date": "2018-07-12",
+        "quantity": 0
+      },
+      {
+        "roomTypeId": "twin-bed",
+        "date": "2018-07-13",
+        "quantity": 0
+      },
+      {
+        "roomTypeId": "twin-bed",
+        "date": "2018-07-14",
+        "quantity": 0,
+        "restrictions": {
+          "noArrival": true
+        }
+      },
+      {
+        "roomTypeId": "twin-bed",
+        "date": "2018-07-15",
+        "quantity": 0,
+        "restrictions": {
+          "noDeparture": true
+        }
+      },
+      {
+        "roomTypeId": "king-size-bed",
+        "date": "2018-07-07",
+        "quantity": 2,
+        "restrictions": {
+          "noArrival": true
+        }
+      },
+      {
+        "roomTypeId": "king-size-bed",
+        "date": "2018-07-08",
+        "quantity": 2,
+        "restrictions": {
+          "noDeparture": true
+        }
+      },
+      {
+        "roomTypeId": "king-size-bed",
+        "date": "2018-07-09",
+        "quantity": 2
+      },
+      {
+        "roomTypeId": "king-size-bed",
+        "date": "2018-07-10",
+        "quantity": 1
+      },
+      {
+        "roomTypeId": "king-size-bed",
+        "date": "2018-07-11",
+        "quantity": 0
+      },
+      {
+        "roomTypeId": "king-size-bed",
+        "date": "2018-07-12",
+        "quantity": 0
+      },
+      {
+        "roomTypeId": "king-size-bed",
+        "date": "2018-07-13",
+        "quantity": 0
+      },
+      {
+        "roomTypeId": "king-size-bed",
+        "date": "2018-07-14",
+        "quantity": 0,
+        "restrictions": {
+          "noArrival": true
+        }
+      },
+      {
+        "roomTypeId": "king-size-bed",
+        "date": "2018-07-15",
+        "quantity": 0,
+        "restrictions": {
+          "noDeparture": true
+        }
+      }
+    ]
   }
 }
 ```

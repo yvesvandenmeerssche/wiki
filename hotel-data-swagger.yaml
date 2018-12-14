@@ -1,7 +1,7 @@
 openapi: 3.0.0
 servers: []
 info:
-  version: "0.1.0"
+  version: "0.2.0"
   title: Hotel definitions
   description: Object definitions for hotel API
 paths: {}
@@ -134,19 +134,24 @@ components:
 
   # inventory
     RoomTypes:
-      type: object
-      description: Object where property names are ID of room type and values are the RoomType 
-      additionalProperties:
+      type: array
+      description: Array of RoomTypes
+      items:
         $ref: '#/components/schemas/RoomType'
     RoomType:
       type: object
       required:
+      - id
       - name
       - description
       - occupancy
       - totalQuantity
       - updatedAt
       properties:
+        id:
+          description: ID of the room type
+          $ref: '#/components/schemas/ObjectIdType'
+          example: '123-afg-34'
         name:
           description: Name of the room type to show to users
           $ref: '#/components/schemas/NameType'
@@ -205,9 +210,9 @@ components:
               
   # pricing
     RatePlans:
-      type: object
-      description: Property names are ID of rate plan and the values is the rate plan description
-      additionalProperties:
+      type: array
+      description: Array of RatePlans
+      items:
         $ref: '#/components/schemas/RatePlan'
     RatePlan:
       description: |
@@ -226,11 +231,15 @@ components:
         
       type: object
       required:
+      - id
       - name
       - updatedAt
       - price
       - roomTypeIds
       properties:
+        id:
+          description: ID of the rate plan
+          $ref: '#/components/schemas/ObjectIdType'
         name:
           description: Name of the rate plan to show to users
           $ref: '#/components/schemas/NameType'
@@ -357,18 +366,20 @@ components:
           type: string
           format: date-time
         roomTypes:
-          description: Object where property names are roomTypeId
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              $ref: '#/components/schemas/AvailabilityForDay'
+          description: Array of AvailabilityForDay
+          type: array
+          items:
+            $ref: '#/components/schemas/AvailabilityForDay'
     AvailabilityForDay:
       type: object
       required:
+      - roomTypeId
       - date
       - quantity
       properties:
+        roomTypeId:
+          description: The roomTypeId the availability is for
+          $ref: '#/components/schemas/ObjectIdType'
         date:
           description: The date the availability is for
           type: string
